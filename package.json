@@ -1,5 +1,5 @@
 {
-    "name": "my-project-name",
+    "name": "phantomizer-demo",
     "version": "0.1.0",
     "private": true,
     "engines" : { "node" : ">=0.10.20" },
@@ -8,11 +8,8 @@
         ,"grunt-cli": "0.1.x"
         ,"grunt-contrib-imagemin": "0.3.x"
         ,"grunt-contrib-qunit": "0.3.x"
-
         ,"phantomjs": "1.9.x"
-
         ,"phantomizer": "maboiteaspam/phantomizer"
-
         ,"phantomizer-grunt": "maboiteaspam/phantomizer-grunt"
         ,"phantomizer-styledocco": "maboiteaspam/phantomizer-styledocco"
         ,"phantomizer-docco": "maboiteaspam/phantomizer-docco"
@@ -29,7 +26,5 @@
         ,"phantomizer-export-build": "maboiteaspam/phantomizer-export-build"
         ,"phantomizer-qunit-runner": "maboiteaspam/phantomizer-qunit-runner"
         ,"phantomizer-websupport": "maboiteaspam/phantomizer-websupport"
-
-
     }
 }
