@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>knockout.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>knockout.js</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="ejs.html">
+                    ejs.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="index-wbm.html">
+                    index-wbm.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="index.html">
+                    index.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inlined.html">
+                    inlined.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="knockout.html">
+                    knockout.js
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        
+        
+          <div class='highlight'><pre><span class="string">"use strict"</span>;
+
+require([
+    <span class="string">"vendors/go-phantomizer/phantomizer"</span>,
+    <span class="string">"vendors//go-knockout/knockout-3.0.0.min"</span>
+],<span class="function"><span class="keyword">function</span> <span class="params">(phantomizer, ko)</span> {</span>
+
+    <span class="comment">/* required  call */</span>
+    phantomizer.afterStaticRender(<span class="keyword">function</span>(next){
+        ko.applyBindings({name:<span class="string">'demo'</span>},$(<span class="string">".content&gt;div:eq(0)"</span>).get(<span class="number">0</span>))
+        ko.cleanNode($(<span class="string">".content&gt;div:eq(0)"</span>).get(<span class="number">0</span>));
+        next();
+    },<span class="string">"static"</span>);</pre></div>
+        
+      
+        
+        <p>required main call</p>
+
+        
+          <div class='highlight'><pre>    phantomizer.render(<span class="keyword">function</span>(next){
+        $(<span class="string">"&lt;span&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="string">".content"</span>)
+        next();
+    });
+});</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

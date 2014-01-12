@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>index-wbm.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>index-wbm.js</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="ejs.html">
+                    ejs.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="index-wbm.html">
+                    index-wbm.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="index.html">
+                    index.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inlined.html">
+                    inlined.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="knockout.html">
+                    knockout.js
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        
+        
+          <div class='highlight'><pre><span class="string">"use strict"</span>;
+
+require([
+    <span class="string">"vendors/go-phantomizer/phantomizer"</span>
+],<span class="function"><span class="keyword">function</span> <span class="params">(phantomizer)</span> {</span>
+
+    <span class="comment">/* required  call */</span>
+    phantomizer.render(<span class="keyword">function</span>(next){
+        <span class="comment">/*
+         This file is served because it does not exist in www-core.
+         */</span>
+        $(<span class="string">"&lt;span&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="string">"body"</span>)
+        next();
+    });
+});</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

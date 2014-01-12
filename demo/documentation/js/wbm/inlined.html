@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>inlined.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>inlined.js</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="ejs.html">
+                    ejs.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="index-wbm.html">
+                    index-wbm.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="index.html">
+                    index.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inlined.html">
+                    inlined.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="knockout.html">
+                    knockout.js
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        
+        
+          <div class='highlight'><pre><span class="string">"use strict"</span>;
+
+require([
+    <span class="string">"vendors/go-phantomizer/phantomizer"</span>
+],<span class="function"><span class="keyword">function</span> <span class="params">(phantomizer)</span> {</span></pre></div>
+        
+      
+        
+        <p>execute something during the build because static</p>
+
+        
+          <div class='highlight'><pre>    phantomizer.afterStaticRender(<span class="keyword">function</span>(next){
+        <span class="keyword">var</span> h = [];</pre></div>
+        
+      
+        
+        <p>collect img with class inlined</p>
+
+        
+          <div class='highlight'><pre>        $(<span class="string">"img.inlined"</span>).each(<span class="keyword">function</span>(k,v){
+            <span class="keyword">var</span> s = $(v).attr(<span class="string">"src"</span>);
+            h.push(</pre></div>
+        
+      
+        
+        <p>get the base64 version of the picture, this route is provided by phantomizer</p>
+
+        
+          <div class='highlight'><pre>                $.get(<span class="string">"/stryke_b64"</span>+s,<span class="keyword">function</span>(d){</pre></div>
+        
+      
+        
+        <p>apply the inlined src</p>
+
+        
+          <div class='highlight'><pre>                    $(v).attr(<span class="string">"src"</span>,d)</pre></div>
+        
+      
+        
+        <p>clean the class</p>
+
+        
+          <div class='highlight'><pre>                    $(v).removeClass(<span class="string">"inlined"</span>)
+                })
+            )
+        });</pre></div>
+        
+      
+        
+        <p>when this task is done, pass to next handler</p>
+
+        
+          <div class='highlight'><pre>        $.when.apply(<span class="literal">null</span>, h ).then(next);
+    });
+    <span class="comment">/* required call */</span>
+    phantomizer.render(<span class="keyword">function</span>(next){
+        $(<span class="string">"&lt;span&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="string">"body"</span>)
+        next();
+    });
+});</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

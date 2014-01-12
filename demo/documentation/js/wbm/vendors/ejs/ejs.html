@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>ejs.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>ejs.js</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="ejs.html">
+                    ejs.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="ejs_production.html">
+                    ejs_production.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="view.html">
+                    view.js
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        
+        
+          <div class='highlight'><pre>(<span class="keyword">function</span>(){
+    
+
+<span class="keyword">var</span> rsplit = <span class="keyword">function</span>(string, regex) {
+	<span class="keyword">var</span> result = regex.exec(string),retArr = <span class="keyword">new</span> Array(), first_idx, last_idx, first_bit;
+	<span class="keyword">while</span> (result != <span class="literal">null</span>)
+	{
+		first_idx = result.index; last_idx = regex.lastIndex;
+		<span class="keyword">if</span> ((first_idx) != <span class="number">0</span>)
+		{
+			first_bit = string.substring(<span class="number">0</span>,first_idx);
+			retArr.push(string.substring(<span class="number">0</span>,first_idx));
+			string = string.slice(first_idx);
+		}		
+		retArr.push(result[<span class="number">0</span>]);
+		string = string.slice(result[<span class="number">0</span>].length);
+		result = regex.exec(string);	
+	}
+	<span class="keyword">if</span> (! string == <span class="string">''</span>)
+	{
+		retArr.push(string);
+	}
+	<span class="keyword">return</span> retArr;
+},
+chop =  <span class="keyword">function</span>(string){
+    <span class="keyword">return</span> string.substr(<span class="number">0</span>, string.length - <span class="number">1</span>);
+},
+extend = <span class="keyword">function</span>(d, s){
+    <span class="keyword">for</span>(<span class="keyword">var</span> n <span class="keyword">in</span> s){
+        <span class="keyword">if</span>(s.hasOwnProperty(n))  d[n] = s[n]
+    }
+}
+
+
+EJS = <span class="keyword">function</span>( options ){
+	options = <span class="keyword">typeof</span> options == <span class="string">"string"</span> ? {view: options} : options
+    <span class="keyword">this</span>.set_options(options);
+	<span class="keyword">if</span>(options.precompiled){
+		<span class="keyword">this</span>.template = {};
+		<span class="keyword">this</span>.template.process = options.precompiled;
+		EJS.update(<span class="keyword">this</span>.name, <span class="keyword">this</span>);
+		<span class="keyword">return</span>;
+	}
+    <span class="keyword">if</span>(options.element)
+	{
+		<span class="keyword">if</span>(<span class="keyword">typeof</span> options.element == <span class="string">'string'</span>){
+			<span class="keyword">var</span> name = options.element
+			options.element = document.getElementById(  options.element )
+			<span class="keyword">if</span>(options.element == <span class="literal">null</span>) <span class="keyword">throw</span> name+<span class="string">'does not exist!'</span>
+		}
+		<span class="keyword">if</span>(options.element.value){
+			<span class="keyword">this</span>.text = options.element.value
+		}<span class="keyword">else</span>{
+			<span class="keyword">this</span>.text = options.element.innerHTML
+		}
+		<span class="keyword">this</span>.name = options.element.id
+		<span class="keyword">this</span>.type = <span class="string">'['</span>
+	}<span class="keyword">else</span> <span class="keyword">if</span>(options.url){
+        options.url = EJS.endExt(options.url, <span class="keyword">this</span>.extMatch);
+		<span class="keyword">this</span>.name = <span class="keyword">this</span>.name ? <span class="keyword">this</span>.name : options.url;
+        <span class="keyword">var</span> url = options.url</pre></div>
+        
+      
+        
+        <p>options.view = options.absolute_url || options.view || options.;</p>
+
+        
+          <div class='highlight'><pre>		<span class="keyword">var</span> template = EJS.get(<span class="keyword">this</span>.name <span class="comment">/*url*/</span>, <span class="keyword">this</span>.cache);
+		<span class="keyword">if</span> (template) <span class="keyword">return</span> template;
+	    <span class="keyword">if</span> (template == EJS.INVALID_PATH) <span class="keyword">return</span> <span class="literal">null</span>;
+        <span class="keyword">try</span>{
+            <span class="keyword">this</span>.text = EJS.request( url+(<span class="keyword">this</span>.cache ? <span class="string">''</span> : <span class="string">'?'</span>+Math.random() ));
+        }<span class="keyword">catch</span>(e){}
+
+		<span class="keyword">if</span>(<span class="keyword">this</span>.text == <span class="literal">null</span>){
+            <span class="keyword">throw</span>( {type: <span class="string">'EJS'</span>, message: <span class="string">'There is no template at '</span>+url}  );
+		}</pre></div>
+        
+      
+        
+        <p>this.name = url;</p>
+
+        
+          <div class='highlight'><pre>	}
+	var template = new EJS.Compiler(this.text, this.type);
+
+	template.compile(options, this.name);
+
+	
+	EJS.update(this.name, this);
+	this.template = template;
+};
+/* @Prototype*/
+EJS.prototype = {
+	/**
+	 * Renders an object with extra view helpers attached to the view.
+	 * @param {Object} object data to be rendered
+	 * @param {Object} extra_helpers an object with additonal view helpers
+	 * @return {String} returns the result of the string
+	 */
+    render : function(object, extra_helpers){
+        object = object || {};
+        this._extra_helpers = extra_helpers;
+		var v = new EJS.Helpers(object, extra_helpers || {});
+		return this.template.process.call(object, object,v);
+	},
+    update : function(element, options){
+        if(typeof element == 'string'){
+			element = document.getElementById(element)
+		}
+		if(options == null){
+			_template = this;
+			return function(object){
+				EJS.prototype.update.call(_template, element, object)
+			}
+		}
+		if(typeof options == 'string'){
+			params = {}
+			params.url = options
+			_template = this;
+			params.onComplete = function(request){
+				var object = eval( request.responseText )
+				EJS.prototype.update.call(_template, element, object)
+			}
+			EJS.ajax_request(params)
+		}else
+		{
+			element.innerHTML = this.render(options)
+		}
+    },
+	out : function(){
+		return this.template.out;
+	},
+    /**
+     * Sets options on this view to be rendered with.
+     * @param {Object} options
+     */
+	set_options : function(options){
+        this.type = options.type || EJS.type;
+		this.cache = options.cache != null ? options.cache : EJS.cache;
+		this.text = options.text || null;
+		this.name =  options.name || null;
+		this.ext = options.ext || EJS.ext;
+		this.extMatch = new RegExp(this.ext.replace(/\./, '\.'));
+	}
+};
+EJS.endExt = function(path, match){
+	if(!path) return null;
+	match.lastIndex = 0
+	return path+ (match.test(path) ? '' : this.ext )
+}
+
+
+
+
+/* @Static*/
+EJS.Scanner = function(source, left, right) {
+	
+    extend(this,
+        {left_delimiter: 	left +'%',
+         right_delimiter: 	'%'+right,
+         double_left: 		left+'%%',
+         double_right:  	'%%'+right,
+         left_equal: 		left+'%=',
+         left_comment: 	left+'%#'})
+
+	this.SplitRegexp = left=='[' ? /(\[%%)|(%%\])|(\[%=)|(\[%#)|(\[%)|(%\]\n)|(%\])|(\n)/ : new RegExp('('+this.double_left+')|(%%'+this.double_right+')|('+this.left_equal+')|('+this.left_comment+')|('+this.left_delimiter+')|('+this.right_delimiter+'\n)|('+this.right_delimiter+')|(\n)') ;
+	
+	this.source = source;
+	this.stag = null;
+	this.lines = 0;
+};
+
+EJS.Scanner.to_text = function(input){
+	if(input == null || input === undefined)
+        return '';
+    if(input instanceof Date)
+		return input.toDateString();
+	if(input.toString) 
+        return input.toString();
+	return '';
+};
+
+EJS.Scanner.prototype = {
+  scan: function(block) {
+     scanline = this.scanline;
+	 regex = this.SplitRegexp;
+	 if (! this.source == '')
+	 {
+	 	 var source_split = rsplit(this.source, /\n/);
+	 	 for(var i=0; i&lt;source_split.length; i++) {
+		 	 var item = source_split[i];
+			 this.scanline(item, regex, block);
+		 }
+	 }
+  },
+  scanline: function(line, regex, block) {
+	 this.lines++;
+	 var line_split = rsplit(line, regex);
+ 	 for(var i=0; i&lt;line_split.length; i++) {
+	   var token = line_split[i];
+       if (token != null) {
+		   	try{
+	         	block(token, this);
+		 	}catch(e){
+				throw {type: 'EJS.Scanner', line: this.lines};
+			}
+       }
+	 }
+  }
+};
+
+
+EJS.Buffer = function(pre_cmd, post_cmd) {
+	this.line = new Array();
+	this.script = "";
+	this.pre_cmd = pre_cmd;
+	this.post_cmd = post_cmd;
+	for (var i=0; i&lt;this.pre_cmd.length; i++)
+	{
+		this.push(pre_cmd[i]);
+	}
+};
+EJS.Buffer.prototype = {
+	
+  push: function(cmd) {
+	this.line.push(cmd);
+  },
+
+  cr: function() {
+	this.script = this.script + this.line.join('; ');
+	this.line = new Array();
+	this.script = this.script + "\n";
+  },
+
+  close: function() {
+	if (this.line.length &gt; 0)
+	{
+		for (var i=0; i&lt;this.post_cmd.length; i++){
+			this.push(pre_cmd[i]);
+		}
+		this.script = this.script + this.line.join('; ');
+		line = null;
+	}
+  }
+ 	
+};
+
+
+EJS.Compiler = function(source, left) {
+    this.pre_cmd = ['var ___ViewO = [];'];
+	this.post_cmd = new Array();
+	this.source = ' ';	
+	if (source != null)
+	{
+		if (typeof source == 'string')
+		{
+		    source = source.replace(/\r\n/g, "\n");
+            source = source.replace(/\r/g,   "\n");
+			this.source = source;
+		}else if (source.innerHTML){
+			this.source = source.innerHTML;
+		} 
+		if (typeof this.source != 'string'){
+			this.source = "";
+		}
+	}
+	left = left || '&lt;';
+	var right = '&gt;';
+	switch(left) {
+		case '[':
+			right = ']';
+			break;
+		case '&lt;':
+			break;
+		default:
+			throw left+' is not a supported deliminator';
+			break;
+	}
+	this.scanner = new EJS.Scanner(this.source, left, right);
+	this.out = '';
+};
+EJS.Compiler.prototype = {
+  compile: function(options, name) {
+  	options = options || {};
+	this.out = '';
+	var put_cmd = "___ViewO.push(";
+	var insert_cmd = put_cmd;
+	var buff = new EJS.Buffer(this.pre_cmd, this.post_cmd);		
+	var content = '';
+	var clean = function(content)
+	{
+	    content = content.replace(/\\/g, '\\\\');
+        content = content.replace(/\n/g, '\\n');
+        content = content.replace(/"/g,  '\\"');
+        return content;
+	};
+	this.scanner.scan(function(token, scanner) {
+		if (scanner.stag == null)
+		{
+			switch(token) {
+				case '\n':
+					content = content + "\n";
+					buff.push(put_cmd + '"' + clean(content) + '");');
+					buff.cr();
+					content = '';
+					break;
+				case scanner.left_delimiter:
+				case scanner.left_equal:
+				case scanner.left_comment:
+					scanner.stag = token;
+					if (content.length &gt; 0)
+					{
+						buff.push(put_cmd + '"' + clean(content) + '")');
+					}
+					content = '';
+					break;
+				case scanner.double_left:
+					content = content + scanner.left_delimiter;
+					break;
+				default:
+					content = content + token;
+					break;
+			}
+		}
+		else {
+			switch(token) {
+				case scanner.right_delimiter:
+					switch(scanner.stag) {
+						case scanner.left_delimiter:
+							if (content[content.length - 1] == '\n')
+							{
+								content = chop(content);
+								buff.push(content);
+								buff.cr();
+							}
+							else {
+								buff.push(content);
+							}
+							break;
+						case scanner.left_equal:
+							buff.push(insert_cmd + "(EJS.Scanner.to_text(" + content + ")))");
+							break;
+					}
+					scanner.stag = null;
+					content = '';
+					break;
+				case scanner.double_right:
+					content = content + scanner.right_delimiter;
+					break;
+				default:
+					content = content + token;
+					break;
+			}
+		}
+	});
+	if (content.length &gt; 0)
+	{</pre></div>
+        
+      
+        
+        <p>Chould be content.dump in Ruby</p>
+
+        
+          <div class='highlight'><pre>		buff.push(put_cmd + <span class="string">'"'</span> + clean(content) + <span class="string">'")'</span>);
+	}
+	buff.close();
+	<span class="keyword">this</span>.out = buff.script + <span class="string">";"</span>;
+	<span class="keyword">var</span> to_be_evaled = <span class="string">'/*'</span>+name+<span class="string">'*/this.process = function(_CONTEXT,_VIEW) { try { with(_VIEW) { with (_CONTEXT) {'</span>+<span class="keyword">this</span>.out+<span class="string">" return ___ViewO.join('');}}}catch(e){e.lineNumber=null;throw e;}};"</span>;
+	
+	<span class="keyword">try</span>{
+		eval(to_be_evaled);
+	}<span class="keyword">catch</span>(e){
+		<span class="keyword">if</span>(<span class="keyword">typeof</span> JSLINT != <span class="string">'undefined'</span>){
+			JSLINT(<span class="keyword">this</span>.out);
+			<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; JSLINT.errors.length; i++){
+				<span class="keyword">var</span> error = JSLINT.errors[i];
+				<span class="keyword">if</span>(error.reason != <span class="string">"Unnecessary semicolon."</span>){
+					error.line++;
+					<span class="keyword">var</span> e = <span class="keyword">new</span> Error();
+					e.lineNumber = error.line;
+					e.message = error.reason;
+					<span class="keyword">if</span>(options.view)
+						e.fileName = options.view;
+					<span class="keyword">throw</span> e;
+				}
+			}
+		}<span class="keyword">else</span>{
+			<span class="keyword">throw</span> e;
+		}
+	}
+  }
+};</pre></div>
+        
+      
+        
+        <p>type, cache, folder</p>
+
+        
+          <div class='highlight'><pre><span class="comment">/**
+ * Sets default options for all views
+ * @param {Object} options Set view with the following options
+ * &lt;table class="options"&gt;
+				&lt;tbody&gt;&lt;tr&gt;&lt;th&gt;Option&lt;/th&gt;&lt;th&gt;Default&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;
+				&lt;tr&gt;
+					&lt;td&gt;type&lt;/td&gt;
+					&lt;td&gt;'&lt;'&lt;/td&gt;
+					&lt;td&gt;type of magic tags.  Options are '&amp;lt;' or '['
+					&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+					&lt;td&gt;cache&lt;/td&gt;
+					&lt;td&gt;true in production mode, false in other modes&lt;/td&gt;
+					&lt;td&gt;true to cache template.
+					&lt;/td&gt;
+				&lt;/tr&gt;
+	&lt;/tbody&gt;&lt;/table&gt;
+ * 
+ */</span>
+EJS.config = <span class="keyword">function</span>(options){
+	EJS.cache = options.cache != <span class="literal">null</span> ? options.cache : EJS.cache;
+	EJS.type = options.type != <span class="literal">null</span> ? options.type : EJS.type;
+	EJS.ext = options.ext != <span class="literal">null</span> ? options.ext : EJS.ext;
+	
+	<span class="keyword">var</span> templates_directory = EJS.templates_directory || {}; <span class="comment">//nice and private container</span>
+	EJS.templates_directory = templates_directory;
+	EJS.get = <span class="keyword">function</span>(path, cache){
+		<span class="keyword">if</span>(cache == <span class="literal">false</span>) <span class="keyword">return</span> <span class="literal">null</span>;
+		<span class="keyword">if</span>(templates_directory[path]) <span class="keyword">return</span> templates_directory[path];
+  		<span class="keyword">return</span> <span class="literal">null</span>;
+	};
+	
+	EJS.update = <span class="keyword">function</span>(path, template) { 
+		<span class="keyword">if</span>(path == <span class="literal">null</span>) <span class="keyword">return</span>;
+		templates_directory[path] = template ;
+	};
+	
+	EJS.INVALID_PATH =  -<span class="number">1</span>;
+};
+EJS.config( {cache: <span class="literal">true</span>, type: <span class="string">'&lt;'</span>, ext: <span class="string">'.ejs'</span> } );
+
+
+
+<span class="comment">/**
+ * @constructor
+ * By adding functions to EJS.Helpers.prototype, those functions will be available in the 
+ * views.
+ * @init Creates a view helper.  This function is called internally.  You should never call it.
+ * @param {Object} data The data passed to the view.  Helpers have access to it through this._data
+ */</span>
+EJS.Helpers = <span class="keyword">function</span>(data, extras){
+	<span class="keyword">this</span>._data = data;
+    <span class="keyword">this</span>._extras = extras;
+    extend(<span class="keyword">this</span>, extras );
+};
+<span class="comment">/* @prototype*/</span>
+EJS.Helpers.prototype = {
+    <span class="comment">/**
+     * Renders a new view.  If data is passed in, uses that to render the view.
+     * @param {Object} options standard options passed to a new view.
+     * @param {optional:Object} data
+     * @return {String}
+     */</span>
+	view: <span class="keyword">function</span>(options, data, helpers){
+        <span class="keyword">if</span>(!helpers) helpers = <span class="keyword">this</span>._extras
+		<span class="keyword">if</span>(!data) data = <span class="keyword">this</span>._data;
+		<span class="keyword">return</span> <span class="keyword">new</span> EJS(options).render(data, helpers);
+	},
+    <span class="comment">/**
+     * For a given value, tries to create a human representation.
+     * @param {Object} input the value being converted.
+     * @param {Object} null_text what text should be present if input == null or undefined, defaults to ''
+     * @return {String} 
+     */</span>
+	to_text: <span class="keyword">function</span>(input, null_text) {
+	    <span class="keyword">if</span>(input == <span class="literal">null</span> || input === <span class="literal">undefined</span>) <span class="keyword">return</span> null_text || <span class="string">''</span>;
+	    <span class="keyword">if</span>(input <span class="keyword">instanceof</span> Date) <span class="keyword">return</span> input.toDateString();
+		<span class="keyword">if</span>(input.toString) <span class="keyword">return</span> input.toString().replace(<span class="regexp">/\n/g</span>, <span class="string">'&lt;br /&gt;'</span>).replace(<span class="regexp">/''/g</span>, <span class="string">"'"</span>);
+		<span class="keyword">return</span> <span class="string">''</span>;
+	}
+};
+    EJS.newRequest = <span class="keyword">function</span>(){
+	   <span class="keyword">var</span> factories = [<span class="keyword">function</span>() { <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(<span class="string">"Msxml2.XMLHTTP"</span>); },<span class="keyword">function</span>() { <span class="keyword">return</span> <span class="keyword">new</span> XMLHttpRequest(); },<span class="keyword">function</span>() { <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>); }];
+	   <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; factories.length; i++) {
+	        <span class="keyword">try</span> {
+	            <span class="keyword">var</span> request = factories[i]();
+	            <span class="keyword">if</span> (request != <span class="literal">null</span>)  <span class="keyword">return</span> request;
+	        }
+	        <span class="keyword">catch</span>(e) { <span class="keyword">continue</span>;}
+	   }
+	}
+	
+	EJS.request = <span class="keyword">function</span>(path){
+	   <span class="keyword">var</span> request = <span class="keyword">new</span> EJS.newRequest()
+	   request.open(<span class="string">"GET"</span>, path, <span class="literal">false</span>);
+	   
+	   <span class="keyword">try</span>{request.send(<span class="literal">null</span>);}
+	   <span class="keyword">catch</span>(e){<span class="keyword">return</span> <span class="literal">null</span>;}
+	   
+	   <span class="keyword">if</span> ( request.status == <span class="number">404</span> || request.status == <span class="number">2</span> ||(request.status == <span class="number">0</span> &amp;&amp; request.responseText == <span class="string">''</span>) ) <span class="keyword">return</span> <span class="literal">null</span>;
+	   
+	   <span class="keyword">return</span> request.responseText
+	}
+	EJS.ajax_request = <span class="keyword">function</span>(params){
+		params.method = ( params.method ? params.method : <span class="string">'GET'</span>)
+		
+		<span class="keyword">var</span> request = <span class="keyword">new</span> EJS.newRequest();
+		request.onreadystatechange = <span class="keyword">function</span>(){
+			<span class="keyword">if</span>(request.readyState == <span class="number">4</span>){
+				<span class="keyword">if</span>(request.status == <span class="number">200</span>){
+					params.onComplete(request)
+				}<span class="keyword">else</span>
+				{
+					params.onComplete(request)
+				}
+			}
+		}
+		request.open(params.method, params.url)
+		request.send(<span class="literal">null</span>)
+	}
+
+
+})();</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>
