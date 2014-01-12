@@ -11,6 +11,8 @@ You should be able to run
 
     node_modules/.bin/phantomizer --version
 
+To have a global cli access
+
     npm install -g maboiteaspam/phantomizer
 
 You should be able to run
@@ -20,9 +22,11 @@ You should be able to run
 
 USAGE
 
-    phantomizer command line gives you access to some tools to help
+    phantomizer command line provides integrated tools to help
     you during your development activity.
-    To start phantomizer you must first browse the directory where you have initialized your project.
+
+To start phantomizer you must first browse the directory where you have initialized your project.
+    cd <my project path>
 
 General usage
 
