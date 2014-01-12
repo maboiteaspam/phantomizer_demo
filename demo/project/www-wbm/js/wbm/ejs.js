@@ -6,8 +6,8 @@ require([
 ],function (phantomizer) {
 
     /* required  call */
-    phantomizer.beforeRender(function(next){
-        var head = new EJS({url: 'layout/head.ejs'}).render({});
+    phantomizer.afterStaticRender(function(next){
+        var head = new EJS({url: 'layout/head.ejs'}).render({name:"demo"});
         $(head).insertBefore(".content")
         var foot = new EJS({url: 'layout/foot.ejs'}).render({});
         $(foot).insertAfter(".content")
