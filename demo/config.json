@@ -26,6 +26,10 @@
         {
             "template": "/knockout.html",
             "tests": []
+        },
+        {
+            "template": "/knockout.html",
+            "urls": ["/knockout-1.html","/knockout-2.html"]
         }
     ],
     "scripts": {
