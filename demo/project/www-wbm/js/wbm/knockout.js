@@ -1,8 +1,9 @@
 "use strict";
 
 require([
-    "vendors/go-phantomizer/phantomizer"
-],function (phantomizer) {
+    "vendors/go-phantomizer/phantomizer",
+    "vendors//go-knockout/knockout-3.0.0.min"
+],function (phantomizer, ko) {
 
     /* required  call */
     phantomizer.afterStaticRender(function(next){
