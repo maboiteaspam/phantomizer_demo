@@ -43,9 +43,6 @@
         "prepend": {
             "/js/vendors/go-jquery/jquery-2.0.3.min.js": [
                 "/js/vendors/go-jquery/jquery-2.0.3.min.js"
-            ],
-            "/js/vendors/go-knockout/knockout-3.0.0.min.js": [
-                "/js/vendors/go-knockout/knockout-3.0.0.min.js"
             ]
         }
     },
