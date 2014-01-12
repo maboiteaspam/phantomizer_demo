@@ -2,7 +2,20 @@ README
 
 This document will introduce you phantomizer command line tool.
 
-1. COMMAND LINE
+
+INSTALL
+    npm install
+
+You should be able to run
+    node_modules/.bin/phantomizer --version
+
+    npm install -g maboiteaspam/phantomizer
+
+You should be able to run
+    phantomizer --version
+
+
+USAGE
     phantomizer command line gives you access to some tools to help
     you during your development activity.
 
@@ -33,25 +46,3 @@ This document will introduce you phantomizer command line tool.
 
     --export <project> --target <target>
     Builds and exports your project for delivery.
-
-2. Structure
-    Each project is initalized with default following directory structure.
-
-    /config.json
-        Configuration file of your project.
-        You can edit and modify the settings of your project and it s built requirements.
-    /project
-        WebRoot directory of your project.
-    /documentation
-        Holds the generated Javascript and Css documentation files.
-    /export
-        The built version of your project will goes here.
-    /run
-        All the temporary files such meta and build results are stored here.
-
-3. Configuration
-    phantomizer use the file config.json on top of your project directory.
-    This document contains all the builds and running settings for your project.
-    The configuration file is a plain json object.
-    Is relies heavily on GruntJs library to implement and execute your build.
-
