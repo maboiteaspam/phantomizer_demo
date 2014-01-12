@@ -1,13 +1,17 @@
 README
+====
 
 This document will introduce you phantomizer command line tool.
 
 
 INSTALL
+====
+Start by checking ot the project, navigate to the directory.
+Then install using regular npm command line.
 
     npm install
 
-You should be able to run
+You should then be able to run
 
     node_modules/.bin/phantomizer --version
 
@@ -15,20 +19,35 @@ To have a global cli access
 
     npm install -g maboiteaspam/phantomizer
 
-You should be able to run
+Thus, You should be able to run
 
     phantomizer --version
 
 
 USAGE
+====
 
-    phantomizer command line provides integrated tools to help
-    you during your development activity.
+phantomizer command line provides integrated tools to help you during your development activity.
 
-To start phantomizer you must first browse the directory where you have initialized your project.
+To start phantomizer you must first browse the directory where you have checkout your project.
+
     cd <my project path>
 
-General usage
+You can initialize a project
+
+    phantomizer --init demo
+
+You can browse it
+
+    phantomizer --server demo
+
+You can export it
+
+    phantomizer --export demo
+
+
+COMMAND LINE OPTIONS
+====
 
     phantomizer --<switch> <project>
     phantomizer --verbose --<switch> <project> --target <target>
