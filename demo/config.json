@@ -22,6 +22,10 @@
         {
             "template": "/ejs.html",
             "tests": []
+        },
+        {
+            "template": "/knockout.html",
+            "tests": []
         }
     ],
     "scripts": {
