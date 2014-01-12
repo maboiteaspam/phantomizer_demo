@@ -3,17 +3,18 @@
 require([
     "vendors/go-phantomizer/phantomizer",
     "vendors//go-knockout/knockout-3.0.0.min"
-],function (phantomizer, ko) {
-
+],function (phantomizer, ko_) {
+    var ko = window.ko || ko_;
     /* required  call */
     phantomizer.afterStaticRender(function(next){
-        ko.applyBindings({name:'demo'},$(".content>div:eq(0)").get(0))
-        ko.cleanNode($(".content>div:eq(0)").get(0));
+        var n = $(".head").get(0);
+        ko.applyBindings({name:'demo'},n)
+        ko.cleanNode(n);
         next();
-    },"static");
+    });
     // required main call
     phantomizer.render(function(next){
-        $("<span>It works !</span>").appendTo(".content")
+        $("<span class='test'>It works !</span>").appendTo(".content")
         next();
     });
 });

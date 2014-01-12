@@ -5,7 +5,7 @@ require([
 ],function (phantomizer) {
 
     phantomizer.render(function(next){
-        $("<span>It works !</span>").appendTo("body")
+        $("<span class='test'>It works !</span>").appendTo("body")
         next();
     });
 });
