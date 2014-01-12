@@ -18,6 +18,10 @@
         {
             "template": "/inlined-img.html",
             "tests": []
+        },
+        {
+            "template": "/ejs.html",
+            "tests": []
         }
     ],
     "scripts": {
