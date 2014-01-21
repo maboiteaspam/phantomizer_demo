@@ -73,3 +73,22 @@ COMMAND LINE OPTIONS
 
     --export <project> --target <target>
     Builds and exports your project for delivery.
+
+
+
+DEMO PROJECT
+====
+
+Introduce a knockout integration.
+Introduce more specifically phantomizer usage on client side.
+
+
+BACKBONE PROJECT
+====
+
+You ll find there the TodosMvc demo project provided by backbone project to introduce their library.
+
+http://backbonejs.org/examples/todos/index.html
+
+It is a bit rewrote to fit the project folders.
+To solve the problem of global variable assignation, the scripts.prepend property of the config.json file helped a lot.

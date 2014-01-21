@@ -16,18 +16,20 @@
         "strip": [],
         "requirejs": {
             "src": [
-                "require-2.1.8.min.js"
+                "require-2.1.10.min.js"
             ],
             "baseUrl": "/js/",
-            "paths": {}
+            "paths": {
+            }
         },
         "append": {},
         "prepend": {
-            "/js/vendors/go-jquery/jquery-2.0.3.min.js": [
-                "/js/vendors/go-jquery/jquery-2.0.3.min.js"
-            ],
-            "/js/vendors/go-knockout/knockout-3.0.0.min.js": [
-                "/js/vendors/go-knockout/knockout-3.0.0.min.js"
+            "/js/vendors/go-jquery/jquery.js": [
+                "json2",
+                "/js/vendors/go-jquery/jquery-2.0.3.min.js",
+                "/js/vendors/go-underscore/underscore.1.5.2.min.js",
+                "/js/backbone.js",
+                "/js/backbone.localStorage.js"
             ]
         }
     },
