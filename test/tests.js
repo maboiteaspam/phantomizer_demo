@@ -29,7 +29,7 @@ describe('phantomizer command line', function () {
             done();
         });
     });
-    it('should provide the files in export_dir after export export task', function(done) {
+    it('should provide the files in export_dir after export task', function(done) {
         var stdout = "";
         var stderr = "";
         var args = [base_cmd,"--export","demo"];
