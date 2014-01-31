@@ -1,0 +1,74 @@
+{
+    "src_dir": "demo/project/www-core/",
+    "project_dir": "demo/project/",
+    "wbm_dir": "demo/project/www-wbm/",
+    "out_dir": "demo/run/build/",
+    "meta_dir": "demo/run/meta/",
+    "export_dir": "demo/export/",
+    "documentation_dir": "demo/documentation/",
+    "routing": [
+        {
+            "template": "/index.html",
+            "tests": [
+                "index/index"
+            ]
+        },
+        {
+            "template": "/index-wbm.html",
+            "tests": [
+                "index/index"
+            ]
+        },
+        {
+            "template": "/inlined-img.html",
+            "tests": []
+        },
+        {
+            "template": "/ejs.html",
+            "tests": []
+        },
+        {
+            "template": "/knockout.html",
+            "tests": [
+                "knockout/knockout"
+            ]
+        },
+        {
+            "template": "/knockout.html",
+            "urls": ["/knockout-1.html","/knockout-2.html"],
+            "tests": [
+                "knockout/knockout"
+            ]
+        }
+    ],
+    "scripts": {
+        "strip": [],
+        "requirejs": {
+            "src": [
+                "require-2.1.8.min.js"
+            ],
+            "baseUrl": "/js/",
+            "paths":{
+
+            }
+        },
+        "append": {},
+        "prepend": {
+            "/js/vendors/go-jquery/jquery-2.0.3.min.js": [
+                "/js/vendors/go-jquery/jquery-2.0.3.min.js"
+            ]
+        }
+    },
+    "css": {
+        "strip": [],
+        "append": {},
+        "prepend": {}
+    },
+    "phantomizer-confess": {
+        "test": {
+            "options": {
+                "in_request": "http://www.google.com/"
+            }
+        }
+    }
+}

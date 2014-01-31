@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>view.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>view.js</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="ejs.html">
+                    ejs.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="ejs_production.html">
+                    ejs_production.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="view.html">
+                    view.js
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        
+        
+          <div class='highlight'><pre>EJS.Helpers.prototype.date_tag = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name, value , html_options)</span> {</span>
+    <span class="hljs-keyword">if</span>(! (value <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Date</span>))
+		value = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()
+	
+	<span class="hljs-keyword">var</span> month_names = [<span class="hljs-string">"January"</span>, <span class="hljs-string">"February"</span>, <span class="hljs-string">"March"</span>, <span class="hljs-string">"April"</span>, <span class="hljs-string">"May"</span>, <span class="hljs-string">"June"</span>, <span class="hljs-string">"July"</span>, <span class="hljs-string">"August"</span>, <span class="hljs-string">"September"</span>, <span class="hljs-string">"October"</span>, <span class="hljs-string">"November"</span>, <span class="hljs-string">"December"</span>];
+	<span class="hljs-keyword">var</span> years = [], months = [], days =[];
+	<span class="hljs-keyword">var</span> year = value.getFullYear();
+	<span class="hljs-keyword">var</span> month = value.getMonth();
+	<span class="hljs-keyword">var</span> day = value.getDate();
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> y = year - <span class="hljs-number">15</span>; y &lt; year+<span class="hljs-number">15</span> ; y++)
+	{
+		years.push({value: y, text: y})
+	}
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> m = <span class="hljs-number">0</span>; m &lt; <span class="hljs-number">12</span>; m++)
+	{
+		months.push({value: (m), text: month_names[m]})
+	}
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> d = <span class="hljs-number">0</span>; d &lt; <span class="hljs-number">31</span>; d++)
+	{
+		days.push({value: (d+<span class="hljs-number">1</span>), text: (d+<span class="hljs-number">1</span>)})
+	}
+	<span class="hljs-keyword">var</span> year_select = <span class="hljs-keyword">this</span>.select_tag(name+<span class="hljs-string">'[year]'</span>, year, years, {id: name+<span class="hljs-string">'[year]'</span>} )
+	<span class="hljs-keyword">var</span> month_select = <span class="hljs-keyword">this</span>.select_tag(name+<span class="hljs-string">'[month]'</span>, month, months, {id: name+<span class="hljs-string">'[month]'</span>})
+	<span class="hljs-keyword">var</span> day_select = <span class="hljs-keyword">this</span>.select_tag(name+<span class="hljs-string">'[day]'</span>, day, days, {id: name+<span class="hljs-string">'[day]'</span>})
+	
+    <span class="hljs-keyword">return</span> year_select+month_select+day_select;
+}
+
+EJS.Helpers.prototype.form_tag = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(action, html_options)</span> {</span>
+                 
+    
+    html_options     = html_options                     || {};
+	html_options.action = action
+    <span class="hljs-keyword">if</span>(html_options.multipart == <span class="hljs-literal">true</span>) {
+        html_options.method = <span class="hljs-string">'post'</span>;
+        html_options.enctype = <span class="hljs-string">'multipart/form-data'</span>;
+    }
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.start_tag_for(<span class="hljs-string">'form'</span>, html_options)
+}
+
+EJS.Helpers.prototype.form_tag_end = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.tag_end(<span class="hljs-string">'form'</span>); }
+
+EJS.Helpers.prototype.hidden_field_tag   = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name, value, html_options)</span> {</span> 
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.input_field_tag(name, value, <span class="hljs-string">'hidden'</span>, html_options); 
+}
+
+EJS.Helpers.prototype.input_field_tag = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name, value , inputType, html_options)</span> {</span>
+    
+    html_options = html_options || {};
+    html_options.id  = html_options.id  || name;
+    html_options.value = value || <span class="hljs-string">''</span>;
+    html_options.type = inputType || <span class="hljs-string">'text'</span>;
+    html_options.name = name;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.single_tag_for(<span class="hljs-string">'input'</span>, html_options)
+}
+
+EJS.Helpers.prototype.is_current_page = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(url)</span> {</span>
+	<span class="hljs-keyword">return</span> (window.location.href == url || window.location.pathname == url ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>);
+}
+
+EJS.Helpers.prototype.link_to = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name, url, html_options)</span> {</span>
+    <span class="hljs-keyword">if</span>(!name) <span class="hljs-keyword">var</span> name = <span class="hljs-string">'null'</span>;
+    <span class="hljs-keyword">if</span>(!html_options) <span class="hljs-keyword">var</span> html_options = {}
+	
+	<span class="hljs-keyword">if</span>(html_options.confirm){
+		html_options.onclick = 
+		<span class="hljs-string">" var ret_confirm = confirm(\""</span>+html_options.confirm+<span class="hljs-string">"\"); if(!ret_confirm){ return false;} "</span>
+		html_options.confirm = <span class="hljs-literal">null</span>;
+	}
+    html_options.href=url
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.start_tag_for(<span class="hljs-string">'a'</span>, html_options)+name+ <span class="hljs-keyword">this</span>.tag_end(<span class="hljs-string">'a'</span>);
+}
+
+EJS.Helpers.prototype.submit_link_to = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name, url, html_options)</span>{</span>
+	<span class="hljs-keyword">if</span>(!name) <span class="hljs-keyword">var</span> name = <span class="hljs-string">'null'</span>;
+    <span class="hljs-keyword">if</span>(!html_options) <span class="hljs-keyword">var</span> html_options = {}
+    html_options.onclick = html_options.onclick  || <span class="hljs-string">''</span> ;
+	
+	<span class="hljs-keyword">if</span>(html_options.confirm){
+		html_options.onclick = 
+		<span class="hljs-string">" var ret_confirm = confirm(\""</span>+html_options.confirm+<span class="hljs-string">"\"); if(!ret_confirm){ return false;} "</span>
+		html_options.confirm = <span class="hljs-literal">null</span>;
+	}
+	
+    html_options.value = name;
+	html_options.type = <span class="hljs-string">'submit'</span>
+    html_options.onclick=html_options.onclick+
+		(url ? <span class="hljs-keyword">this</span>.url_for(url) : <span class="hljs-string">''</span>)+<span class="hljs-string">'return false;'</span>;</pre></div>
+        
+      
+        
+        <p>html_options.href=’#’+(options ? Routes.url_for(options) : ‘’)</p>
+
+        
+          <div class='highlight'><pre>	<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.start_tag_for(<span class="hljs-string">'input'</span>, html_options)
+}
+
+EJS.Helpers.prototype.link_to_if = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(condition, name, url, html_options, post, block)</span> {</span>
+	<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.link_to_unless((condition == <span class="hljs-literal">false</span>), name, url, html_options, post, block);
+}
+
+EJS.Helpers.prototype.link_to_unless = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(condition, name, url, html_options, block)</span> {</span>
+	html_options = html_options || {};
+	<span class="hljs-keyword">if</span>(condition) {
+		<span class="hljs-keyword">if</span>(block &amp;&amp; <span class="hljs-keyword">typeof</span> block == <span class="hljs-string">'function'</span>) {
+			<span class="hljs-keyword">return</span> block(name, url, html_options, block);
+		} <span class="hljs-keyword">else</span> {
+			<span class="hljs-keyword">return</span> name;
+		}
+	} <span class="hljs-keyword">else</span>
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.link_to(name, url, html_options);
+}
+
+EJS.Helpers.prototype.link_to_unless_current = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name, url, html_options, block)</span> {</span>
+	html_options = html_options || {};
+	<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.link_to_unless(<span class="hljs-keyword">this</span>.is_current_page(url), name, url, html_options, block)
+}
+
+
+EJS.Helpers.prototype.password_field_tag = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name, value, html_options)</span> {</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.input_field_tag(name, value, <span class="hljs-string">'password'</span>, html_options); }
+
+EJS.Helpers.prototype.select_tag = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name, value, choices, html_options)</span> {</span>     
+    html_options = html_options || {};
+    html_options.id  = html_options.id  || name;
+    html_options.value = value;
+	html_options.name = name;
+    
+    <span class="hljs-keyword">var</span> txt = <span class="hljs-string">''</span>
+    txt += <span class="hljs-keyword">this</span>.start_tag_for(<span class="hljs-string">'select'</span>, html_options)
+    
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; choices.length; i++)
+    {
+        <span class="hljs-keyword">var</span> choice = choices[i];
+        <span class="hljs-keyword">var</span> optionOptions = {value: choice.value}
+        <span class="hljs-keyword">if</span>(choice.value == value)
+            optionOptions.selected =<span class="hljs-string">'selected'</span>
+        txt += <span class="hljs-keyword">this</span>.start_tag_for(<span class="hljs-string">'option'</span>, optionOptions )+choice.text+<span class="hljs-keyword">this</span>.tag_end(<span class="hljs-string">'option'</span>)
+    }
+    txt += <span class="hljs-keyword">this</span>.tag_end(<span class="hljs-string">'select'</span>);
+    <span class="hljs-keyword">return</span> txt;
+}
+
+EJS.Helpers.prototype.single_tag_for = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(tag, html_options)</span> {</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.tag(tag, html_options, <span class="hljs-string">'/&gt;'</span>);}
+
+EJS.Helpers.prototype.start_tag_for = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(tag, html_options)</span>  {</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.tag(tag, html_options); }
+
+EJS.Helpers.prototype.submit_tag = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name, html_options)</span> {</span>  
+    html_options = html_options || {};</pre></div>
+        
+      
+        
+        <p>html_options.name  = html_options.id  || ‘commit’;</p>
+
+        
+          <div class='highlight'><pre>    html_options.type = html_options.type  || <span class="hljs-string">'submit'</span>;
+    html_options.value = name || <span class="hljs-string">'Submit'</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.single_tag_for(<span class="hljs-string">'input'</span>, html_options);
+}
+
+EJS.Helpers.prototype.tag = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(tag, html_options, end)</span> {</span>
+    <span class="hljs-keyword">if</span>(!end) <span class="hljs-keyword">var</span> end = <span class="hljs-string">'&gt;'</span>
+    <span class="hljs-keyword">var</span> txt = <span class="hljs-string">' '</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> attr <span class="hljs-keyword">in</span> html_options) { 
+	   <span class="hljs-keyword">if</span>(html_options[attr] != <span class="hljs-literal">null</span>)
+        <span class="hljs-keyword">var</span> value = html_options[attr].toString();
+       <span class="hljs-keyword">else</span>
+        <span class="hljs-keyword">var</span> value=<span class="hljs-string">''</span>
+       <span class="hljs-keyword">if</span>(attr == <span class="hljs-string">"Class"</span>) <span class="hljs-comment">// special case because "class" is a reserved word in IE</span>
+        attr = <span class="hljs-string">"class"</span>;
+       <span class="hljs-keyword">if</span>( value.indexOf(<span class="hljs-string">"'"</span>) != -<span class="hljs-number">1</span> )
+            txt += attr+<span class="hljs-string">'=\"'</span>+value+<span class="hljs-string">'\" '</span> 
+       <span class="hljs-keyword">else</span>
+            txt += attr+<span class="hljs-string">"='"</span>+value+<span class="hljs-string">"' "</span> 
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'&lt;'</span>+tag+txt+end;
+}
+
+EJS.Helpers.prototype.tag_end = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(tag)</span>             {</span> <span class="hljs-keyword">return</span> <span class="hljs-string">'&lt;/'</span>+tag+<span class="hljs-string">'&gt;'</span>; }
+
+EJS.Helpers.prototype.text_area_tag = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name, value, html_options)</span> {</span> 
+    html_options = html_options || {};
+    html_options.id  = html_options.id  || name;
+    html_options.name  = html_options.name  || name;
+	value = value || <span class="hljs-string">''</span>
+    <span class="hljs-keyword">if</span>(html_options.size) {
+        html_options.cols = html_options.size.split(<span class="hljs-string">'x'</span>)[<span class="hljs-number">0</span>]
+        html_options.rows = html_options.size.split(<span class="hljs-string">'x'</span>)[<span class="hljs-number">1</span>];
+        <span class="hljs-keyword">delete</span> html_options.size
+    }
+    
+    html_options.cols = html_options.cols  || <span class="hljs-number">50</span>;
+    html_options.rows = html_options.rows  || <span class="hljs-number">4</span>;
+    
+    <span class="hljs-keyword">return</span>  <span class="hljs-keyword">this</span>.start_tag_for(<span class="hljs-string">'textarea'</span>, html_options)+value+<span class="hljs-keyword">this</span>.tag_end(<span class="hljs-string">'textarea'</span>)
+}
+EJS.Helpers.prototype.text_tag = EJS.Helpers.prototype.text_area_tag
+
+EJS.Helpers.prototype.text_field_tag     = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name, value, html_options)</span> {</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.input_field_tag(name, value, <span class="hljs-string">'text'</span>, html_options); }
+
+EJS.Helpers.prototype.url_for = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(url)</span> {</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'window.location="'</span>+url+<span class="hljs-string">'";'</span>
+}
+EJS.Helpers.prototype.img_tag = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(image_location, alt, options)</span>{</span>
+	options = options || {};
+	options.src = image_location
+	options.alt = alt
+	<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.single_tag_for(<span class="hljs-string">'img'</span>, options)
+}</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>
