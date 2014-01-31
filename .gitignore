@@ -5,6 +5,7 @@ tmp/
 documentation/
 node_modules
 npm.install.sh~
+npm.install.sh
 
 demo/documentation
 demo/export
