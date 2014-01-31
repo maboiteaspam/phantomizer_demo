@@ -4,3 +4,5 @@ demo/run
 .idea
 .grunt
 documentation/
+node_modules
+npm.install.sh~
