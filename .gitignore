@@ -2,3 +2,5 @@ run/
 tmp/
 demo/run
 .idea
+.grunt
+documentation/

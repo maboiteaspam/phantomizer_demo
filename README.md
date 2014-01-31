@@ -91,4 +91,15 @@ You ll find there the TodosMvc demo project provided by backbone project to intr
 http://backbonejs.org/examples/todos/index.html
 
 It is a bit rewrote to fit the project folders.
-To solve the problem of global variable assignation, the scripts.prepend property of the config.json file helped a lot.
+To solve the problem of global variable assignation,
+the scripts.prepend property of the config.json file helped a lot.
+
+
+
+Documentation Index
+====
+
+http://maboiteaspam.github.io/phantomizer_demo/
+
+http://maboiteaspam.github.io/phantomizer_demo/documentation/build.html
+
