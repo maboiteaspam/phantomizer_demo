@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Phantomizer demo by maboiteaspam</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Phantomizer demo</h1>
+        <p>Phantomizer in action</p>
+
+        <p class="view"><a href="https://github.com/maboiteaspam/phantomizer_demo">View the Project on GitHub <small>maboiteaspam/phantomizer_demo</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/maboiteaspam/phantomizer_demo/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/maboiteaspam/phantomizer_demo/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/maboiteaspam/phantomizer_demo">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="readme" class="anchor" href="#readme"><span class="octicon octicon-link"></span></a>README</h1>
+
+<p>This document will introduce you phantomizer command line tool.</p>
+
+<h1>
+<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>INSTALL</h1>
+
+<p>Start by checking ot the project, navigate to the directory.
+Then install using regular npm command line.</p>
+
+<pre><code>npm install
+</code></pre>
+
+<p>You should then be able to run</p>
+
+<pre><code>node_modules/.bin/phantomizer --version
+</code></pre>
+
+<p>To have a global cli access</p>
+
+<pre><code>npm install -g maboiteaspam/phantomizer
+</code></pre>
+
+<p>Thus, You should be able to run</p>
+
+<pre><code>phantomizer --version
+</code></pre>
+
+<h1>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>USAGE</h1>
+
+<p>phantomizer command line provides integrated tools to help you during your development activity.</p>
+
+<p>To start phantomizer you must first browse the directory where you have checkout your project.</p>
+
+<pre><code>cd &lt;my project path&gt;
+</code></pre>
+
+<p>You can initialize a project</p>
+
+<pre><code>phantomizer --init demo
+</code></pre>
+
+<p>You can browse it</p>
+
+<pre><code>phantomizer --server demo
+</code></pre>
+
+<p>You can export it</p>
+
+<pre><code>phantomizer --export demo
+</code></pre>
+
+<h1>
+<a name="command-line-options" class="anchor" href="#command-line-options"><span class="octicon octicon-link"></span></a>COMMAND LINE OPTIONS</h1>
+
+<pre><code>phantomizer --&lt;switch&gt; &lt;project&gt;
+phantomizer --verbose --&lt;switch&gt; &lt;project&gt; --target &lt;target&gt;
+phantomizer --version
+
+--version
+Provide current version of phantomizer
+
+--verbose
+Gives you more information during execution
+
+--init &lt;project&gt;
+Initialize directory and file required fo a project.
+
+--server &lt;project&gt;
+Starts a new web sever for the given project.
+
+--document &lt;project&gt;
+Document Javascript and Css files of your project.
+
+--test &lt;project&gt; --target &lt;target&gt;
+Tests your project using phantomjs an headless browser.
+
+--export &lt;project&gt; --target &lt;target&gt;
+Builds and exports your project for delivery.
+</code></pre>
+
+<h1>
+<a name="demo-project" class="anchor" href="#demo-project"><span class="octicon octicon-link"></span></a>DEMO PROJECT</h1>
+
+<p>Introduce a knockout integration.
+Introduce more specifically phantomizer usage on client side.</p>
+
+<h1>
+<a name="backbone-project" class="anchor" href="#backbone-project"><span class="octicon octicon-link"></span></a>BACKBONE PROJECT</h1>
+
+<p>You ll find there the TodosMvc demo project provided by backbone project to introduce their library.</p>
+
+<p><a href="http://backbonejs.org/examples/todos/index.html">http://backbonejs.org/examples/todos/index.html</a></p>
+
+<p>It is a bit rewrote to fit the project folders.
+To solve the problem of global variable assignation,
+the scripts.prepend property of the config.json file helped a lot.</p>
+
+<h1>
+<a name="documentation-index" class="anchor" href="#documentation-index"><span class="octicon octicon-link"></span></a>Documentation Index</h1>
+
+<p><a href="http://maboiteaspam.github.io/phantomizer_demo/">http://maboiteaspam.github.io/phantomizer_demo/</a></p>
+
+<p><a href="http://maboiteaspam.github.io/phantomizer_demo/documentation/build.html">http://maboiteaspam.github.io/phantomizer_demo/documentation/build.html</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/maboiteaspam">maboiteaspam</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
