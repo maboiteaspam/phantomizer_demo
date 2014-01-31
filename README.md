@@ -91,6 +91,8 @@ Demo project Documentation Index
 
 http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/index.html
 
+http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/tests/index/index.html
+
 http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/wbm/index-wbm.html
 
 http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/wbm/inlined.html
@@ -98,6 +100,8 @@ http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/wbm/inlined
 http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/wbm/ejs.html
 
 http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/wbm/knockout.html
+
+http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/tests/knockout/knockout.html
 
 
 BACKBONE PROJECT
