@@ -75,6 +75,11 @@ COMMAND LINE OPTIONS
     Builds and exports your project for delivery.
 
 
+Documentation Index
+====
+
+http://maboiteaspam.github.io/phantomizer_demo/
+
 
 DEMO PROJECT
 ====
@@ -82,11 +87,25 @@ DEMO PROJECT
 Introduce a knockout integration.
 Introduce more specifically phantomizer usage on client side.
 
+Demo project Documentation Index
+
+http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/index.html
+
+http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/wbm/index-wbm.html
+
+http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/wbm/inlined.html
+
+http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/wbm/ejs.html
+
+http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/wbm/knockout.html
+
 
 BACKBONE PROJECT
 ====
 
 You ll find there the TodosMvc demo project provided by backbone project to introduce their library.
+
+Original backbone demo
 
 http://backbonejs.org/examples/todos/index.html
 
@@ -94,12 +113,7 @@ It is a bit rewrote to fit the project folders.
 To solve the problem of global variable assignation,
 the scripts.prepend property of the config.json file helped a lot.
 
+Backbone project Documentation Index
 
-
-Documentation Index
-====
-
-http://maboiteaspam.github.io/phantomizer_demo/
-
-http://maboiteaspam.github.io/phantomizer_demo/documentation/build.html
+http://maboiteaspam.github.io/phantomizer_demo/backbone/documentation/js/index.html
 
