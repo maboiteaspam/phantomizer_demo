@@ -2,7 +2,6 @@
 
 var grunt = require('grunt');
 var should = require('should');
-var cp = require('child_process');
 var spawn = require('child_process').spawn;
 
 var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
