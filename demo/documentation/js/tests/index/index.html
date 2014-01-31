@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>index.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>index.js</h1>
+        
+
+        
+      </div>
+
+      
+        
+        
+        
+          <div class='highlight'><pre><span class="hljs-pi">"use strict"</span>;</pre></div>
+        
+      
+        
+        <h2 id="qunit-test-demonstration">Qunit test demonstration</h2>
+
+        
+      
+        
+        
+        
+      
+        
+        <p>take advantage of Qunit to provide test integration</p>
+
+        
+      
+        
+        <p>define a new anonymous module</p>
+
+        
+          <div class='highlight'><pre>define([
+],<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span></pre></div>
+        
+      
+        
+        <h2 id="the-test-structure">The Test structure</h2>
+
+        
+      
+        
+        
+        
+      
+        
+        <p>a set of two methods
+init : to load fixtures, patch the rendering
+run : actually declare the specs and their assertions</p>
+
+        
+          <div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Test</span><span class="hljs-params">()</span>{</span>}</pre></div>
+        
+      
+        
+        <p>Fixture loading</p>
+
+        
+          <div class='highlight'><pre>    <span class="hljs-comment">/**
+     * Load your fixture there
+     * @param next
+     */</span>
+    Test.prototype.init = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span>
+        next();
+    };</pre></div>
+        
+      
+        
+        <h2 id="specs-declaration">Specs declaration</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+    <span class="hljs-comment">/**
+     * Declare the specs and theirs assertions
+     */</span>
+    Test.prototype.run = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span></pre></div>
+        
+      
+        
+        <p>declare a new asynchronous test (description, assertion count, handler)</p>
+
+        
+          <div class='highlight'><pre>        asyncTest(<span class="hljs-string">"It displays 'It works !'"</span>, <span class="hljs-number">1</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(assert)</span>{</span></pre></div>
+        
+      
+        
+        <p>ensure the rendered text is correct</p>
+
+        
+          <div class='highlight'><pre>            assert.equal( $(<span class="hljs-string">".test"</span>).html(), <span class="hljs-string">"It works !"</span>, <span class="hljs-string">"View display 'It works !'"</span> );</pre></div>
+        
+      
+        
+        <p>do this call to tell qunit it can continue</p>
+
+        
+          <div class='highlight'><pre>            start();
+        });
+    };</pre></div>
+        
+      
+        
+        <p><strong>pass the module</strong></p>
+
+        
+          <div class='highlight'><pre>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Test();
+});</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

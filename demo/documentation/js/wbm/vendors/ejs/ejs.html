@@ -51,82 +51,82 @@
         
         
         
-          <div class='highlight'><pre>(<span class="keyword">function</span>(){
+          <div class='highlight'><pre>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
     
 
-<span class="keyword">var</span> rsplit = <span class="keyword">function</span>(string, regex) {
-	<span class="keyword">var</span> result = regex.exec(string),retArr = <span class="keyword">new</span> Array(), first_idx, last_idx, first_bit;
-	<span class="keyword">while</span> (result != <span class="literal">null</span>)
+<span class="hljs-keyword">var</span> rsplit = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(string, regex)</span> {</span>
+	<span class="hljs-keyword">var</span> result = regex.exec(string),retArr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(), first_idx, last_idx, first_bit;
+	<span class="hljs-keyword">while</span> (result != <span class="hljs-literal">null</span>)
 	{
 		first_idx = result.index; last_idx = regex.lastIndex;
-		<span class="keyword">if</span> ((first_idx) != <span class="number">0</span>)
+		<span class="hljs-keyword">if</span> ((first_idx) != <span class="hljs-number">0</span>)
 		{
-			first_bit = string.substring(<span class="number">0</span>,first_idx);
-			retArr.push(string.substring(<span class="number">0</span>,first_idx));
+			first_bit = string.substring(<span class="hljs-number">0</span>,first_idx);
+			retArr.push(string.substring(<span class="hljs-number">0</span>,first_idx));
 			string = string.slice(first_idx);
 		}		
-		retArr.push(result[<span class="number">0</span>]);
-		string = string.slice(result[<span class="number">0</span>].length);
+		retArr.push(result[<span class="hljs-number">0</span>]);
+		string = string.slice(result[<span class="hljs-number">0</span>].length);
 		result = regex.exec(string);	
 	}
-	<span class="keyword">if</span> (! string == <span class="string">''</span>)
+	<span class="hljs-keyword">if</span> (! string == <span class="hljs-string">''</span>)
 	{
 		retArr.push(string);
 	}
-	<span class="keyword">return</span> retArr;
+	<span class="hljs-keyword">return</span> retArr;
 },
-chop =  <span class="keyword">function</span>(string){
-    <span class="keyword">return</span> string.substr(<span class="number">0</span>, string.length - <span class="number">1</span>);
+chop =  <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(string)</span>{</span>
+    <span class="hljs-keyword">return</span> string.substr(<span class="hljs-number">0</span>, string.length - <span class="hljs-number">1</span>);
 },
-extend = <span class="keyword">function</span>(d, s){
-    <span class="keyword">for</span>(<span class="keyword">var</span> n <span class="keyword">in</span> s){
-        <span class="keyword">if</span>(s.hasOwnProperty(n))  d[n] = s[n]
+extend = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(d, s)</span>{</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> n <span class="hljs-keyword">in</span> s){
+        <span class="hljs-keyword">if</span>(s.hasOwnProperty(n))  d[n] = s[n]
     }
 }
 
 
-EJS = <span class="keyword">function</span>( options ){
-	options = <span class="keyword">typeof</span> options == <span class="string">"string"</span> ? {view: options} : options
-    <span class="keyword">this</span>.set_options(options);
-	<span class="keyword">if</span>(options.precompiled){
-		<span class="keyword">this</span>.template = {};
-		<span class="keyword">this</span>.template.process = options.precompiled;
-		EJS.update(<span class="keyword">this</span>.name, <span class="keyword">this</span>);
-		<span class="keyword">return</span>;
+EJS = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">( options )</span>{</span>
+	options = <span class="hljs-keyword">typeof</span> options == <span class="hljs-string">"string"</span> ? {view: options} : options
+    <span class="hljs-keyword">this</span>.set_options(options);
+	<span class="hljs-keyword">if</span>(options.precompiled){
+		<span class="hljs-keyword">this</span>.template = {};
+		<span class="hljs-keyword">this</span>.template.process = options.precompiled;
+		EJS.update(<span class="hljs-keyword">this</span>.name, <span class="hljs-keyword">this</span>);
+		<span class="hljs-keyword">return</span>;
 	}
-    <span class="keyword">if</span>(options.element)
+    <span class="hljs-keyword">if</span>(options.element)
 	{
-		<span class="keyword">if</span>(<span class="keyword">typeof</span> options.element == <span class="string">'string'</span>){
-			<span class="keyword">var</span> name = options.element
+		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> options.element == <span class="hljs-string">'string'</span>){
+			<span class="hljs-keyword">var</span> name = options.element
 			options.element = document.getElementById(  options.element )
-			<span class="keyword">if</span>(options.element == <span class="literal">null</span>) <span class="keyword">throw</span> name+<span class="string">'does not exist!'</span>
+			<span class="hljs-keyword">if</span>(options.element == <span class="hljs-literal">null</span>) <span class="hljs-keyword">throw</span> name+<span class="hljs-string">'does not exist!'</span>
 		}
-		<span class="keyword">if</span>(options.element.value){
-			<span class="keyword">this</span>.text = options.element.value
-		}<span class="keyword">else</span>{
-			<span class="keyword">this</span>.text = options.element.innerHTML
+		<span class="hljs-keyword">if</span>(options.element.value){
+			<span class="hljs-keyword">this</span>.text = options.element.value
+		}<span class="hljs-keyword">else</span>{
+			<span class="hljs-keyword">this</span>.text = options.element.innerHTML
 		}
-		<span class="keyword">this</span>.name = options.element.id
-		<span class="keyword">this</span>.type = <span class="string">'['</span>
-	}<span class="keyword">else</span> <span class="keyword">if</span>(options.url){
-        options.url = EJS.endExt(options.url, <span class="keyword">this</span>.extMatch);
-		<span class="keyword">this</span>.name = <span class="keyword">this</span>.name ? <span class="keyword">this</span>.name : options.url;
-        <span class="keyword">var</span> url = options.url</pre></div>
+		<span class="hljs-keyword">this</span>.name = options.element.id
+		<span class="hljs-keyword">this</span>.type = <span class="hljs-string">'['</span>
+	}<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(options.url){
+        options.url = EJS.endExt(options.url, <span class="hljs-keyword">this</span>.extMatch);
+		<span class="hljs-keyword">this</span>.name = <span class="hljs-keyword">this</span>.name ? <span class="hljs-keyword">this</span>.name : options.url;
+        <span class="hljs-keyword">var</span> url = options.url</pre></div>
         
       
         
         <p>options.view = options.absolute_url || options.view || options.;</p>
 
         
-          <div class='highlight'><pre>		<span class="keyword">var</span> template = EJS.get(<span class="keyword">this</span>.name <span class="comment">/*url*/</span>, <span class="keyword">this</span>.cache);
-		<span class="keyword">if</span> (template) <span class="keyword">return</span> template;
-	    <span class="keyword">if</span> (template == EJS.INVALID_PATH) <span class="keyword">return</span> <span class="literal">null</span>;
-        <span class="keyword">try</span>{
-            <span class="keyword">this</span>.text = EJS.request( url+(<span class="keyword">this</span>.cache ? <span class="string">''</span> : <span class="string">'?'</span>+Math.random() ));
-        }<span class="keyword">catch</span>(e){}
+          <div class='highlight'><pre>		<span class="hljs-keyword">var</span> template = EJS.get(<span class="hljs-keyword">this</span>.name <span class="hljs-comment">/*url*/</span>, <span class="hljs-keyword">this</span>.cache);
+		<span class="hljs-keyword">if</span> (template) <span class="hljs-keyword">return</span> template;
+	    <span class="hljs-keyword">if</span> (template == EJS.INVALID_PATH) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+        <span class="hljs-keyword">try</span>{
+            <span class="hljs-keyword">this</span>.text = EJS.request( url+(<span class="hljs-keyword">this</span>.cache ? <span class="hljs-string">''</span> : <span class="hljs-string">'?'</span>+<span class="hljs-built_in">Math</span>.random() ));
+        }<span class="hljs-keyword">catch</span>(e){}
 
-		<span class="keyword">if</span>(<span class="keyword">this</span>.text == <span class="literal">null</span>){
-            <span class="keyword">throw</span>( {type: <span class="string">'EJS'</span>, message: <span class="string">'There is no template at '</span>+url}  );
+		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.text == <span class="hljs-literal">null</span>){
+            <span class="hljs-keyword">throw</span>( {type: <span class="hljs-string">'EJS'</span>, message: <span class="hljs-string">'There is no template at '</span>+url}  );
 		}</pre></div>
         
       
@@ -135,128 +135,128 @@ EJS = <span class="keyword">function</span>( options ){
 
         
           <div class='highlight'><pre>	}
-	var template = new EJS.Compiler(this.text, this.type);
+	<span class="hljs-keyword">var</span> template = <span class="hljs-keyword">new</span> EJS.Compiler(<span class="hljs-keyword">this</span>.text, <span class="hljs-keyword">this</span>.type);
 
-	template.compile(options, this.name);
+	template.compile(options, <span class="hljs-keyword">this</span>.name);
 
 	
-	EJS.update(this.name, this);
-	this.template = template;
+	EJS.update(<span class="hljs-keyword">this</span>.name, <span class="hljs-keyword">this</span>);
+	<span class="hljs-keyword">this</span>.template = template;
 };
-/* @Prototype*/
+<span class="hljs-comment">/* @Prototype*/</span>
 EJS.prototype = {
-	/**
+	<span class="hljs-comment">/**
 	 * Renders an object with extra view helpers attached to the view.
 	 * @param {Object} object data to be rendered
 	 * @param {Object} extra_helpers an object with additonal view helpers
 	 * @return {String} returns the result of the string
-	 */
-    render : function(object, extra_helpers){
+	 */</span>
+    render : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(object, extra_helpers)</span>{</span>
         object = object || {};
-        this._extra_helpers = extra_helpers;
-		var v = new EJS.Helpers(object, extra_helpers || {});
-		return this.template.process.call(object, object,v);
+        <span class="hljs-keyword">this</span>._extra_helpers = extra_helpers;
+		<span class="hljs-keyword">var</span> v = <span class="hljs-keyword">new</span> EJS.Helpers(object, extra_helpers || {});
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.template.process.call(object, object,v);
 	},
-    update : function(element, options){
-        if(typeof element == 'string'){
+    update : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(element, options)</span>{</span>
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> element == <span class="hljs-string">'string'</span>){
 			element = document.getElementById(element)
 		}
-		if(options == null){
-			_template = this;
-			return function(object){
+		<span class="hljs-keyword">if</span>(options == <span class="hljs-literal">null</span>){
+			_template = <span class="hljs-keyword">this</span>;
+			<span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(object)</span>{</span>
 				EJS.prototype.update.call(_template, element, object)
 			}
 		}
-		if(typeof options == 'string'){
+		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> options == <span class="hljs-string">'string'</span>){
 			params = {}
 			params.url = options
-			_template = this;
-			params.onComplete = function(request){
-				var object = eval( request.responseText )
+			_template = <span class="hljs-keyword">this</span>;
+			params.onComplete = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span>{</span>
+				<span class="hljs-keyword">var</span> object = <span class="hljs-built_in">eval</span>( request.responseText )
 				EJS.prototype.update.call(_template, element, object)
 			}
 			EJS.ajax_request(params)
-		}else
+		}<span class="hljs-keyword">else</span>
 		{
-			element.innerHTML = this.render(options)
+			element.innerHTML = <span class="hljs-keyword">this</span>.render(options)
 		}
     },
-	out : function(){
-		return this.template.out;
+	out : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.template.out;
 	},
-    /**
+    <span class="hljs-comment">/**
      * Sets options on this view to be rendered with.
      * @param {Object} options
-     */
-	set_options : function(options){
-        this.type = options.type || EJS.type;
-		this.cache = options.cache != null ? options.cache : EJS.cache;
-		this.text = options.text || null;
-		this.name =  options.name || null;
-		this.ext = options.ext || EJS.ext;
-		this.extMatch = new RegExp(this.ext.replace(/\./, '\.'));
+     */</span>
+	set_options : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(options)</span>{</span>
+        <span class="hljs-keyword">this</span>.type = options.type || EJS.type;
+		<span class="hljs-keyword">this</span>.cache = options.cache != <span class="hljs-literal">null</span> ? options.cache : EJS.cache;
+		<span class="hljs-keyword">this</span>.text = options.text || <span class="hljs-literal">null</span>;
+		<span class="hljs-keyword">this</span>.name =  options.name || <span class="hljs-literal">null</span>;
+		<span class="hljs-keyword">this</span>.ext = options.ext || EJS.ext;
+		<span class="hljs-keyword">this</span>.extMatch = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-keyword">this</span>.ext.replace(<span class="hljs-regexp">/\./</span>, <span class="hljs-string">'\.'</span>));
 	}
 };
-EJS.endExt = function(path, match){
-	if(!path) return null;
-	match.lastIndex = 0
-	return path+ (match.test(path) ? '' : this.ext )
+EJS.endExt = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(path, match)</span>{</span>
+	<span class="hljs-keyword">if</span>(!path) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+	match.lastIndex = <span class="hljs-number">0</span>
+	<span class="hljs-keyword">return</span> path+ (match.test(path) ? <span class="hljs-string">''</span> : <span class="hljs-keyword">this</span>.ext )
 }
 
 
 
 
-/* @Static*/
-EJS.Scanner = function(source, left, right) {
+<span class="hljs-comment">/* @Static*/</span>
+EJS.Scanner = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(source, left, right)</span> {</span>
 	
-    extend(this,
-        {left_delimiter: 	left +'%',
-         right_delimiter: 	'%'+right,
-         double_left: 		left+'%%',
-         double_right:  	'%%'+right,
-         left_equal: 		left+'%=',
-         left_comment: 	left+'%#'})
+    extend(<span class="hljs-keyword">this</span>,
+        {left_delimiter: 	left +<span class="hljs-string">'%'</span>,
+         right_delimiter: 	<span class="hljs-string">'%'</span>+right,
+         double_left: 		left+<span class="hljs-string">'%%'</span>,
+         double_right:  	<span class="hljs-string">'%%'</span>+right,
+         left_equal: 		left+<span class="hljs-string">'%='</span>,
+         left_comment: 	left+<span class="hljs-string">'%#'</span>})
 
-	this.SplitRegexp = left=='[' ? /(\[%%)|(%%\])|(\[%=)|(\[%#)|(\[%)|(%\]\n)|(%\])|(\n)/ : new RegExp('('+this.double_left+')|(%%'+this.double_right+')|('+this.left_equal+')|('+this.left_comment+')|('+this.left_delimiter+')|('+this.right_delimiter+'\n)|('+this.right_delimiter+')|(\n)') ;
+	<span class="hljs-keyword">this</span>.SplitRegexp = left==<span class="hljs-string">'['</span> ? <span class="hljs-regexp">/(\[%%)|(%%\])|(\[%=)|(\[%#)|(\[%)|(%\]\n)|(%\])|(\n)/</span> : <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">'('</span>+<span class="hljs-keyword">this</span>.double_left+<span class="hljs-string">')|(%%'</span>+<span class="hljs-keyword">this</span>.double_right+<span class="hljs-string">')|('</span>+<span class="hljs-keyword">this</span>.left_equal+<span class="hljs-string">')|('</span>+<span class="hljs-keyword">this</span>.left_comment+<span class="hljs-string">')|('</span>+<span class="hljs-keyword">this</span>.left_delimiter+<span class="hljs-string">')|('</span>+<span class="hljs-keyword">this</span>.right_delimiter+<span class="hljs-string">'\n)|('</span>+<span class="hljs-keyword">this</span>.right_delimiter+<span class="hljs-string">')|(\n)'</span>) ;
 	
-	this.source = source;
-	this.stag = null;
-	this.lines = 0;
+	<span class="hljs-keyword">this</span>.source = source;
+	<span class="hljs-keyword">this</span>.stag = <span class="hljs-literal">null</span>;
+	<span class="hljs-keyword">this</span>.lines = <span class="hljs-number">0</span>;
 };
 
-EJS.Scanner.to_text = function(input){
-	if(input == null || input === undefined)
-        return '';
-    if(input instanceof Date)
-		return input.toDateString();
-	if(input.toString) 
-        return input.toString();
-	return '';
+EJS.Scanner.to_text = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(input)</span>{</span>
+	<span class="hljs-keyword">if</span>(input == <span class="hljs-literal">null</span> || input === <span class="hljs-literal">undefined</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>;
+    <span class="hljs-keyword">if</span>(input <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Date</span>)
+		<span class="hljs-keyword">return</span> input.toDateString();
+	<span class="hljs-keyword">if</span>(input.toString) 
+        <span class="hljs-keyword">return</span> input.toString();
+	<span class="hljs-keyword">return</span> <span class="hljs-string">''</span>;
 };
 
 EJS.Scanner.prototype = {
-  scan: function(block) {
-     scanline = this.scanline;
-	 regex = this.SplitRegexp;
-	 if (! this.source == '')
+  scan: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(block)</span> {</span>
+     scanline = <span class="hljs-keyword">this</span>.scanline;
+	 regex = <span class="hljs-keyword">this</span>.SplitRegexp;
+	 <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">this</span>.source == <span class="hljs-string">''</span>)
 	 {
-	 	 var source_split = rsplit(this.source, /\n/);
-	 	 for(var i=0; i&lt;source_split.length; i++) {
-		 	 var item = source_split[i];
-			 this.scanline(item, regex, block);
+	 	 <span class="hljs-keyword">var</span> source_split = rsplit(<span class="hljs-keyword">this</span>.source, <span class="hljs-regexp">/\n/</span>);
+	 	 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;source_split.length; i++) {
+		 	 <span class="hljs-keyword">var</span> item = source_split[i];
+			 <span class="hljs-keyword">this</span>.scanline(item, regex, block);
 		 }
 	 }
   },
-  scanline: function(line, regex, block) {
-	 this.lines++;
-	 var line_split = rsplit(line, regex);
- 	 for(var i=0; i&lt;line_split.length; i++) {
-	   var token = line_split[i];
-       if (token != null) {
-		   	try{
-	         	block(token, this);
-		 	}catch(e){
-				throw {type: 'EJS.Scanner', line: this.lines};
+  scanline: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(line, regex, block)</span> {</span>
+	 <span class="hljs-keyword">this</span>.lines++;
+	 <span class="hljs-keyword">var</span> line_split = rsplit(line, regex);
+ 	 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;line_split.length; i++) {
+	   <span class="hljs-keyword">var</span> token = line_split[i];
+       <span class="hljs-keyword">if</span> (token != <span class="hljs-literal">null</span>) {
+		   	<span class="hljs-keyword">try</span>{
+	         	block(token, <span class="hljs-keyword">this</span>);
+		 	}<span class="hljs-keyword">catch</span>(e){
+				<span class="hljs-keyword">throw</span> {type: <span class="hljs-string">'EJS.Scanner'</span>, line: <span class="hljs-keyword">this</span>.lines};
 			}
        }
 	 }
@@ -264,150 +264,150 @@ EJS.Scanner.prototype = {
 };
 
 
-EJS.Buffer = function(pre_cmd, post_cmd) {
-	this.line = new Array();
-	this.script = "";
-	this.pre_cmd = pre_cmd;
-	this.post_cmd = post_cmd;
-	for (var i=0; i&lt;this.pre_cmd.length; i++)
+EJS.Buffer = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(pre_cmd, post_cmd)</span> {</span>
+	<span class="hljs-keyword">this</span>.line = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();
+	<span class="hljs-keyword">this</span>.script = <span class="hljs-string">""</span>;
+	<span class="hljs-keyword">this</span>.pre_cmd = pre_cmd;
+	<span class="hljs-keyword">this</span>.post_cmd = post_cmd;
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-keyword">this</span>.pre_cmd.length; i++)
 	{
-		this.push(pre_cmd[i]);
+		<span class="hljs-keyword">this</span>.push(pre_cmd[i]);
 	}
 };
 EJS.Buffer.prototype = {
 	
-  push: function(cmd) {
-	this.line.push(cmd);
+  push: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(cmd)</span> {</span>
+	<span class="hljs-keyword">this</span>.line.push(cmd);
   },
 
-  cr: function() {
-	this.script = this.script + this.line.join('; ');
-	this.line = new Array();
-	this.script = this.script + "\n";
+  cr: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+	<span class="hljs-keyword">this</span>.script = <span class="hljs-keyword">this</span>.script + <span class="hljs-keyword">this</span>.line.join(<span class="hljs-string">'; '</span>);
+	<span class="hljs-keyword">this</span>.line = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();
+	<span class="hljs-keyword">this</span>.script = <span class="hljs-keyword">this</span>.script + <span class="hljs-string">"\n"</span>;
   },
 
-  close: function() {
-	if (this.line.length &gt; 0)
+  close: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+	<span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.line.length &gt; <span class="hljs-number">0</span>)
 	{
-		for (var i=0; i&lt;this.post_cmd.length; i++){
-			this.push(pre_cmd[i]);
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-keyword">this</span>.post_cmd.length; i++){
+			<span class="hljs-keyword">this</span>.push(pre_cmd[i]);
 		}
-		this.script = this.script + this.line.join('; ');
-		line = null;
+		<span class="hljs-keyword">this</span>.script = <span class="hljs-keyword">this</span>.script + <span class="hljs-keyword">this</span>.line.join(<span class="hljs-string">'; '</span>);
+		line = <span class="hljs-literal">null</span>;
 	}
   }
  	
 };
 
 
-EJS.Compiler = function(source, left) {
-    this.pre_cmd = ['var ___ViewO = [];'];
-	this.post_cmd = new Array();
-	this.source = ' ';	
-	if (source != null)
+EJS.Compiler = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(source, left)</span> {</span>
+    <span class="hljs-keyword">this</span>.pre_cmd = [<span class="hljs-string">'var ___ViewO = [];'</span>];
+	<span class="hljs-keyword">this</span>.post_cmd = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();
+	<span class="hljs-keyword">this</span>.source = <span class="hljs-string">' '</span>;	
+	<span class="hljs-keyword">if</span> (source != <span class="hljs-literal">null</span>)
 	{
-		if (typeof source == 'string')
+		<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> source == <span class="hljs-string">'string'</span>)
 		{
-		    source = source.replace(/\r\n/g, "\n");
-            source = source.replace(/\r/g,   "\n");
-			this.source = source;
-		}else if (source.innerHTML){
-			this.source = source.innerHTML;
+		    source = source.replace(<span class="hljs-regexp">/\r\n/g</span>, <span class="hljs-string">"\n"</span>);
+            source = source.replace(<span class="hljs-regexp">/\r/g</span>,   <span class="hljs-string">"\n"</span>);
+			<span class="hljs-keyword">this</span>.source = source;
+		}<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (source.innerHTML){
+			<span class="hljs-keyword">this</span>.source = source.innerHTML;
 		} 
-		if (typeof this.source != 'string'){
-			this.source = "";
+		<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">this</span>.source != <span class="hljs-string">'string'</span>){
+			<span class="hljs-keyword">this</span>.source = <span class="hljs-string">""</span>;
 		}
 	}
-	left = left || '&lt;';
-	var right = '&gt;';
-	switch(left) {
-		case '[':
-			right = ']';
-			break;
-		case '&lt;':
-			break;
-		default:
-			throw left+' is not a supported deliminator';
-			break;
+	left = left || <span class="hljs-string">'&lt;'</span>;
+	<span class="hljs-keyword">var</span> right = <span class="hljs-string">'&gt;'</span>;
+	<span class="hljs-keyword">switch</span>(left) {
+		<span class="hljs-keyword">case</span> <span class="hljs-string">'['</span>:
+			right = <span class="hljs-string">']'</span>;
+			<span class="hljs-keyword">break</span>;
+		<span class="hljs-keyword">case</span> <span class="hljs-string">'&lt;'</span>:
+			<span class="hljs-keyword">break</span>;
+		<span class="hljs-keyword">default</span>:
+			<span class="hljs-keyword">throw</span> left+<span class="hljs-string">' is not a supported deliminator'</span>;
+			<span class="hljs-keyword">break</span>;
 	}
-	this.scanner = new EJS.Scanner(this.source, left, right);
-	this.out = '';
+	<span class="hljs-keyword">this</span>.scanner = <span class="hljs-keyword">new</span> EJS.Scanner(<span class="hljs-keyword">this</span>.source, left, right);
+	<span class="hljs-keyword">this</span>.out = <span class="hljs-string">''</span>;
 };
 EJS.Compiler.prototype = {
-  compile: function(options, name) {
+  compile: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(options, name)</span> {</span>
   	options = options || {};
-	this.out = '';
-	var put_cmd = "___ViewO.push(";
-	var insert_cmd = put_cmd;
-	var buff = new EJS.Buffer(this.pre_cmd, this.post_cmd);		
-	var content = '';
-	var clean = function(content)
-	{
-	    content = content.replace(/\\/g, '\\\\');
-        content = content.replace(/\n/g, '\\n');
-        content = content.replace(/"/g,  '\\"');
-        return content;
+	<span class="hljs-keyword">this</span>.out = <span class="hljs-string">''</span>;
+	<span class="hljs-keyword">var</span> put_cmd = <span class="hljs-string">"___ViewO.push("</span>;
+	<span class="hljs-keyword">var</span> insert_cmd = put_cmd;
+	<span class="hljs-keyword">var</span> buff = <span class="hljs-keyword">new</span> EJS.Buffer(<span class="hljs-keyword">this</span>.pre_cmd, <span class="hljs-keyword">this</span>.post_cmd);		
+	<span class="hljs-keyword">var</span> content = <span class="hljs-string">''</span>;
+	<span class="hljs-keyword">var</span> clean = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(content)</span>
+	{</span>
+	    content = content.replace(<span class="hljs-regexp">/\\/g</span>, <span class="hljs-string">'\\\\'</span>);
+        content = content.replace(<span class="hljs-regexp">/\n/g</span>, <span class="hljs-string">'\\n'</span>);
+        content = content.replace(<span class="hljs-regexp">/"/g</span>,  <span class="hljs-string">'\\"'</span>);
+        <span class="hljs-keyword">return</span> content;
 	};
-	this.scanner.scan(function(token, scanner) {
-		if (scanner.stag == null)
+	<span class="hljs-keyword">this</span>.scanner.scan(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(token, scanner)</span> {</span>
+		<span class="hljs-keyword">if</span> (scanner.stag == <span class="hljs-literal">null</span>)
 		{
-			switch(token) {
-				case '\n':
-					content = content + "\n";
-					buff.push(put_cmd + '"' + clean(content) + '");');
+			<span class="hljs-keyword">switch</span>(token) {
+				<span class="hljs-keyword">case</span> <span class="hljs-string">'\n'</span>:
+					content = content + <span class="hljs-string">"\n"</span>;
+					buff.push(put_cmd + <span class="hljs-string">'"'</span> + clean(content) + <span class="hljs-string">'");'</span>);
 					buff.cr();
-					content = '';
-					break;
-				case scanner.left_delimiter:
-				case scanner.left_equal:
-				case scanner.left_comment:
+					content = <span class="hljs-string">''</span>;
+					<span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> scanner.left_delimiter:
+				<span class="hljs-keyword">case</span> scanner.left_equal:
+				<span class="hljs-keyword">case</span> scanner.left_comment:
 					scanner.stag = token;
-					if (content.length &gt; 0)
+					<span class="hljs-keyword">if</span> (content.length &gt; <span class="hljs-number">0</span>)
 					{
-						buff.push(put_cmd + '"' + clean(content) + '")');
+						buff.push(put_cmd + <span class="hljs-string">'"'</span> + clean(content) + <span class="hljs-string">'")'</span>);
 					}
-					content = '';
-					break;
-				case scanner.double_left:
+					content = <span class="hljs-string">''</span>;
+					<span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> scanner.double_left:
 					content = content + scanner.left_delimiter;
-					break;
-				default:
+					<span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">default</span>:
 					content = content + token;
-					break;
+					<span class="hljs-keyword">break</span>;
 			}
 		}
-		else {
-			switch(token) {
-				case scanner.right_delimiter:
-					switch(scanner.stag) {
-						case scanner.left_delimiter:
-							if (content[content.length - 1] == '\n')
+		<span class="hljs-keyword">else</span> {
+			<span class="hljs-keyword">switch</span>(token) {
+				<span class="hljs-keyword">case</span> scanner.right_delimiter:
+					<span class="hljs-keyword">switch</span>(scanner.stag) {
+						<span class="hljs-keyword">case</span> scanner.left_delimiter:
+							<span class="hljs-keyword">if</span> (content[content.length - <span class="hljs-number">1</span>] == <span class="hljs-string">'\n'</span>)
 							{
 								content = chop(content);
 								buff.push(content);
 								buff.cr();
 							}
-							else {
+							<span class="hljs-keyword">else</span> {
 								buff.push(content);
 							}
-							break;
-						case scanner.left_equal:
-							buff.push(insert_cmd + "(EJS.Scanner.to_text(" + content + ")))");
-							break;
+							<span class="hljs-keyword">break</span>;
+						<span class="hljs-keyword">case</span> scanner.left_equal:
+							buff.push(insert_cmd + <span class="hljs-string">"(EJS.Scanner.to_text("</span> + content + <span class="hljs-string">")))"</span>);
+							<span class="hljs-keyword">break</span>;
 					}
-					scanner.stag = null;
-					content = '';
-					break;
-				case scanner.double_right:
+					scanner.stag = <span class="hljs-literal">null</span>;
+					content = <span class="hljs-string">''</span>;
+					<span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> scanner.double_right:
 					content = content + scanner.right_delimiter;
-					break;
-				default:
+					<span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">default</span>:
 					content = content + token;
-					break;
+					<span class="hljs-keyword">break</span>;
 			}
 		}
 	});
-	if (content.length &gt; 0)
+	<span class="hljs-keyword">if</span> (content.length &gt; <span class="hljs-number">0</span>)
 	{</pre></div>
         
       
@@ -415,31 +415,31 @@ EJS.Compiler.prototype = {
         <p>Chould be content.dump in Ruby</p>
 
         
-          <div class='highlight'><pre>		buff.push(put_cmd + <span class="string">'"'</span> + clean(content) + <span class="string">'")'</span>);
+          <div class='highlight'><pre>		buff.push(put_cmd + <span class="hljs-string">'"'</span> + clean(content) + <span class="hljs-string">'")'</span>);
 	}
 	buff.close();
-	<span class="keyword">this</span>.out = buff.script + <span class="string">";"</span>;
-	<span class="keyword">var</span> to_be_evaled = <span class="string">'/*'</span>+name+<span class="string">'*/this.process = function(_CONTEXT,_VIEW) { try { with(_VIEW) { with (_CONTEXT) {'</span>+<span class="keyword">this</span>.out+<span class="string">" return ___ViewO.join('');}}}catch(e){e.lineNumber=null;throw e;}};"</span>;
+	<span class="hljs-keyword">this</span>.out = buff.script + <span class="hljs-string">";"</span>;
+	<span class="hljs-keyword">var</span> to_be_evaled = <span class="hljs-string">'/*'</span>+name+<span class="hljs-string">'*/this.process = function(_CONTEXT,_VIEW) { try { with(_VIEW) { with (_CONTEXT) {'</span>+<span class="hljs-keyword">this</span>.out+<span class="hljs-string">" return ___ViewO.join('');}}}catch(e){e.lineNumber=null;throw e;}};"</span>;
 	
-	<span class="keyword">try</span>{
-		eval(to_be_evaled);
-	}<span class="keyword">catch</span>(e){
-		<span class="keyword">if</span>(<span class="keyword">typeof</span> JSLINT != <span class="string">'undefined'</span>){
-			JSLINT(<span class="keyword">this</span>.out);
-			<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; JSLINT.errors.length; i++){
-				<span class="keyword">var</span> error = JSLINT.errors[i];
-				<span class="keyword">if</span>(error.reason != <span class="string">"Unnecessary semicolon."</span>){
+	<span class="hljs-keyword">try</span>{
+		<span class="hljs-built_in">eval</span>(to_be_evaled);
+	}<span class="hljs-keyword">catch</span>(e){
+		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> JSLINT != <span class="hljs-string">'undefined'</span>){
+			JSLINT(<span class="hljs-keyword">this</span>.out);
+			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; JSLINT.errors.length; i++){
+				<span class="hljs-keyword">var</span> error = JSLINT.errors[i];
+				<span class="hljs-keyword">if</span>(error.reason != <span class="hljs-string">"Unnecessary semicolon."</span>){
 					error.line++;
-					<span class="keyword">var</span> e = <span class="keyword">new</span> Error();
+					<span class="hljs-keyword">var</span> e = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>();
 					e.lineNumber = error.line;
 					e.message = error.reason;
-					<span class="keyword">if</span>(options.view)
+					<span class="hljs-keyword">if</span>(options.view)
 						e.fileName = options.view;
-					<span class="keyword">throw</span> e;
+					<span class="hljs-keyword">throw</span> e;
 				}
 			}
-		}<span class="keyword">else</span>{
-			<span class="keyword">throw</span> e;
+		}<span class="hljs-keyword">else</span>{
+			<span class="hljs-keyword">throw</span> e;
 		}
 	}
   }
@@ -450,7 +450,7 @@ EJS.Compiler.prototype = {
         <p>type, cache, folder</p>
 
         
-          <div class='highlight'><pre><span class="comment">/**
+          <div class='highlight'><pre><span class="hljs-comment">/**
  * Sets default options for all views
  * @param {Object} options Set view with the following options
  * &lt;table class="options"&gt;
@@ -470,106 +470,106 @@ EJS.Compiler.prototype = {
 	&lt;/tbody&gt;&lt;/table&gt;
  * 
  */</span>
-EJS.config = <span class="keyword">function</span>(options){
-	EJS.cache = options.cache != <span class="literal">null</span> ? options.cache : EJS.cache;
-	EJS.type = options.type != <span class="literal">null</span> ? options.type : EJS.type;
-	EJS.ext = options.ext != <span class="literal">null</span> ? options.ext : EJS.ext;
+EJS.config = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(options)</span>{</span>
+	EJS.cache = options.cache != <span class="hljs-literal">null</span> ? options.cache : EJS.cache;
+	EJS.type = options.type != <span class="hljs-literal">null</span> ? options.type : EJS.type;
+	EJS.ext = options.ext != <span class="hljs-literal">null</span> ? options.ext : EJS.ext;
 	
-	<span class="keyword">var</span> templates_directory = EJS.templates_directory || {}; <span class="comment">//nice and private container</span>
+	<span class="hljs-keyword">var</span> templates_directory = EJS.templates_directory || {}; <span class="hljs-comment">//nice and private container</span>
 	EJS.templates_directory = templates_directory;
-	EJS.get = <span class="keyword">function</span>(path, cache){
-		<span class="keyword">if</span>(cache == <span class="literal">false</span>) <span class="keyword">return</span> <span class="literal">null</span>;
-		<span class="keyword">if</span>(templates_directory[path]) <span class="keyword">return</span> templates_directory[path];
-  		<span class="keyword">return</span> <span class="literal">null</span>;
+	EJS.get = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(path, cache)</span>{</span>
+		<span class="hljs-keyword">if</span>(cache == <span class="hljs-literal">false</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+		<span class="hljs-keyword">if</span>(templates_directory[path]) <span class="hljs-keyword">return</span> templates_directory[path];
+  		<span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
 	};
 	
-	EJS.update = <span class="keyword">function</span>(path, template) { 
-		<span class="keyword">if</span>(path == <span class="literal">null</span>) <span class="keyword">return</span>;
+	EJS.update = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(path, template)</span> {</span> 
+		<span class="hljs-keyword">if</span>(path == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span>;
 		templates_directory[path] = template ;
 	};
 	
-	EJS.INVALID_PATH =  -<span class="number">1</span>;
+	EJS.INVALID_PATH =  -<span class="hljs-number">1</span>;
 };
-EJS.config( {cache: <span class="literal">true</span>, type: <span class="string">'&lt;'</span>, ext: <span class="string">'.ejs'</span> } );
+EJS.config( {cache: <span class="hljs-literal">true</span>, type: <span class="hljs-string">'&lt;'</span>, ext: <span class="hljs-string">'.ejs'</span> } );
 
 
 
-<span class="comment">/**
+<span class="hljs-comment">/**
  * @constructor
  * By adding functions to EJS.Helpers.prototype, those functions will be available in the 
  * views.
  * @init Creates a view helper.  This function is called internally.  You should never call it.
  * @param {Object} data The data passed to the view.  Helpers have access to it through this._data
  */</span>
-EJS.Helpers = <span class="keyword">function</span>(data, extras){
-	<span class="keyword">this</span>._data = data;
-    <span class="keyword">this</span>._extras = extras;
-    extend(<span class="keyword">this</span>, extras );
+EJS.Helpers = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(data, extras)</span>{</span>
+	<span class="hljs-keyword">this</span>._data = data;
+    <span class="hljs-keyword">this</span>._extras = extras;
+    extend(<span class="hljs-keyword">this</span>, extras );
 };
-<span class="comment">/* @prototype*/</span>
+<span class="hljs-comment">/* @prototype*/</span>
 EJS.Helpers.prototype = {
-    <span class="comment">/**
+    <span class="hljs-comment">/**
      * Renders a new view.  If data is passed in, uses that to render the view.
      * @param {Object} options standard options passed to a new view.
      * @param {optional:Object} data
      * @return {String}
      */</span>
-	view: <span class="keyword">function</span>(options, data, helpers){
-        <span class="keyword">if</span>(!helpers) helpers = <span class="keyword">this</span>._extras
-		<span class="keyword">if</span>(!data) data = <span class="keyword">this</span>._data;
-		<span class="keyword">return</span> <span class="keyword">new</span> EJS(options).render(data, helpers);
+	view: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(options, data, helpers)</span>{</span>
+        <span class="hljs-keyword">if</span>(!helpers) helpers = <span class="hljs-keyword">this</span>._extras
+		<span class="hljs-keyword">if</span>(!data) data = <span class="hljs-keyword">this</span>._data;
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> EJS(options).render(data, helpers);
 	},
-    <span class="comment">/**
+    <span class="hljs-comment">/**
      * For a given value, tries to create a human representation.
      * @param {Object} input the value being converted.
      * @param {Object} null_text what text should be present if input == null or undefined, defaults to ''
      * @return {String} 
      */</span>
-	to_text: <span class="keyword">function</span>(input, null_text) {
-	    <span class="keyword">if</span>(input == <span class="literal">null</span> || input === <span class="literal">undefined</span>) <span class="keyword">return</span> null_text || <span class="string">''</span>;
-	    <span class="keyword">if</span>(input <span class="keyword">instanceof</span> Date) <span class="keyword">return</span> input.toDateString();
-		<span class="keyword">if</span>(input.toString) <span class="keyword">return</span> input.toString().replace(<span class="regexp">/\n/g</span>, <span class="string">'&lt;br /&gt;'</span>).replace(<span class="regexp">/''/g</span>, <span class="string">"'"</span>);
-		<span class="keyword">return</span> <span class="string">''</span>;
+	to_text: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(input, null_text)</span> {</span>
+	    <span class="hljs-keyword">if</span>(input == <span class="hljs-literal">null</span> || input === <span class="hljs-literal">undefined</span>) <span class="hljs-keyword">return</span> null_text || <span class="hljs-string">''</span>;
+	    <span class="hljs-keyword">if</span>(input <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Date</span>) <span class="hljs-keyword">return</span> input.toDateString();
+		<span class="hljs-keyword">if</span>(input.toString) <span class="hljs-keyword">return</span> input.toString().replace(<span class="hljs-regexp">/\n/g</span>, <span class="hljs-string">'&lt;br /&gt;'</span>).replace(<span class="hljs-regexp">/''/g</span>, <span class="hljs-string">"'"</span>);
+		<span class="hljs-keyword">return</span> <span class="hljs-string">''</span>;
 	}
 };
-    EJS.newRequest = <span class="keyword">function</span>(){
-	   <span class="keyword">var</span> factories = [<span class="keyword">function</span>() { <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(<span class="string">"Msxml2.XMLHTTP"</span>); },<span class="keyword">function</span>() { <span class="keyword">return</span> <span class="keyword">new</span> XMLHttpRequest(); },<span class="keyword">function</span>() { <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>); }];
-	   <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; factories.length; i++) {
-	        <span class="keyword">try</span> {
-	            <span class="keyword">var</span> request = factories[i]();
-	            <span class="keyword">if</span> (request != <span class="literal">null</span>)  <span class="keyword">return</span> request;
+    EJS.newRequest = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+	   <span class="hljs-keyword">var</span> factories = [<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-string">"Msxml2.XMLHTTP"</span>); },<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> XMLHttpRequest(); },<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-string">"Microsoft.XMLHTTP"</span>); }];
+	   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; factories.length; i++) {
+	        <span class="hljs-keyword">try</span> {
+	            <span class="hljs-keyword">var</span> request = factories[i]();
+	            <span class="hljs-keyword">if</span> (request != <span class="hljs-literal">null</span>)  <span class="hljs-keyword">return</span> request;
 	        }
-	        <span class="keyword">catch</span>(e) { <span class="keyword">continue</span>;}
+	        <span class="hljs-keyword">catch</span>(e) { <span class="hljs-keyword">continue</span>;}
 	   }
 	}
 	
-	EJS.request = <span class="keyword">function</span>(path){
-	   <span class="keyword">var</span> request = <span class="keyword">new</span> EJS.newRequest()
-	   request.open(<span class="string">"GET"</span>, path, <span class="literal">false</span>);
+	EJS.request = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(path)</span>{</span>
+	   <span class="hljs-keyword">var</span> request = <span class="hljs-keyword">new</span> EJS.newRequest()
+	   request.open(<span class="hljs-string">"GET"</span>, path, <span class="hljs-literal">false</span>);
 	   
-	   <span class="keyword">try</span>{request.send(<span class="literal">null</span>);}
-	   <span class="keyword">catch</span>(e){<span class="keyword">return</span> <span class="literal">null</span>;}
+	   <span class="hljs-keyword">try</span>{request.send(<span class="hljs-literal">null</span>);}
+	   <span class="hljs-keyword">catch</span>(e){<span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;}
 	   
-	   <span class="keyword">if</span> ( request.status == <span class="number">404</span> || request.status == <span class="number">2</span> ||(request.status == <span class="number">0</span> &amp;&amp; request.responseText == <span class="string">''</span>) ) <span class="keyword">return</span> <span class="literal">null</span>;
+	   <span class="hljs-keyword">if</span> ( request.status == <span class="hljs-number">404</span> || request.status == <span class="hljs-number">2</span> ||(request.status == <span class="hljs-number">0</span> &amp;&amp; request.responseText == <span class="hljs-string">''</span>) ) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
 	   
-	   <span class="keyword">return</span> request.responseText
+	   <span class="hljs-keyword">return</span> request.responseText
 	}
-	EJS.ajax_request = <span class="keyword">function</span>(params){
-		params.method = ( params.method ? params.method : <span class="string">'GET'</span>)
+	EJS.ajax_request = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(params)</span>{</span>
+		params.method = ( params.method ? params.method : <span class="hljs-string">'GET'</span>)
 		
-		<span class="keyword">var</span> request = <span class="keyword">new</span> EJS.newRequest();
-		request.onreadystatechange = <span class="keyword">function</span>(){
-			<span class="keyword">if</span>(request.readyState == <span class="number">4</span>){
-				<span class="keyword">if</span>(request.status == <span class="number">200</span>){
+		<span class="hljs-keyword">var</span> request = <span class="hljs-keyword">new</span> EJS.newRequest();
+		request.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+			<span class="hljs-keyword">if</span>(request.readyState == <span class="hljs-number">4</span>){
+				<span class="hljs-keyword">if</span>(request.status == <span class="hljs-number">200</span>){
 					params.onComplete(request)
-				}<span class="keyword">else</span>
+				}<span class="hljs-keyword">else</span>
 				{
 					params.onComplete(request)
 				}
 			}
 		}
 		request.open(params.method, params.url)
-		request.send(<span class="literal">null</span>)
+		request.send(<span class="hljs-literal">null</span>)
 	}
 
 

@@ -9,11 +9,15 @@
     "routing": [
         {
             "template": "/index.html",
-            "tests": []
+            "tests": [
+                "index/index"
+            ]
         },
         {
             "template": "/index-wbm.html",
-            "tests": []
+            "tests": [
+                "index/index"
+            ]
         },
         {
             "template": "/inlined-img.html",
@@ -25,11 +29,16 @@
         },
         {
             "template": "/knockout.html",
-            "tests": []
+            "tests": [
+                "knockout/knockout"
+            ]
         },
         {
             "template": "/knockout.html",
-            "urls": ["/knockout-1.html","/knockout-2.html"]
+            "urls": ["/knockout-1.html","/knockout-2.html"],
+            "tests": [
+                "knockout/knockout"
+            ]
         }
     ],
     "scripts": {

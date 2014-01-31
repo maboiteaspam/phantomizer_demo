@@ -65,29 +65,90 @@
         
         
         
-          <div class='highlight'><pre><span class="string">"use strict"</span>;
-
-require([
-    <span class="string">"vendors/go-phantomizer/phantomizer"</span>,
-    <span class="string">"wbm/vendors/ejs/ejs_production"</span>
-],<span class="function"><span class="keyword">function</span> <span class="params">(phantomizer)</span> {</span>
-
-    <span class="comment">/* required  call */</span>
-    phantomizer.afterStaticRender(<span class="keyword">function</span>(next){
-        <span class="keyword">var</span> head = <span class="keyword">new</span> EJS({url: <span class="string">'layout/head.ejs'</span>}).render({name:<span class="string">"demo"</span>});
-        $(head).insertBefore(<span class="string">".content"</span>)
-        <span class="keyword">var</span> foot = <span class="keyword">new</span> EJS({url: <span class="string">'layout/foot.ejs'</span>}).render({});
-        $(foot).insertAfter(<span class="string">".content"</span>)
-        next();
-    },<span class="string">"static"</span>);</pre></div>
+          <div class='highlight'><pre><span class="hljs-pi">"use strict"</span>;</pre></div>
         
       
         
-        <p>required main call</p>
+        <h2 id="ejs-demonstration">EJS demonstration</h2>
 
         
-          <div class='highlight'><pre>    phantomizer.render(<span class="keyword">function</span>(next){
-        $(<span class="string">"&lt;span&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="string">".content"</span>)
+      
+        
+        
+        
+      
+        
+        <p>take advantage of EJS to statically build the html layout</p>
+<p>declare main() javascript function of the page-template</p>
+
+        
+          <div class='highlight'><pre><span class="hljs-built_in">require</span>([
+    <span class="hljs-string">"vendors/go-phantomizer/phantomizer"</span>
+],<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(phantomizer)</span> {</span></pre></div>
+        
+      
+        
+        <h2 id="render-static-html">render static HTML</h2>
+
+        
+      
+        
+        
+        
+      
+        
+        <p>attach an handler to the render build, before the main, after the templating
+because it is static it is executed only when the application is not built at all</p>
+
+        
+          <div class='highlight'><pre>    phantomizer.afterStaticRender(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span></pre></div>
+        
+      
+        
+        <p>loads ejs in a lazy loading manner, for demo purpose,
+this way, after the whole build occurred, that dependency won t be loaded
+the truth is, IRL, it is unlikely possible that you dont need your template engine on runtime</p>
+
+        
+          <div class='highlight'><pre>        <span class="hljs-built_in">require</span>([<span class="hljs-string">"wbm/vendors/ejs/ejs_production"</span>],<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span></pre></div>
+        
+      
+        
+        <p>load head and footer view fragment</p>
+
+        
+          <div class='highlight'><pre>            <span class="hljs-keyword">var</span> head = <span class="hljs-keyword">new</span> EJS({url: <span class="hljs-string">'layout/head.ejs'</span>}).render({name:<span class="hljs-string">"demo"</span>});
+            $(head).insertBefore(<span class="hljs-string">".content"</span>)
+            <span class="hljs-keyword">var</span> foot = <span class="hljs-keyword">new</span> EJS({url: <span class="hljs-string">'layout/foot.ejs'</span>}).render({});
+            $(foot).insertAfter(<span class="hljs-string">".content"</span>)</pre></div>
+        
+      
+        
+        <p>call it when your setup has finished</p>
+
+        
+          <div class='highlight'><pre>            next();
+        });
+    },<span class="hljs-string">"static"</span>);</pre></div>
+        
+      
+        
+        <h2 id="declare-execute-runtime-logic">declare, execute runtime logic</h2>
+
+        
+      
+        
+        
+        
+      
+        
+        <p>declare the required main handler, there could be only one like this
+it is always executed on client side browser,
+no matter the build optimization applied</p>
+
+        
+          <div class='highlight'><pre>    phantomizer.render(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span>
+        $(<span class="hljs-string">"&lt;span&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="hljs-string">".content"</span>)
         next();
     });
 });</pre></div>

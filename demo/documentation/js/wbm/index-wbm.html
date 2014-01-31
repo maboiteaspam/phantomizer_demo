@@ -65,18 +65,68 @@
         
         
         
-          <div class='highlight'><pre><span class="string">"use strict"</span>;
+          <div class='highlight'><pre><span class="hljs-pi">"use strict"</span>;</pre></div>
+        
+      
+        
+        <h2 id="web-directories-priority">web directories priority</h2>
 
-require([
-    <span class="string">"vendors/go-phantomizer/phantomizer"</span>
-],<span class="function"><span class="keyword">function</span> <span class="params">(phantomizer)</span> {</span>
+        
+      
+        
+        
+        
+      
+        
+        <p>this file demonstrate the effect of having a multiple set of directory
+to serve files</p>
+<p>files are available on file system, in that order
+     <project_name>/project/www-core/
+                                     /js/
+                                     /js/index.js &lt;- this file is found first
+                                     /img/
+                                     /css/
+     <project_name>/project/www-wbm/
+                                     /js/
+                                     /js/index.js &lt;- this file is found last, it won t be displayed on client side
+                                     /js/index-wbm.js &lt;- this file is found first, it is displayed
+                                     /img/
+                                     /css/</p>
+<p>The file url /js/index.js exists in each web directories,
+only the first one is served</p>
+<p>the file url /js/index-wbm.js exists only in wbm,
+this file is served</p>
 
-    <span class="comment">/* required  call */</span>
-    phantomizer.render(<span class="keyword">function</span>(next){
-        <span class="comment">/*
-         This file is served because it does not exist in www-core.
-         */</span>
-        $(<span class="string">"&lt;span&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="string">"body"</span>)
+        
+          <div class='highlight'><pre>
+<span class="hljs-built_in">require</span>([
+    <span class="hljs-string">"vendors/go-phantomizer/phantomizer"</span>
+],<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(phantomizer)</span> {</span></pre></div>
+        
+      
+        
+        <h2 id="declare-execute-runtime-logic">declare, execute runtime logic</h2>
+
+        
+      
+        
+        
+        
+      
+        
+        <p>declare the required main handler, there could be only one like this
+it is always executed on client side browser,
+no matter the build optimization applied</p>
+
+        
+          <div class='highlight'><pre>    phantomizer.render(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span></pre></div>
+        
+      
+        
+        <p>This file is served because it does not exist in www-core.</p>
+
+        
+          <div class='highlight'><pre>        $(<span class="hljs-string">"&lt;span&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="hljs-string">"body"</span>)
         next();
     });
 });</pre></div>
