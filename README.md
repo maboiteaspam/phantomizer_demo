@@ -129,4 +129,8 @@ A Zepto integration of TodosMVC backbone example.
 
 Note that the dashboard does not yet fully support Zepto.
 
+Zepto project Documentation Index
+
+http://maboiteaspam.github.io/phantomizer_demo/zepto/documentation/js/index.html
+
 
