@@ -52,7 +52,8 @@ module.exports = function(grunt) {
         },
         src: [
             'demo/documentation/**',
-            'backbone/documentation/**'
+            'backbone/documentation/**',
+            'zepto/documentation/**'
         ]
     };
     config['release'] = {
