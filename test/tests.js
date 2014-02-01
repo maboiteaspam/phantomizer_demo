@@ -9,8 +9,6 @@ var demo_dir = __dirname+"/../demo/";
 
 describe('phantomizer command line', function () {
 
-    this.timeout(10000);
-
     it('should have a version with the format #.#.#', function(done) {
         open_phantomizer([base_cmd,"--version"],function(code,stdout,stderr){
             stdout.should.match(/(phantomizer\s+\d+[.]\d+[.]\d+)/);
@@ -18,6 +16,7 @@ describe('phantomizer command line', function () {
         });
     });
     it('should provide the files in export_dir after export task', function(done) {
+        this.timeout(10000);
         open_phantomizer([base_cmd,"--export","demo"],function(code,stdout,stderr){
             (grunt.file.exists(demo_dir+"export/dev/www/index.html")).should.be.true;
             done();
