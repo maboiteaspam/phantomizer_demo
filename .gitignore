@@ -7,12 +7,16 @@ node_modules
 npm.install.sh~
 npm.install.sh
 
+urls.json
+
 demo/documentation
 demo/export
 demo/run
 
-urls.json
-
 backbone/documentation
 backbone/export
 backbone/run
+
+zepto/documentation
+zepto/export
+zepto/run

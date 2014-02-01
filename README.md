@@ -121,3 +121,12 @@ Backbone project Documentation Index
 
 http://maboiteaspam.github.io/phantomizer_demo/backbone/documentation/js/index.html
 
+
+ZEPTO PROJECT
+====
+
+A Zepto integration of TodosMVC backbone example.
+
+Note that the dashboard does not yet fully support Zepto.
+
+
