@@ -45,7 +45,7 @@ function open_phantomizer(args,cb){
         stderr+=data.toString();
     });
     phantomizer.on('exit', function (code) {
-        cb(code,stdout,stderr);
+        if(cb) cb(code,stdout,stderr);
     });
     return phantomizer;
 }
