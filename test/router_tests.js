@@ -1,13 +1,11 @@
 'use strict';
 
 var should = require('should');
-var grunt = require('grunt');
 var request = require('request');
 var express = require('express');
 var http = require('http');
 
 var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
-var demo_dir = __dirname+"/../demo/";
 
 describe('phantomizer command line', function () {
 
@@ -133,27 +131,6 @@ describe('phantomizer command line', function () {
 
 });
 
-var i = 0;
-function fetch_url(project, url, assert, done){
-    i++;
-    console.log("start",i)
-    var phantomizer = open_phantomizer([base_cmd,"--server", project],function(){
-        console.log("done",i)
-        done();
-    });
-    phantomizer.stdout.on('data', function (data) {
-        if( data.toString().match(/Press enter to leave/) ){
-            request(url, function (error, response, body) {
-                if( ! error ){
-                    assert(response, body);
-                }
-                phantomizer.stdin.write("\n");
-                if( error ) throw error;
-            })
-        }
-    });
-    return phantomizer;
-}
 function open_phantomizer(args,cb){
     var stdout = "";
     var stderr = "";
