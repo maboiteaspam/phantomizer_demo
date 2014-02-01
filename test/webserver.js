@@ -9,8 +9,7 @@ var demo_dir = __dirname+"/../demo/";
 
 describe('phantomizer command line', function () {
 
-    this.timeout(10000);
-
+    this.timeout(5000);
 
     var phantomizer = null;
     before(function(done){
@@ -18,7 +17,11 @@ describe('phantomizer command line', function () {
             phantomizer = open_phantomizer([base_cmd,"--server","demo"]);
             phantomizer.stdout.on('data', function (data) {
                 if( data.toString().match(/Press enter to leave/) ){
-                    done();
+                    // helps to prevent some issues
+                    // when the computer has some slawliness ending the process
+                    setTimeout(function(){
+                        done();
+                    },500);
                 }
             });
         }else{
@@ -30,7 +33,11 @@ describe('phantomizer command line', function () {
             phantomizer.stdin.write("\n");
             phantomizer.stdout.on('data', function (data) {
                 if( data.toString().match(/See you soon/) ){
-                    done();
+                    // helps to prevent some issues
+                    // when the computer has some slawliness ending the process
+                    setTimeout(function(){
+                        done();
+                    },500);
                 }
             });
         }else{
@@ -81,6 +88,15 @@ describe('phantomizer command line', function () {
             done();
         })
     });
+    it('should serve 404 for files not found', function(done) {
+        request('http://localhost:8080/no-such-url.html', function (error, response, body) {
+            if( ! error ){
+                (response).should.have.status(404);
+            }
+            if( error ) throw error;
+            done();
+        })
+    });
 });
 
 function open_phantomizer(args,cb){
@@ -96,7 +112,7 @@ function open_phantomizer(args,cb){
         stderr+=data.toString();
     });
     phantomizer.on('exit', function (code) {
-        cb(code,stdout,stderr);
+        if(cb) cb(code,stdout,stderr);
     });
     return phantomizer;
 }
