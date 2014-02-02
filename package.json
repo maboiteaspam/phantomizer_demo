@@ -30,7 +30,8 @@
     "phantomizer-websupport": "maboiteaspam/phantomizer-websupport",
     "grunt-contrib-jshint": "~0.8.0",
     "jshint-junit-reporter": "git://github.com/xjamundx/jshint-junit-reporter",
-    "jshint-path-reporter": "git://github.com/Bartvds/jshint-path-reporter"
+    "jshint-path-reporter": "git://github.com/Bartvds/jshint-path-reporter",
+    "grunt-contrib-csslint": "~0.2.0"
   },
   "devDependencies": {
     "docco": "jashkenas/docco",

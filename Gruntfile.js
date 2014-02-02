@@ -38,6 +38,7 @@ module.exports = function(grunt) {
 
     // code review
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-csslint');
 
 
     // Demo documentation and release support
