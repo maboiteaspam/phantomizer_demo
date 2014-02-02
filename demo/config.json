@@ -15,7 +15,13 @@
             "build_target":"stryke-assets-build"
         }
     },
-
+    "phantomizer-project-builder":{
+        "staging":{
+            "options":{
+                "rm_dir":[]
+            }
+        }
+    },
 
     "routing": [
         {
