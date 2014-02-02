@@ -21,7 +21,7 @@ require([
         // loads ejs in a lazy loading manner, for demo purpose,
         // this way, after the whole build occurred, that dependency won t be loaded
         // the truth is, IRL, it is unlikely possible that you dont need your template engine on runtime
-        require(["wbm/vendors/ejs/ejs_production"],function(){
+        require(["wbm/vendors/ejs/ejs_production.min"],function(){
             // load head and footer view fragment
             var head = new EJS({url: 'layout/head.ejs'}).render({name:"demo"});
             $(head).insertBefore(".content")
