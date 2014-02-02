@@ -27,7 +27,10 @@
     "phantomizer-html-assets": "maboiteaspam/phantomizer-html-assets",
     "phantomizer-export-build": "maboiteaspam/phantomizer-export-build",
     "phantomizer-qunit-runner": "maboiteaspam/phantomizer-qunit-runner",
-    "phantomizer-websupport": "maboiteaspam/phantomizer-websupport"
+    "phantomizer-websupport": "maboiteaspam/phantomizer-websupport",
+    "grunt-contrib-jshint": "~0.8.0",
+    "jshint-junit-reporter": "git://github.com/xjamundx/jshint-junit-reporter",
+    "jshint-path-reporter": "git://github.com/Bartvds/jshint-path-reporter"
   },
   "devDependencies": {
     "docco": "jashkenas/docco",
