@@ -127,16 +127,16 @@ this route is provided by phantomizer</p>
         <p>apply the inlined src</p>
 
         
-          <div class='highlight'><pre>                    $(v).attr(<span class="hljs-string">"src"</span>,d)</pre></div>
+          <div class='highlight'><pre>                    $(v).attr(<span class="hljs-string">"src"</span>,d);</pre></div>
         
       
         
         <p>clean the class</p>
 
         
-          <div class='highlight'><pre>                    $(v).removeClass(<span class="hljs-string">"inlined"</span>)
+          <div class='highlight'><pre>                    $(v).removeClass(<span class="hljs-string">"inlined"</span>);
                 })
-            )
+            );
         });</pre></div>
         
       
@@ -171,7 +171,7 @@ no matter the build optimization applied</p>
 
         
           <div class='highlight'><pre>    phantomizer.render(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span>
-        $(<span class="hljs-string">"&lt;span&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="hljs-string">"body"</span>)
+        $(<span class="hljs-string">"&lt;span&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="hljs-string">"body"</span>);
         next();
     });
 });</pre></div>

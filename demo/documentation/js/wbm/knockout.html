@@ -113,7 +113,7 @@ the truth is, IRL, it is unlikely possible that you dont need your template engi
           <div class='highlight'><pre>        <span class="hljs-built_in">require</span>([<span class="hljs-string">"vendors/go-knockout/knockout-3.0.0.min"</span>],<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(ko_)</span>{</span>
             <span class="hljs-keyword">var</span> ko = window.ko || ko_;
             <span class="hljs-keyword">var</span> n = $(<span class="hljs-string">".head"</span>).get(<span class="hljs-number">0</span>);
-            ko.applyBindings({name:<span class="hljs-string">'demo'</span>},n)
+            ko.applyBindings({name:<span class="hljs-string">'demo'</span>},n);
             ko.cleanNode(n);
             next();
         });
@@ -136,7 +136,7 @@ no matter the build optimization applied</p>
 
         
           <div class='highlight'><pre>    phantomizer.render(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span>
-        $(<span class="hljs-string">"&lt;span class='test'&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="hljs-string">".content"</span>)
+        $(<span class="hljs-string">"&lt;span class='test'&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="hljs-string">".content"</span>);
         next();
     });
 });</pre></div>
