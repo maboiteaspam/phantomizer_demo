@@ -6,6 +6,17 @@
     "meta_dir": "demo/run/meta/",
     "export_dir": "demo/export/",
     "documentation_dir": "demo/documentation/",
+
+    "environment":{
+        "staging":{
+            "inject_extras":true,
+            "htmlcompressor":true,
+            "sitemap":false,
+            "build_target":"stryke-assets-build"
+        }
+    },
+
+
     "routing": [
         {
             "template": "/index.html",
