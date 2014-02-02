@@ -22,7 +22,7 @@ require([
         require(["vendors/go-knockout/knockout-3.0.0.min"],function(ko_){
             var ko = window.ko || ko_;
             var n = $(".head").get(0);
-            ko.applyBindings({name:'demo'},n)
+            ko.applyBindings({name:'demo'},n);
             ko.cleanNode(n);
             next();
         });
@@ -35,7 +35,7 @@ require([
     // it is always executed on client side browser,
     // no matter the build optimization applied
     phantomizer.render(function(next){
-        $("<span class='test'>It works !</span>").appendTo(".content")
+        $("<span class='test'>It works !</span>").appendTo(".content");
         next();
     });
 });

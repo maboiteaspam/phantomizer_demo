@@ -25,11 +25,11 @@ require([
                 // this route is provided by phantomizer
                 $.get("/stryke_b64"+s,function(d){
                     // apply the inlined src
-                    $(v).attr("src",d)
+                    $(v).attr("src",d);
                     // clean the class
-                    $(v).removeClass("inlined")
+                    $(v).removeClass("inlined");
                 })
-            )
+            );
         });
         // when this task is done,
         $.when.apply(null, h )
@@ -44,7 +44,7 @@ require([
     // it is always executed on client side browser,
     // no matter the build optimization applied
     phantomizer.render(function(next){
-        $("<span>It works !</span>").appendTo("body")
+        $("<span>It works !</span>").appendTo("body");
         next();
     });
 });

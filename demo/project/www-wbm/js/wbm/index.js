@@ -38,7 +38,7 @@ require([
     // no matter the build optimization applied
     phantomizer.render(function(next){
         // This file is not served because it can not overwrite www-core.
-        $("<span>It does not work !</span>").appendTo("body")
+        $("<span>It does not work !</span>").appendTo("body");
         next();
     });
 });

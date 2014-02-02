@@ -24,9 +24,9 @@ require([
         require(["wbm/vendors/ejs/ejs_production.min"],function(){
             // load head and footer view fragment
             var head = new EJS({url: 'layout/head.ejs'}).render({name:"demo"});
-            $(head).insertBefore(".content")
+            $(head).insertBefore(".content");
             var foot = new EJS({url: 'layout/foot.ejs'}).render({});
-            $(foot).insertAfter(".content")
+            $(foot).insertAfter(".content");
             // call it when your setup has finished
             next();
         });
@@ -39,7 +39,7 @@ require([
     // it is always executed on client side browser,
     // no matter the build optimization applied
     phantomizer.render(function(next){
-        $("<span>It works !</span>").appendTo(".content")
+        $("<span>It works !</span>").appendTo(".content");
         next();
     });
 });
