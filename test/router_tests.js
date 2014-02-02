@@ -4,11 +4,16 @@ var should = require('should');
 var request = require('request');
 var express = require('express');
 var http = require('http');
+var log = require('npmlog');
+
+log.level = "info";
+log.level = "silent";
 
 var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
 
 describe('phantomizer command line', function () {
 
+    this.timeout(5000);
 
     var phantomizer = null;
     var app = null;
@@ -40,6 +45,7 @@ describe('phantomizer command line', function () {
         if(!phantomizer){
             phantomizer = open_phantomizer([base_cmd,"--server","router_tests"]);
             phantomizer.stdout.on('data', function (data) {
+                log.info('stdout', '', data.toString());
                 if( data.toString().match(/Press enter to leave/) ){
                     done();
                 }
@@ -59,7 +65,7 @@ describe('phantomizer command line', function () {
                 if( data.toString().match(/See you soon/) ){
                     setTimeout(function(){
                         done();
-                    },500)
+                    },500);
                 }
             });
         }else{
