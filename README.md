@@ -45,6 +45,14 @@ You can export it
 
     phantomizer --export demo
 
+You can test it
+
+    phantomizer --test demo
+
+You can code-review it
+
+    phantomizer --code_review demo
+
 
 COMMAND LINE OPTIONS
 ====
@@ -67,6 +75,15 @@ COMMAND LINE OPTIONS
 
     --document <project>
     Document Javascript and Css files of your project.
+
+    --code_review <project>
+    Review Javascript and CSS source code with jshint / csslint
+
+    --code_review <project> --target junit
+    Review Javascript and CSS source code with jshint / csslint into a junit formated output file.
+
+    --code_review <project> --target checkstyle
+    Review Javascript and CSS source code with jshint / csslint into a checkstyle formated output file.
 
     --test <project> --target <target>
     Tests your project using phantomjs an headless browser.
