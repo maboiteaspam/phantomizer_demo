@@ -31,7 +31,7 @@ phantomizer command line provides integrated tools to help you during your devel
 
 To start phantomizer you must first browse the directory where you have checkout your project.
 
-    cd <my project path>
+    cd [my project path]
 
 You can initialize a project
 
@@ -45,6 +45,10 @@ You can export it
 
     phantomizer --export demo
 
+You can browse and test it once it is exported
+
+    phantomizer --browse_export demo
+
 You can test it
 
     phantomizer --test demo
@@ -57,39 +61,63 @@ You can code-review it
 COMMAND LINE OPTIONS
 ====
 
-    phantomizer --<switch> <project>
-    phantomizer --verbose --<switch> <project> --target <target>
+    phantomizer --[switch] [project]
+    phantomizer --verbose --[switch] [project] --target [target]
     phantomizer --version
 
     --version
     Provide current version of phantomizer
 
     --verbose
-    Gives you more information during execution
+    Gives you more information during execution, affects GruntJS
 
-    --init <project>
+    --debug
+    Gives even you more information during execution, affects GruntJS
+
+    --force
+    Particularly for GruntJS
+
+    --help
+    Displays command line help
+
+    --init [project]
     Initialize directory and file required fo a project.
 
-    --server <project>
+    --server [project]
     Starts a new web sever for the given project.
 
-    --document <project>
+    --document [project]
     Document Javascript and Css files of your project.
 
-    --code_review <project>
+    --code_review [project]
     Review Javascript and CSS source code with jshint / csslint
 
-    --code_review <project> --target junit
+    --code_review [project] --target junit
     Review Javascript and CSS source code with jshint / csslint into a junit formated output file.
 
-    --code_review <project> --target checkstyle
+    --code_review [project] --target checkstyle
     Review Javascript and CSS source code with jshint / csslint into a checkstyle formated output file.
 
-    --test <project> --target <target>
+    --test [project] --target [target]
     Tests your project using phantomjs an headless browser.
 
-    --export <project> --target <target>
+    --export [project] --target [target]
     Builds and exports your project for delivery.
+
+    --browse_export [project] --target [target]
+    Browse and test your project once it is exported.
+
+    --list_tasks [project]
+    List available GruntJS tasks for configuration.
+
+    --describe_task [project] --task [task]
+    Describe task options after auto config has occurred.
+
+    --list_envs [project]
+    List available environments for configuration adjustments.
+
+    --describe_env[project] --environment [env]
+    Describe env options used for auto-config.
 
 
 Documentation Index
