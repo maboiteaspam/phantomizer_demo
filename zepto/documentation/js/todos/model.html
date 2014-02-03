@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>model.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>model.js</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="item_view.html">
+                    item_view.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="model.html">
+                    model.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="view.html">
+                    view.js
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        
+        
+          <div class='highlight'><pre>define([],<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span></pre></div>
+        
+      
+        
+        <h2 id="todo-model">Todo Model</h2>
+
+        
+      
+        
+        
+        
+      
+        
+        <p>Our basic <strong>Todo</strong> model has <code>title</code>, <code>order</code>, and <code>done</code> attributes.</p>
+
+        
+          <div class='highlight'><pre>    <span class="hljs-keyword">var</span> Todo = Backbone.Model.extend({</pre></div>
+        
+      
+        
+        <p>Default attributes for the todo item.</p>
+
+        
+          <div class='highlight'><pre>        defaults: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">return</span> {
+                title: <span class="hljs-string">"empty todo..."</span>,
+                order: -<span class="hljs-number">1</span>,
+                done: <span class="hljs-literal">false</span>
+            };
+        },</pre></div>
+        
+      
+        
+        <p>Toggle the <code>done</code> state of this todo item.</p>
+
+        
+          <div class='highlight'><pre>        toggle: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">this</span>.save({done: !<span class="hljs-keyword">this</span>.get(<span class="hljs-string">"done"</span>)});
+        }
+
+    });</pre></div>
+        
+      
+        
+        <h2 id="todo-collection">Todo Collection</h2>
+
+        
+      
+        
+        
+        
+      
+        
+        <p>The collection of todos is backed by <em>localStorage</em> instead of a remote
+server.</p>
+
+        
+          <div class='highlight'><pre>    <span class="hljs-keyword">var</span> TodoList = Backbone.Collection.extend({</pre></div>
+        
+      
+        
+        <p>Reference to this collection’s model.</p>
+
+        
+          <div class='highlight'><pre>        model: Todo,</pre></div>
+        
+      
+        
+        <p>Save all of the todo items under the <code>&quot;todos-backbone&quot;</code> namespace.</p>
+
+        
+          <div class='highlight'><pre>        localStorage: <span class="hljs-keyword">new</span> Backbone.LocalStorage(<span class="hljs-string">"todos-backbone"</span>),</pre></div>
+        
+      
+        
+        <p>Filter down the list of all todo items that are finished.</p>
+
+        
+          <div class='highlight'><pre>        done: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.where({done: <span class="hljs-literal">true</span>});
+        },</pre></div>
+        
+      
+        
+        <p>Filter down the list to only todo items that are still not finished.</p>
+
+        
+          <div class='highlight'><pre>        remaining: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.where({done: <span class="hljs-literal">false</span>});
+        },</pre></div>
+        
+      
+        
+        <p>We keep the Todos in sequential order, despite being saved by unordered
+GUID in the database. This generates the next order number for new items.</p>
+
+        
+          <div class='highlight'><pre>        nextOrder: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.length) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.last().get(<span class="hljs-string">'order'</span>) + <span class="hljs-number">1</span>;
+        },</pre></div>
+        
+      
+        
+        <p>Todos are sorted by their original insertion order.</p>
+
+        
+          <div class='highlight'><pre>        comparator: <span class="hljs-string">'order'</span>
+
+    });
+
+    <span class="hljs-keyword">return</span> {
+        item:Todo,
+        list:TodoList
+    };
+});</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

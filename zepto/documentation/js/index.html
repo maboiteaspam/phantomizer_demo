@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>index.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>index.js</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="backbone.html">
+                    backbone.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="backbone.localStorage.html">
+                    backbone.localStorage.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="index.html">
+                    index.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="json2.html">
+                    json2.js
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        
+        
+          <div class='highlight'><pre><span class="hljs-pi">"use strict"</span>;</pre></div>
+        
+      
+        
+        <h2 id="a-refactoring-of-backbone-demo-application">A refactoring of Backbone demo application</h2>
+
+        
+      
+        
+        <p>it is refactored to take advantage of requirejs</p>
+<p>Originally provided by <a href="http://jgn.me/">JÃ©rÃ´me Gravel-Niquet</a>
+to Backbone project</p>
+
+        
+          <div class='highlight'><pre><span class="hljs-built_in">require</span>([
+    <span class="hljs-string">"vendors/go-phantomizer/phantomizer"</span>,
+    <span class="hljs-string">"todos/model"</span>,
+    <span class="hljs-string">"todos/view"</span>
+],<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(phantomizer, TodoModel, TodoAppView)</span> {</span>
+
+    phantomizer.render(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span></pre></div>
+        
+      
+        
+        <p>Create our global collection of <strong>Todos</strong>.</p>
+
+        
+          <div class='highlight'><pre>        <span class="hljs-keyword">var</span> TodoList = TodoModel.list;
+        <span class="hljs-keyword">var</span> App = TodoAppView( <span class="hljs-keyword">new</span> TodoList(),next );
+    });
+});</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>
