@@ -27,13 +27,13 @@
         {
             "template": "/index.html",
             "tests": [
-                "index/index"
+                "tests/index/index"
             ]
         },
         {
             "template": "/index-wbm.html",
             "tests": [
-                "index/index"
+                "tests/index/index"
             ]
         },
         {
@@ -47,14 +47,14 @@
         {
             "template": "/knockout.html",
             "tests": [
-                "knockout/knockout"
+                "tests/knockout/knockout"
             ]
         },
         {
             "template": "/knockout.html",
             "urls": ["/knockout-1.html","/knockout-2.html"],
             "tests": [
-                "knockout/knockout"
+                "tests/knockout/knockout"
             ]
         }
     ],
