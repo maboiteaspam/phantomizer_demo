@@ -9,4 +9,8 @@ require([
     next();
   });
 
+  function that_is_useless(){
+    return "test purpose, keep this value";
+  }
+  that_is_useless();
 });
