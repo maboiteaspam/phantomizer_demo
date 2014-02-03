@@ -3,6 +3,10 @@
 var should = require('should');
 var grunt = require('grunt');
 var request = require('request');
+var log = require('npmlog');
+
+log.level = "info";
+log.level = "silent";
 
 var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
 var demo_dir = __dirname+"/../demo/";
@@ -27,7 +31,7 @@ describe('phantomizer command line', function () {
     }else{
       done();
     }
-  })
+  });
   after(function(done){
     if(phantomizer){
       phantomizer.stdin.write("\n");
@@ -43,7 +47,7 @@ describe('phantomizer command line', function () {
     }else{
       done();
     }
-  })
+  });
 
 
   it('should be able to execute a webserver', function(done) {
@@ -80,6 +84,16 @@ describe('phantomizer command line', function () {
       done();
     })
   });
+  it('should serve correctly files from www-core', function(done) {
+    request('http://localhost:8080/index.html', function (error, response, body) {
+      if( ! error ){
+        (response).should.have.status(200);
+        (body).should.match(/Index file/);
+      }
+      if( error ) throw error;
+      done();
+    })
+  });
   it('should serve correctly files from www-wbm', function(done) {
     request('http://localhost:8080/ejs.html', function (error, response, body) {
       if( ! error ){
@@ -106,11 +120,11 @@ function open_phantomizer(args,cb){
   var stderr = "";
   var phantomizer = require('child_process').spawn("node", args);
   phantomizer.stdout.on('data', function (data) {
-    //console.log(data.toString());
+    log.info('stdout', '', data.toString());
     stdout+=data.toString();
   });
   phantomizer.stderr.on('data', function (data) {
-    //console.log(data.toString());
+    log.info('stderr', '', data.toString());
     stderr+=data.toString();
   });
   phantomizer.on('exit', function (code) {
