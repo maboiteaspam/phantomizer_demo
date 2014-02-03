@@ -63,20 +63,20 @@ init : to load fixtures, patch the rendering
 run : actually declare the specs and their assertions</p>
 
         
-          <div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Test</span><span class="hljs-params">()</span>{</span>}</pre></div>
+          <div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Test</span><span class="hljs-params">()</span>{</span>}</pre></div>
         
       
         
         <p>Fixture loading</p>
 
         
-          <div class='highlight'><pre>    <span class="hljs-comment">/**
-     * Load your fixture there
-     * @param next
-     */</span>
-    Test.prototype.init = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span>
-        next();
-    };</pre></div>
+          <div class='highlight'><pre>  <span class="hljs-comment">/**
+   * Load your fixture there
+   * @param next
+   */</span>
+  Test.prototype.init = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span>
+    next();
+  };</pre></div>
         
       
         
@@ -88,40 +88,62 @@ run : actually declare the specs and their assertions</p>
         
         
           <div class='highlight'><pre>
-    <span class="hljs-comment">/**
-     * Declare the specs and theirs assertions
-     */</span>
-    Test.prototype.run = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span></pre></div>
+  <span class="hljs-comment">/**
+   * Declare the specs and theirs assertions
+   */</span>
+  Test.prototype.run = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span></pre></div>
         
       
         
         <p>declare a new asynchronous test (description, assertion count, handler)</p>
 
         
-          <div class='highlight'><pre>        asyncTest(<span class="hljs-string">"It displays 'It works !'"</span>, <span class="hljs-number">1</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(assert)</span>{</span></pre></div>
+          <div class='highlight'><pre>    asyncTest(<span class="hljs-string">"It displays 'It works !'"</span>, <span class="hljs-number">1</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(assert)</span>{</span></pre></div>
         
       
         
         <p>ensure the rendered text is correct</p>
 
         
-          <div class='highlight'><pre>            assert.equal( $(<span class="hljs-string">".test"</span>).html(), <span class="hljs-string">"It works !"</span>, <span class="hljs-string">"View display 'It works !'"</span> );</pre></div>
+          <div class='highlight'><pre>      assert.equal( $(<span class="hljs-string">".test"</span>).html(), <span class="hljs-string">"It works !"</span>, <span class="hljs-string">"View display 'It works !'"</span> );</pre></div>
         
       
         
         <p>do this call to tell qunit it can continue</p>
 
         
-          <div class='highlight'><pre>            start();
-        });
-    };</pre></div>
+          <div class='highlight'><pre>      start();
+    });</pre></div>
+        
+      
+        
+        <p>declare a new asynchronous test (description, assertion count, handler)</p>
+
+        
+          <div class='highlight'><pre>    asyncTest(<span class="hljs-string">"It fails !!"</span>, <span class="hljs-number">1</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(assert)</span>{</span></pre></div>
+        
+      
+        
+        <p>ensure the rendered text is correct</p>
+
+        
+          <div class='highlight'><pre>      assert.equal( $(<span class="hljs-string">".test"</span>).html(), <span class="hljs-string">"It worked !"</span>, <span class="hljs-string">"View does not display 'It worked !'"</span> );</pre></div>
+        
+      
+        
+        <p>do this call to tell qunit it can continue</p>
+
+        
+          <div class='highlight'><pre>      start();
+    });
+  };</pre></div>
         
       
         
         <p><strong>pass the module</strong></p>
 
         
-          <div class='highlight'><pre>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Test();
+          <div class='highlight'><pre>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Test();
 });</pre></div>
         
       

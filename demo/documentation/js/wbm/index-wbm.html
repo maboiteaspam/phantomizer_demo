@@ -100,7 +100,7 @@ this file is served</p>
         
           <div class='highlight'><pre>
 <span class="hljs-built_in">require</span>([
-    <span class="hljs-string">"vendors/go-phantomizer/phantomizer"</span>
+  <span class="hljs-string">"vendors/go-phantomizer/phantomizer"</span>
 ],<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(phantomizer)</span> {</span></pre></div>
         
       
@@ -119,16 +119,16 @@ it is always executed on client side browser,
 no matter the build optimization applied</p>
 
         
-          <div class='highlight'><pre>    phantomizer.render(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span></pre></div>
+          <div class='highlight'><pre>  phantomizer.render(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span></pre></div>
         
       
         
         <p>This file is served because it does not exist in www-core.</p>
 
         
-          <div class='highlight'><pre>        $(<span class="hljs-string">"&lt;span&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="hljs-string">"body"</span>);
-        next();
-    });
+          <div class='highlight'><pre>    $(<span class="hljs-string">"&lt;span class='test'&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="hljs-string">"body"</span>);
+    next();
+  });
 });</pre></div>
         
       

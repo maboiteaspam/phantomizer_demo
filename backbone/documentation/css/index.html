@@ -555,46 +555,72 @@ Then install using regular npm command line.</p>
 </div></article><article id="usage" class="section"><div class="docs"><a href="#usage" class="permalink"><svg viewBox="0 0 512 512" height="32" width="32" class="icon"><path d="M156.2,199.7c7.5-7.5,15.9-13.8,24.8-18.7c49.6-27.3,113.1-12.8,145,35.5l-38.5,38.5c-11.1-25.2-38.5-39.6-65.8-33.5c-10.3,2.3-20.1,7.4-28,15.4l-73.9,73.9c-22.4,22.4-22.4,58.9,0,81.4c22.4,22.4,58.9,22.4,81.4,0l22.8-22.8c20.7,8.2,42.9,11.5,64.9,9.9l-50.3,50.3c-43.1,43.1-113,43.1-156.1,0c-43.1-43.1-43.1-113-0-156.1L156.2,199.7z M273.6,82.3l-50.3,50.3c21.9-1.6,44.2,1.6,64.9,9.9l22.8-22.8c22.4-22.4,58.9-22.4,81.4,0c22.4,22.4,22.4,58.9,0,81.4l-73.9,73.9c-22.5,22.5-59.1,22.3-81.4,0c-5.2-5.2-9.7-11.7-12.5-18l-38.5,38.5c4,6.1,8.3,11.5,13.7,16.9c13.9,13.9,31.7,24.3,52.1,29.3c26.5,6.4,54.8,2.8,79.2-10.6c8.9-4.9,17.3-11.1,24.8-18.7l73.9-73.9c43.1-43.1,43.1-113,0-156.1C386.6,39.2,316.7,39.2,273.6,82.3z"></path></svg></a><h1 id="usage">USAGE</h1>
 <p>phantomizer command line provides integrated tools to help you during your development activity.</p>
 <p>To start phantomizer you must first browse the directory where you have checkout your project.</p>
-<textarea class="preview-code" spellcheck="false">cd &lt;my project path&gt;</textarea><p>You can initialize a project</p>
+<textarea class="preview-code" spellcheck="false">cd [my project path]</textarea><p>You can initialize a project</p>
 <textarea class="preview-code" spellcheck="false">phantomizer --init demo</textarea><p>You can browse it</p>
 <textarea class="preview-code" spellcheck="false">phantomizer --server demo</textarea><p>You can export it</p>
-<textarea class="preview-code" spellcheck="false">phantomizer --export demo</textarea><p>You can test it</p>
+<textarea class="preview-code" spellcheck="false">phantomizer --export demo</textarea><p>You can browse and test it once it is exported</p>
+<textarea class="preview-code" spellcheck="false">phantomizer --browse_export demo</textarea><p>You can test it</p>
 <textarea class="preview-code" spellcheck="false">phantomizer --test demo</textarea><p>You can code-review it</p>
 <textarea class="preview-code" spellcheck="false">phantomizer --code_review demo</textarea>
 </div></article><article id="command-line-options" class="section"><div class="docs"><a href="#command-line-options" class="permalink"><svg viewBox="0 0 512 512" height="32" width="32" class="icon"><path d="M156.2,199.7c7.5-7.5,15.9-13.8,24.8-18.7c49.6-27.3,113.1-12.8,145,35.5l-38.5,38.5c-11.1-25.2-38.5-39.6-65.8-33.5c-10.3,2.3-20.1,7.4-28,15.4l-73.9,73.9c-22.4,22.4-22.4,58.9,0,81.4c22.4,22.4,58.9,22.4,81.4,0l22.8-22.8c20.7,8.2,42.9,11.5,64.9,9.9l-50.3,50.3c-43.1,43.1-113,43.1-156.1,0c-43.1-43.1-43.1-113-0-156.1L156.2,199.7z M273.6,82.3l-50.3,50.3c21.9-1.6,44.2,1.6,64.9,9.9l22.8-22.8c22.4-22.4,58.9-22.4,81.4,0c22.4,22.4,22.4,58.9,0,81.4l-73.9,73.9c-22.5,22.5-59.1,22.3-81.4,0c-5.2-5.2-9.7-11.7-12.5-18l-38.5,38.5c4,6.1,8.3,11.5,13.7,16.9c13.9,13.9,31.7,24.3,52.1,29.3c26.5,6.4,54.8,2.8,79.2-10.6c8.9-4.9,17.3-11.1,24.8-18.7l73.9-73.9c43.1-43.1,43.1-113,0-156.1C386.6,39.2,316.7,39.2,273.6,82.3z"></path></svg></a><h1 id="command-line-options">COMMAND LINE OPTIONS</h1>
-<textarea class="preview-code" spellcheck="false">phantomizer --&lt;switch&gt; &lt;project&gt;
-phantomizer --verbose --&lt;switch&gt; &lt;project&gt; --target &lt;target&gt;
+<textarea class="preview-code" spellcheck="false">phantomizer --[switch] [project]
+phantomizer --verbose --[switch] [project] --target [target]
 phantomizer --version
 
 --version
 Provide current version of phantomizer
 
 --verbose
-Gives you more information during execution
+Gives you more information during execution, affects GruntJS
 
---init &lt;project&gt;
+--debug
+Gives even you more information during execution, affects GruntJS
+
+--force
+Particularly for GruntJS
+
+--help
+Displays command line help
+
+--init [project]
 Initialize directory and file required fo a project.
 
---server &lt;project&gt;
+--server [project]
 Starts a new web sever for the given project.
 
---document &lt;project&gt;
+--document [project]
 Document Javascript and Css files of your project.
 
---code_review &lt;project&gt;
+--code_review [project]
 Review Javascript and CSS source code with jshint / csslint
 
---code_review &lt;project&gt; --target junit
+--code_review [project] --format junit
 Review Javascript and CSS source code with jshint / csslint into a junit formated output file.
 
---code_review &lt;project&gt; --target checkstyle
+--code_review [project] --format checkstyle
 Review Javascript and CSS source code with jshint / csslint into a checkstyle formated output file.
 
---test &lt;project&gt; --target &lt;target&gt;
-Tests your project using phantomjs an headless browser.
+--test [project_dir] [ --environment [environment] ]
 
---export &lt;project&gt; --target &lt;target&gt;
-Builds and exports your project for delivery.</textarea>
+--test [project_dir] --format junit
+
+--export [project] --target [target]
+Builds and exports your project for delivery.
+
+--browse_export [project] --target [target]
+Browse and test your project once it is exported.
+
+--list_tasks [project]
+List available GruntJS tasks for configuration.
+
+--describe_task [project] --task [task]
+Describe task options after auto config has occurred.
+
+--list_envs [project]
+List available environments for configuration adjustments.
+
+--describe_env[project] --environment [env]
+Describe env options used for auto-config.</textarea>
 </div></article><article id="documentation-index" class="section"><div class="docs"><a href="#documentation-index" class="permalink"><svg viewBox="0 0 512 512" height="32" width="32" class="icon"><path d="M156.2,199.7c7.5-7.5,15.9-13.8,24.8-18.7c49.6-27.3,113.1-12.8,145,35.5l-38.5,38.5c-11.1-25.2-38.5-39.6-65.8-33.5c-10.3,2.3-20.1,7.4-28,15.4l-73.9,73.9c-22.4,22.4-22.4,58.9,0,81.4c22.4,22.4,58.9,22.4,81.4,0l22.8-22.8c20.7,8.2,42.9,11.5,64.9,9.9l-50.3,50.3c-43.1,43.1-113,43.1-156.1,0c-43.1-43.1-43.1-113-0-156.1L156.2,199.7z M273.6,82.3l-50.3,50.3c21.9-1.6,44.2,1.6,64.9,9.9l22.8-22.8c22.4-22.4,58.9-22.4,81.4,0c22.4,22.4,22.4,58.9,0,81.4l-73.9,73.9c-22.5,22.5-59.1,22.3-81.4,0c-5.2-5.2-9.7-11.7-12.5-18l-38.5,38.5c4,6.1,8.3,11.5,13.7,16.9c13.9,13.9,31.7,24.3,52.1,29.3c26.5,6.4,54.8,2.8,79.2-10.6c8.9-4.9,17.3-11.1,24.8-18.7l73.9-73.9c43.1-43.1,43.1-113,0-156.1C386.6,39.2,316.7,39.2,273.6,82.3z"></path></svg></a><h1 id="documentation-index">Documentation Index</h1>
 <p><a href="http://maboiteaspam.github.io/phantomizer_demo/">http://maboiteaspam.github.io/phantomizer_demo/</a></p>
 </div></article><article id="demo-project" class="section"><div class="docs"><a href="#demo-project" class="permalink"><svg viewBox="0 0 512 512" height="32" width="32" class="icon"><path d="M156.2,199.7c7.5-7.5,15.9-13.8,24.8-18.7c49.6-27.3,113.1-12.8,145,35.5l-38.5,38.5c-11.1-25.2-38.5-39.6-65.8-33.5c-10.3,2.3-20.1,7.4-28,15.4l-73.9,73.9c-22.4,22.4-22.4,58.9,0,81.4c22.4,22.4,58.9,22.4,81.4,0l22.8-22.8c20.7,8.2,42.9,11.5,64.9,9.9l-50.3,50.3c-43.1,43.1-113,43.1-156.1,0c-43.1-43.1-43.1-113-0-156.1L156.2,199.7z M273.6,82.3l-50.3,50.3c21.9-1.6,44.2,1.6,64.9,9.9l22.8-22.8c22.4-22.4,58.9-22.4,81.4,0c22.4,22.4,22.4,58.9,0,81.4l-73.9,73.9c-22.5,22.5-59.1,22.3-81.4,0c-5.2-5.2-9.7-11.7-12.5-18l-38.5,38.5c4,6.1,8.3,11.5,13.7,16.9c13.9,13.9,31.7,24.3,52.1,29.3c26.5,6.4,54.8,2.8,79.2-10.6c8.9-4.9,17.3-11.1,24.8-18.7l73.9-73.9c43.1-43.1,43.1-113,0-156.1C386.6,39.2,316.7,39.2,273.6,82.3z"></path></svg></a><h1 id="demo-project">DEMO PROJECT</h1>
