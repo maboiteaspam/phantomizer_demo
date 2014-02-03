@@ -62,6 +62,8 @@ describe('phantomizer command line', function () {
                 (response).should.have.status(200);
                 (body).should.match(/ejs[.]html/);
                 (body).should.match(/index[.]html/);
+                (body).should.match(/index-wbm[.]html/);
+              (body).should.match(/href='\/css'/);
             }
             if( error ) throw error;
             done();
