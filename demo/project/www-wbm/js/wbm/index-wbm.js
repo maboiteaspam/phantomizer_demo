@@ -26,19 +26,19 @@
 // this file is served
 
 require([
-    "vendors/go-phantomizer/phantomizer"
+  "vendors/go-phantomizer/phantomizer"
 ],function (phantomizer) {
 
 
-    // declare, execute runtime logic
-// --------------
+  // declare, execute runtime logic
+  // --------------
 
-    // declare the required main handler, there could be only one like this
-    // it is always executed on client side browser,
-    // no matter the build optimization applied
-    phantomizer.render(function(next){
-        // This file is served because it does not exist in www-core.
-        $("<span>It works !</span>").appendTo("body");
-        next();
-    });
+  // declare the required main handler, there could be only one like this
+  // it is always executed on client side browser,
+  // no matter the build optimization applied
+  phantomizer.render(function(next){
+    // This file is served because it does not exist in www-core.
+    $("<span class='test'>It works !</span>").appendTo("body");
+    next();
+  });
 });
