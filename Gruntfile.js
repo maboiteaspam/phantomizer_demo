@@ -121,17 +121,31 @@ module.exports = function(grunt) {
         });
     });
 
+    grunt.registerTask('zepto-doc', [],function(){
+        var done = this.async();
+        var cp = require('child_process')
+        var cmd = __dirname+"/node_modules/.bin/phantomizer "
+        cmd += "--document zepto "
+        cp.exec(cmd, function (error, stdout, stderr) {
+            console.log(error)
+            console.log(stdout)
+            console.log(stderr)
+            done();
+        });
+    });
+
     grunt.registerTask('cleanup-grunt-temp', [],function(){
         var wrench = require('wrench')
         wrench.rmdirSyncRecursive(__dirname + '/.grunt', !true);
         wrench.rmdirSyncRecursive(__dirname + '/demo/documentation', !true);
         wrench.rmdirSyncRecursive(__dirname + '/backbone/documentation', !true);
+        wrench.rmdirSyncRecursive(__dirname + '/zepto/documentation', !true);
     });
 
     // to generate and publish the docco style documentation
     // execute this
     // grunt
-    grunt.registerTask('default', ['demo-doc','backbone-doc','gh-pages', 'cleanup-grunt-temp']);
+    grunt.registerTask('default', ['demo-doc','backbone-doc','zepto-doc','gh-pages', 'cleanup-grunt-temp']);
 
     // to release the project in a new version
     // use one of those commands
