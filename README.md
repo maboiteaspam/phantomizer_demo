@@ -144,12 +144,22 @@ ZEPTO PROJECT
 
 A Zepto integration of TodosMVC backbone example.
 
-Note that the dashboard does not yet fully support Zepto.
-
 Zepto project Documentation Index
 
 http://maboiteaspam.github.io/phantomizer_demo/zepto/documentation/js/index.html
 
 http://maboiteaspam.github.io/phantomizer_demo/zepto/documentation/js/todos/view.html
+
+
+IE6 PROJECT
+====
+
+A working example of IE6 support with its specific integration.
+
+IE6 project Documentation Index
+
+http://maboiteaspam.github.io/phantomizer_demo/ie6/documentation/js/index.html
+
+
 
 
