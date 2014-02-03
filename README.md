@@ -92,14 +92,15 @@ COMMAND LINE OPTIONS
     --code_review [project]
     Review Javascript and CSS source code with jshint / csslint
 
-    --code_review [project] --target junit
+    --code_review [project] --format junit
     Review Javascript and CSS source code with jshint / csslint into a junit formated output file.
 
-    --code_review [project] --target checkstyle
+    --code_review [project] --format checkstyle
     Review Javascript and CSS source code with jshint / csslint into a checkstyle formated output file.
 
-    --test [project] --target [target]
-    Tests your project using phantomjs an headless browser.
+    --test [project_dir] [ --environment [environment] ]
+
+    --test [project_dir] --format junit
 
     --export [project] --target [target]
     Builds and exports your project for delivery.
