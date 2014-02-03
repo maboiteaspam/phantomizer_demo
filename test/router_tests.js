@@ -45,7 +45,6 @@ describe('phantomizer command line', function () {
         if(!phantomizer){
             phantomizer = open_phantomizer([base_cmd,"--server","router_tests"]);
             phantomizer.stdout.on('data', function (data) {
-                log.info('stdout', '', data.toString());
                 if( data.toString().match(/Press enter to leave/) ){
                     done();
                 }
@@ -142,11 +141,11 @@ function open_phantomizer(args,cb){
     var stderr = "";
     var phantomizer = require('child_process').spawn("node", args);
     phantomizer.stdout.on('data', function (data) {
-        //console.log(data.toString());
+      log.info('stdout', '', data.toString());
         stdout+=data.toString();
     });
     phantomizer.stderr.on('data', function (data) {
-        //console.log(data.toString());
+      log.info('stderr', '', data.toString());
         stderr+=data.toString();
     });
     phantomizer.on('exit', function (code) {
