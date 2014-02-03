@@ -40,6 +40,14 @@ define([
       // do this call to tell qunit it can continue
       start();
     });
+
+    // declare a new asynchronous test (description, assertion count, handler)
+    asyncTest("It fails !!", 1, function(assert){
+      // ensure the rendered text is correct
+      assert.equal( $(".test").html(), "It worked !", "View does not display 'It worked !'" );
+      // do this call to tell qunit it can continue
+      start();
+    });
   };
   // **pass the module**
   return new Test();
