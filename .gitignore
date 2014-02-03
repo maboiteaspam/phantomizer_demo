@@ -12,11 +12,17 @@ urls.json
 demo/documentation
 demo/export
 demo/run
+demo/qunit
+demo/code_review
 
 backbone/documentation
 backbone/export
 backbone/run
+backbone/qunit
+backbone/code_review
 
 zepto/documentation
 zepto/export
 zepto/run
+zepto/qunit
+zepto/code_review
