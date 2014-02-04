@@ -16,6 +16,11 @@
         }
     },
     "phantomizer-project-builder":{
+      "dev":{
+        "options":{
+          "rm_dir":[]
+        }
+      },
         "staging":{
             "options":{
                 "rm_dir":[]
