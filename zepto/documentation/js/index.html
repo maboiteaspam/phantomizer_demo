@@ -73,21 +73,21 @@ to Backbone project</p>
 
         
           <div class='highlight'><pre><span class="hljs-built_in">require</span>([
-    <span class="hljs-string">"vendors/go-phantomizer/phantomizer"</span>,
-    <span class="hljs-string">"todos/model"</span>,
-    <span class="hljs-string">"todos/view"</span>
+  <span class="hljs-string">"vendors/go-phantomizer/phantomizer"</span>,
+  <span class="hljs-string">"todos/model"</span>,
+  <span class="hljs-string">"todos/view"</span>
 ],<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(phantomizer, TodoModel, TodoAppView)</span> {</span>
 
-    phantomizer.render(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span></pre></div>
+  phantomizer.render(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span></pre></div>
         
       
         
         <p>Create our global collection of <strong>Todos</strong>.</p>
 
         
-          <div class='highlight'><pre>        <span class="hljs-keyword">var</span> TodoList = TodoModel.list;
-        <span class="hljs-keyword">var</span> App = TodoAppView( <span class="hljs-keyword">new</span> TodoList(),next );
-    });
+          <div class='highlight'><pre>    <span class="hljs-keyword">var</span> TodoList = TodoModel.list;
+    <span class="hljs-keyword">var</span> App = TodoAppView( <span class="hljs-keyword">new</span> TodoList(),next );
+  });
 });</pre></div>
         
       
