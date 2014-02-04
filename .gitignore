@@ -26,3 +26,15 @@ zepto/export
 zepto/run
 zepto/qunit
 zepto/code_review
+
+ie6/documentation
+ie6/export
+ie6/run
+ie6/qunit
+ie6/code_review
+
+bootstrap/documentation
+bootstrap/export
+bootstrap/run
+bootstrap/qunit
+bootstrap/code_review
