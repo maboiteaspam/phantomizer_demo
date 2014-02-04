@@ -51,7 +51,8 @@
     "append": {},
     "prepend": {
       "/js/vendors/go-jquery/jquery-1.10.2.min.js": [
-        "/js/vendors/go-jquery/jquery-1.10.2.min.js"
+        "/js/vendors/go-jquery/jquery-1.10.2.min.js",
+        "/js/vendors/go-jquery/delay-ready.js"
       ],
       "/js/demo_jquery.js": [
         "/js/demo_jquery.js"
