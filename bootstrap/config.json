@@ -1,74 +1,74 @@
 {
-    "src_dir": "bootstrap/project/www-core/",
-    "project_dir": "bootstrap/project/",
-    "wbm_dir": "bootstrap/project/www-wbm/",
-    "out_dir": "bootstrap/run/build/",
-    "meta_dir": "bootstrap/run/meta/",
-    "export_dir": "bootstrap/export/",
-    "documentation_dir": "bootstrap/documentation/",
+  "src_dir": "bootstrap/project/www-core/",
+  "project_dir": "bootstrap/project/",
+  "wbm_dir": "bootstrap/project/www-wbm/",
+  "out_dir": "bootstrap/run/build/",
+  "meta_dir": "bootstrap/run/meta/",
+  "export_dir": "bootstrap/export/",
+  "documentation_dir": "bootstrap/documentation/",
 
-    "environment":{
-        "staging":{
-            "inject_extras":true,
-            "htmlcompressor":true,
-            "sitemap":false,
-            "build_target":"stryke-assets-build"
-        }
-    },
-    "phantomizer-project-builder":{
-        "staging":{
-            "options":{
-                "rm_dir":[]
-            }
-        }
-    },
-
-    "routing": [
-        {
-            "template": "/index.html",
-            "tests": [
-                "tests/index/index"
-            ]
-        }
-    ],
-    "scripts": {
-        "strip": [],
-        "requirejs": {
-            "src": [
-                "require-2.1.10.min.js"
-            ],
-            "baseUrl": "/js/",
-            "paths":{
-
-            }
-        },
-        "append": {},
-        "prepend": {
-          "/js/vendors/go-jquery/jquery-2.0.3.min.js": [
-            "/js/vendors/go-jquery/jquery-2.0.3.min.js"
-          ],
-          "/js/vendors/go-bootstrap/3.10/js/bootstrap.min.js": [
-            "/js/vendors/go-bootstrap/3.10/js/bootstrap.min.js"
-          ]
-        }
-    },
-    "css": {
-        "strip": [],
-        "append": {},
-        "prepend": {
-          "/js/vendors/go-bootstrap/3.10/css/bootstrap.min.css": [
-            "/js/vendors/go-bootstrap/3.10/css/bootstrap.min.css"
-          ],
-          "/css/index.css": [
-            "/css/index.css"
-          ]
-        }
-    },
-    "phantomizer-confess": {
-        "test": {
-            "options": {
-                "in_request": "http://www.google.com/"
-            }
-        }
+  "environment":{
+    "staging":{
+      "inject_extras":true,
+      "htmlcompressor":true,
+      "sitemap":false,
+      "build_target":"stryke-assets-build"
     }
+  },
+  "phantomizer-project-builder":{
+    "staging":{
+      "options":{
+        "rm_dir":[]
+      }
+    }
+  },
+
+  "routing": [
+    {
+      "template": "/index.html",
+      "tests": [
+        "tests/index/index"
+      ]
+    }
+  ],
+  "scripts": {
+    "strip": [],
+    "requirejs": {
+      "src": [
+        "require-2.1.10.min.js"
+      ],
+      "baseUrl": "/js/",
+      "paths":{
+
+      }
+    },
+    "append": {},
+    "prepend": {
+      "/js/vendors/go-jquery/jquery-2.0.3.min.js": [
+        "/js/vendors/go-jquery/jquery-2.0.3.min.js"
+      ],
+      "/js/vendors/go-bootstrap/3.10/js/bootstrap.min.js": [
+        "/js/vendors/go-bootstrap/3.10/js/bootstrap.min.js"
+      ]
+    }
+  },
+  "css": {
+    "strip": [],
+    "append": {},
+    "prepend": {
+      "/js/vendors/go-bootstrap/3.10/css/bootstrap.min.css": [
+        "/js/vendors/go-bootstrap/3.10/css/bootstrap.min.css"
+      ],
+      "/css/index.css": [
+        "/css/index.css"
+      ]
+    }
+  },
+  "phantomizer-confess": {
+    "test": {
+      "options": {
+        "in_request": "http://www.google.com/"
+      }
+    }
+  }
 }
