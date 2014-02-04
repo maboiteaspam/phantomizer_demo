@@ -1,52 +1,52 @@
 {
-    "src_dir": "zepto/project/www-core/",
-    "project_dir": "zepto/project/",
-    "wbm_dir": "zepto/project/www-wbm/",
-    "out_dir": "zepto/run/build/",
-    "meta_dir": "zepto/run/meta/",
-    "export_dir": "zepto/export/",
-    "documentation_dir": "zepto/documentation/",
-    "routing": [
-        {
-            "template": "/index.html",
-            "tests": []
-        }
-    ],
-    "scripts": {
-        "strip": [],
-        "requirejs": {
-            "src": [
-                "require-2.1.10.min.js"
-            ],
-            "baseUrl": "/js/",
-            "paths": {
-            }
-        },
-        "append": {},
-        "prepend": {
-            "/jquery.js": [
-                "/js/vendors/go-zepto/zepto-1.1.2.min.js",
-                "/js/vendors/go-zepto/zepto-callbacks.js",
-                "/js/vendors/go-zepto/zepto-fx.js",
-                "/js/vendors/go-zepto/zepto-fx_methods.js",
-                "/js/vendors/go-zepto/zepto-deferred.js",
-                "/js/vendors/go-zepto/zepto-ajax.js",
-                "/js/vendors/go-underscore/underscore.1.5.2.min.js",
-                "/js/backbone.js",
-                "/js/backbone.localStorage.js"
-            ]
-        }
-    },
-    "css": {
-        "strip": [],
-        "append": {},
-        "prepend": {}
-    },
-    "phantomizer-confess": {
-        "test": {
-            "options": {
-                "in_request": "http://www.google.com/"
-            }
-        }
+  "src_dir": "zepto/project/www-core/",
+  "project_dir": "zepto/project/",
+  "wbm_dir": "zepto/project/www-wbm/",
+  "out_dir": "zepto/run/build/",
+  "meta_dir": "zepto/run/meta/",
+  "export_dir": "zepto/export/",
+  "documentation_dir": "zepto/documentation/",
+  "routing": [
+    {
+      "template": "/index.html",
+      "tests": []
     }
+  ],
+  "scripts": {
+    "strip": [],
+    "requirejs": {
+      "src": [
+        "require-2.1.10.min.js"
+      ],
+      "baseUrl": "/js/",
+      "paths": {
+      }
+    },
+    "append": {},
+    "prepend": {
+      "/jquery.js": [
+        "/js/vendors/go-zepto/zepto-1.1.2.min.js",
+        "/js/vendors/go-zepto/zepto-callbacks.js",
+        "/js/vendors/go-zepto/zepto-fx.js",
+        "/js/vendors/go-zepto/zepto-fx_methods.js",
+        "/js/vendors/go-zepto/zepto-deferred.js",
+        "/js/vendors/go-zepto/zepto-ajax.js",
+        "/js/vendors/go-underscore/underscore.1.5.2.min.js",
+        "/js/backbone.js",
+        "/js/backbone.localStorage.js"
+      ]
+    }
+  },
+  "css": {
+    "strip": [],
+    "append": {},
+    "prepend": {}
+  },
+  "phantomizer-confess": {
+    "test": {
+      "options": {
+        "in_request": "http://www.google.com/"
+      }
+    }
+  }
 }

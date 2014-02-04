@@ -1,94 +1,94 @@
 {
-    "src_dir": "router_tests/project/www-core/",
-    "project_dir": "router_tests/project/",
-    "wbm_dir": "router_tests/project/www-wbm/",
-    "out_dir": "router_tests/run/build/",
-    "meta_dir": "router_tests/run/meta/",
-    "export_dir": "router_tests/export/",
-    "documentation_dir": "router_tests/documentation/",
-    "datasource_base_url": "http://localhost:8001",
-    "routing": [
-        {
-            "template": "/index.html",
-            "tests": [
-                "index/index"
-            ]
-        },
-        {
-            "urls":[ "/index_array.html","/index_array.htm"],
-            "template": "/index.html",
-            "tests": [
-                "index/index"
-            ]
-        },
-        {
-            "urls_datasource": "/get_urls",
-            "template": "/index.html",
-            "tests": [
-                "index/index"
-            ]
-        },
-        {
-            "urls_datasource": "/get_protected_urls",
-            "datasource_credentials": {
-                "auth_file":"router_tests/auth"
-            },
-            "template": "/index.html",
-            "tests": [
-                "index/index"
-            ]
-        },
-        {
-            "urls_datasource": "/get_protected_urls_2",
-            "datasource_credentials": {
-                "user_env_var":"PH_USER",
-                "pwd_env_var":"PH_PWD"
-            },
-            "template": "/index.html",
-            "tests": [
-                "index/index"
-            ]
-        },
-        {
-            "urls_datasource": "/get_protected_urls_3",
-            "datasource_credentials": {
-                "user":"some_user3",
-                "pwd":"some_password3"
-            },
-            "template": "/index.html",
-            "tests": [
-                "index/index"
-            ]
-        }
-    ],
-    "scripts": {
-        "strip": [],
-        "requirejs": {
-            "src": [
-                "require-2.1.8.min.js"
-            ],
-            "baseUrl": "/js/",
-            "paths":{
-
-            }
-        },
-        "append": {},
-        "prepend": {
-            "/js/vendors/go-jquery/jquery-2.0.3.min.js": [
-                "/js/vendors/go-jquery/jquery-2.0.3.min.js"
-            ]
-        }
+  "src_dir": "router_tests/project/www-core/",
+  "project_dir": "router_tests/project/",
+  "wbm_dir": "router_tests/project/www-wbm/",
+  "out_dir": "router_tests/run/build/",
+  "meta_dir": "router_tests/run/meta/",
+  "export_dir": "router_tests/export/",
+  "documentation_dir": "router_tests/documentation/",
+  "datasource_base_url": "http://localhost:8001",
+  "routing": [
+    {
+      "template": "/index.html",
+      "tests": [
+        "index/index"
+      ]
     },
-    "css": {
-        "strip": [],
-        "append": {},
-        "prepend": {}
+    {
+      "urls":[ "/index_array.html","/index_array.htm"],
+      "template": "/index.html",
+      "tests": [
+        "index/index"
+      ]
     },
-    "phantomizer-confess": {
-        "test": {
-            "options": {
-                "in_request": "http://www.google.com/"
-            }
-        }
+    {
+      "urls_datasource": "/get_urls",
+      "template": "/index.html",
+      "tests": [
+        "index/index"
+      ]
+    },
+    {
+      "urls_datasource": "/get_protected_urls",
+      "datasource_credentials": {
+        "auth_file":"router_tests/auth"
+      },
+      "template": "/index.html",
+      "tests": [
+        "index/index"
+      ]
+    },
+    {
+      "urls_datasource": "/get_protected_urls_2",
+      "datasource_credentials": {
+        "user_env_var":"PH_USER",
+        "pwd_env_var":"PH_PWD"
+      },
+      "template": "/index.html",
+      "tests": [
+        "index/index"
+      ]
+    },
+    {
+      "urls_datasource": "/get_protected_urls_3",
+      "datasource_credentials": {
+        "user":"some_user3",
+        "pwd":"some_password3"
+      },
+      "template": "/index.html",
+      "tests": [
+        "index/index"
+      ]
     }
+  ],
+  "scripts": {
+    "strip": [],
+    "requirejs": {
+      "src": [
+        "require-2.1.8.min.js"
+      ],
+      "baseUrl": "/js/",
+      "paths":{
+
+      }
+    },
+    "append": {},
+    "prepend": {
+      "/js/vendors/go-jquery/jquery-2.0.3.min.js": [
+        "/js/vendors/go-jquery/jquery-2.0.3.min.js"
+      ]
+    }
+  },
+  "css": {
+    "strip": [],
+    "append": {},
+    "prepend": {}
+  },
+  "phantomizer-confess": {
+    "test": {
+      "options": {
+        "in_request": "http://www.google.com/"
+      }
+    }
+  }
 }

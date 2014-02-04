@@ -1,45 +1,45 @@
 {
-    "src_dir": "ie6/project/www-core/",
-    "project_dir": "ie6/project/",
-    "wbm_dir": "ie6/project/www-wbm/",
-    "out_dir": "ie6/run/build/",
-    "meta_dir": "ie6/run/meta/",
-    "export_dir": "ie6/export/",
-    "documentation_dir": "ie6/documentation/",
-    "routing": [
-        {
-            "template": "/index.html",
-            "tests": []
-        }
-    ],
-    "scripts": {
-        "strip": [],
-        "requirejs": {
-            "src": [
-                "require-2.1.10.min.js"
-            ],
-            "baseUrl": "/js/",
-            "paths": {
-            }
-        },
-        "append": {},
-        "prepend": {
-            "/jquery.js": [
-                "/js/json2.js",
-                "/js/vendors/go-jquery/jquery-1.10.2.min.js"
-            ]
-        }
-    },
-    "css": {
-        "strip": [],
-        "append": {},
-        "prepend": {}
-    },
-    "phantomizer-confess": {
-        "test": {
-            "options": {
-                "in_request": "http://www.google.com/"
-            }
-        }
+  "src_dir": "ie6/project/www-core/",
+  "project_dir": "ie6/project/",
+  "wbm_dir": "ie6/project/www-wbm/",
+  "out_dir": "ie6/run/build/",
+  "meta_dir": "ie6/run/meta/",
+  "export_dir": "ie6/export/",
+  "documentation_dir": "ie6/documentation/",
+  "routing": [
+    {
+      "template": "/index.html",
+      "tests": []
     }
+  ],
+  "scripts": {
+    "strip": [],
+    "requirejs": {
+      "src": [
+        "require-2.1.10.min.js"
+      ],
+      "baseUrl": "/js/",
+      "paths": {
+      }
+    },
+    "append": {},
+    "prepend": {
+      "/jquery.js": [
+        "/js/json2.js",
+        "/js/vendors/go-jquery/jquery-1.10.2.min.js"
+      ]
+    }
+  },
+  "css": {
+    "strip": [],
+    "append": {},
+    "prepend": {}
+  },
+  "phantomizer-confess": {
+    "test": {
+      "options": {
+        "in_request": "http://www.google.com/"
+      }
+    }
+  }
 }
