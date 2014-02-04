@@ -1,0 +1,83 @@
+{
+  "src_dir": "jquerymobile/project/www-core/",
+  "project_dir": "jquerymobile/project/",
+  "wbm_dir": "jquerymobile/project/www-wbm/",
+  "out_dir": "jquerymobile/run/build/",
+  "meta_dir": "jquerymobile/run/meta/",
+  "export_dir": "jquerymobile/export/",
+  "documentation_dir": "jquerymobile/documentation/",
+
+  "environment":{
+    "staging":{
+      "inject_extras":true,
+      "htmlcompressor":true,
+      "sitemap":false,
+      "build_target":"stryke-assets-build"
+    }
+  },
+  "phantomizer-project-builder":{
+    "staging":{
+      "options":{
+        "rm_dir":[]
+      }
+    }
+  },
+
+  "routing": [
+    {
+      "template": "/index.html",
+      "tests": [
+        "tests/index/index"
+      ]
+    },
+    {
+      "template": "/some/test.html",
+      "tests": [
+        "tests/index/index"
+      ]
+    }
+  ],
+  "scripts": {
+    "strip": [],
+    "requirejs": {
+      "src": [
+        "require-2.1.10.min.js"
+      ],
+      "baseUrl": "/js/",
+      "paths":{
+
+      }
+    },
+    "append": {},
+    "prepend": {
+      "/js/vendors/go-jquery/jquery-1.10.2.min.js": [
+        "/js/vendors/go-jquery/jquery-1.10.2.min.js"
+      ],
+      "/js/demo_jquery.js": [
+        "/js/demo_jquery.js"
+      ],
+      "/js/vendors/go-jquerymobile/jquery.mobile-1.4.0.js": [
+        "/js/vendors/go-jquerymobile/jquery.mobile-1.4.0.js"
+      ]
+    }
+  },
+  "css": {
+    "strip": [],
+    "append": {},
+    "prepend": {
+      "/js/vendors/go-jquerymobile/jquery.mobile-1.4.0.css": [
+        "/js/vendors/go-jquerymobile/jquery.mobile-1.4.0.css"
+      ],
+      "/css/index.css": [
+        "/css/index.css"
+      ]
+    }
+  },
+  "phantomizer-confess": {
+    "test": {
+      "options": {
+        "in_request": "http://www.google.com/"
+      }
+    }
+  }
+}

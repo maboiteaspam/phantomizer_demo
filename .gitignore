@@ -38,3 +38,9 @@ bootstrap/export
 bootstrap/run
 bootstrap/qunit
 bootstrap/code_review
+
+jquerymobile/documentation
+jquerymobile/export
+jquerymobile/run
+jquerymobile/qunit
+jquerymobile/code_review
