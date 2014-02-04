@@ -1,4 +1,4 @@
 -include test/test.env
 
 test_all:
-	mocha --reporter nyan
+	mocha --reporter spec
