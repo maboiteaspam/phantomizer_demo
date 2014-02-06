@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>index.js</title>
+  <title>jshint-errors.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -13,7 +13,7 @@
 
       <div class="header">
         
-          <h1>index.js</h1>
+          <h1>jshint-errors.js</h1>
         
 
         
@@ -46,20 +46,23 @@
         
           <div class='highlight'><pre><span class="hljs-pi">"use strict"</span>;
 
+<span class="hljs-comment">/* this file is specifically deigned to trigger css lint errors */</span>
+
 <span class="hljs-built_in">require</span>([
   <span class="hljs-string">"vendors/go-phantomizer/phantomizer"</span>
 ],<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(phantomizer)</span> {</span>
 
   phantomizer.render(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(next)</span>{</span>
-    $(<span class="hljs-string">"&lt;span class='test'&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="hljs-string">"body"</span>);
+    $(<span class="hljs-string">"&lt;span class='test'&gt;It works !&lt;/span&gt;"</span>).appendTo(<span class="hljs-string">"body"</span>)
     next();
   });
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">that_is_useless</span><span class="hljs-params">()</span>{</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"test purpose, keep this value"</span>;
-  }
   that_is_useless();
-});</pre></div>
+});
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">that_is_useless</span><span class="hljs-params">()</span>{</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"test purpose, keep this value"</span>
+}</pre></div>
         
       
       <div class="fleur">h</div>
