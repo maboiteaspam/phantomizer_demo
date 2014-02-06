@@ -28,7 +28,11 @@ describe('phantomizer command line, init function', function () {
     if(gitignore)grunt.file.write(".gitignore",gitignore);
   });
   after(function(){
-    //grunt.file.delete(project_name);
+    grunt.file.delete(project_name);
+    // reset gitignore
+    var gitignore = grunt.file.read(".gitignore");
+    gitignore = gitignore.replace(gitignoreRegExp,"").trim();
+    if(gitignore)grunt.file.write(".gitignore",gitignore);
   });
 
   it('should init a project', function(done) {
