@@ -26,16 +26,33 @@ describe('phantomizer command line, general testing', function () {
   });
   it('should clean project working directory after clean task', function(done) {
     open_phantomizer([base_cmd,"--clean","demo"],function(code,stdout,stderr){
-      (grunt.file.exists(demo_dir+"export/dev/www/index.html")).should.be.false;
-      (grunt.file.exists(demo_dir+"documentation/")).should.be.false;
-      (grunt.file.exists(demo_dir+"run/")).should.be.false;
+
+      var files = {
+        'dev/www/index.html':demo_dir+"export/dev/www/index.html"
+      };
+      for(var n in files ){
+        grunt.file.exists(files[n]).should.eql(true,'File is missing: '+n)
+      }
+
+      var files = {
+        'documentation/':demo_dir+"documentation/",
+        'run/':demo_dir+"run/"
+      };
+      for(var n in files ){
+        grunt.file.exists(files[n]).should.eql(false,'File is missing: '+n)
+      }
       done();
     });
   });
   it('should provide the files in export_dir after export task', function(done) {
     this.timeout(20000);
     open_phantomizer([base_cmd,"--export","demo"],function(code,stdout,stderr){
-      (grunt.file.exists(demo_dir+"export/dev/www/index.html")).should.be.true;
+      var files = {
+        'dev/www/index.html':demo_dir+"export/dev/www/index.html"
+      };
+      for(var n in files ){
+        grunt.file.exists(files[n]).should.eql(true,'File is missing: '+n)
+      }
       done();
     });
   });
