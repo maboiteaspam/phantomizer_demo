@@ -17,8 +17,8 @@ describe('phantomizer command line, init function', function () {
 
   before(function(done){
 
-    log.level = "info";
     log.level = "silent";
+    log.level = "info";
 
     open_phantomizer([base_cmd,"--clean", project_name],function(code,stdout,stderr){
       done();
@@ -108,6 +108,30 @@ describe('phantomizer command line, init function', function () {
     });
   });
 
+
+  it('should test an exported project with qunit', function(done) {
+    this.timeout(35000);
+    open_phantomizer([base_cmd,"--export", project_name, "--environment", "staging"],function(code,stdout,stderr){
+      open_phantomizer([base_cmd,"--test", project_name, "--environment", "staging"],function(code,stdout,stderr){
+        stdout.should.match(/(Welcome to phantomizer !)/);
+
+        stdout.should.match(/([0-9]+\/[0-9]+ assertions failed \([0-9]+ms\))/);
+
+        stdout.should.match(/(It fails !!)/);
+        stdout.should.match(/(Actual:[^"]+"It works !")/);
+        stdout.should.match(/(Expected:[^"]+"It worked !")/);
+        stdout.should.match(/(2\/6 assertions)/);
+
+
+        stdout.should.not.match( /error[.]onError:/ );
+        stdout.should.not.match( /PhantomJS timed out/ );
+
+        setTimeout(function(){
+          done();
+        },500)
+      });
+    });
+  });
 
 });
 
