@@ -66,17 +66,15 @@ describe('phantomizer command line, code review function', function () {
       stdout.should.match(/(Rule is empty)/);
       stdout.should.match(/(csslint-errors[.]css)/);
 
-      setTimeout(function(){
-        var files = {
-          'code_review/csslint_checkstyle.xml':'demo/code_review/csslint_checkstyle.xml',
-          'code_review/jshint_checkstyle.xml':'demo/code_review/jshint_checkstyle.xml'
-        };
-        for(var n in files ){
-          grunt.file.exists(files[n]).should.eql(true,'File is missing: '+n)
-        }
+      var files = {
+        'code_review/csslint_checkstyle.xml':'demo/code_review/csslint_checkstyle.xml',
+        'code_review/jshint_checkstyle.xml':'demo/code_review/jshint_checkstyle.xml'
+      };
+      for(var n in files ){
+        grunt.file.exists(files[n]).should.eql(true,'File is missing: '+n)
+      }
 
-        done();
-      },1000);
+      done();
     });
   });
 
@@ -94,17 +92,15 @@ describe('phantomizer command line, code review function', function () {
       stdout.should.match(/(Rule is empty)/);
       stdout.should.match(/(csslint-errors[.]css)/);
 
-      setTimeout(function(){
-        var files = {
-          'code_review/csslint_junit.xml':'demo/code_review/csslint_junit.xml',
-          'code_review/jshint_junit.xml':'demo/code_review/jshint_junit.xml'
-        };
-        for(var n in files ){
-          grunt.file.exists(files[n]).should.eql(true,'File is missing: '+n)
-        }
+      var files = {
+        'code_review/csslint_junit.xml':'demo/code_review/csslint_junit.xml',
+        'code_review/jshint_junit.xml':'demo/code_review/jshint_junit.xml'
+      };
+      for(var n in files ){
+        grunt.file.exists(files[n]).should.eql(true,'File is missing: '+n)
+      }
 
-        done();
-      },1000)
+      done();
 
     });
   });
