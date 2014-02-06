@@ -11,7 +11,7 @@ log.level = "silent";
 var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
 var demo_dir = __dirname+"/../demo/";
 
-describe('phantomizer command line', function () {
+describe('phantomizer command line, webserver', function () {
 
   this.timeout(5000);
 

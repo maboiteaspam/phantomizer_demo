@@ -11,7 +11,7 @@ log.level = "silent";
 var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
 var demo_dir = __dirname+"/../demo/";
 
-describe('phantomizer command line', function () {
+describe('phantomizer command line, general testing', function () {
 
   it('should have a version with the format #.#.#', function(done) {
     open_phantomizer([base_cmd,"--version"],function(code,stdout,stderr){
