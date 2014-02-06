@@ -53,6 +53,11 @@ You can test it
 
     phantomizer --test demo
 
+You can document it
+
+    phantomizer --document demo
+    see http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/docco-style.html for syntax hints
+
 You can code-review it
 
     phantomizer --code_review demo
@@ -91,6 +96,7 @@ COMMAND LINE OPTIONS
 
     --document [project]
     Document Javascript and Css files of your project.
+    see http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/docco-style.html for syntax hints
 
 
     --code_review [project] [ --format [junit|checkstyle] ]
@@ -149,6 +155,8 @@ Introduce more specifically phantomizer usage on client side.
 Demo project Documentation Index
 
 http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/index.html
+
+http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/docco-style.html
 
 http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/tests/index/index.html
 
