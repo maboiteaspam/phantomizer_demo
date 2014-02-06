@@ -17,8 +17,8 @@ describe('phantomizer command line, init function', function () {
 
   before(function(done){
 
-    log.level = "silent";
     log.level = "info";
+    log.level = "silent";
 
     open_phantomizer([base_cmd,"--clean", project_name],function(code,stdout,stderr){
       done();
@@ -45,7 +45,9 @@ describe('phantomizer command line, init function', function () {
       stdout.should.not.match( /error[.]onError:/ );
       stdout.should.not.match( /PhantomJS timed out/ );
 
-      done();
+      setTimeout(function(){
+        done();
+      },500)
     });
   });
 
@@ -72,7 +74,9 @@ describe('phantomizer command line, init function', function () {
         grunt.file.exists(files[n]).should.eql(true,'File is missing: '+n)
       }
 
-      done();
+      setTimeout(function(){
+        done();
+      },500)
     });
   });
 
@@ -98,8 +102,9 @@ describe('phantomizer command line, init function', function () {
       for(var n in files ){
         grunt.file.exists(files[n]).should.eql(true,'File is missing: '+n)
       }
-
-      done();
+      setTimeout(function(){
+        done();
+      },500)
     });
   });
 

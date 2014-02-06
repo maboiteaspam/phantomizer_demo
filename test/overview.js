@@ -5,8 +5,6 @@ var grunt = require('grunt');
 var request = require('request');
 var log = require('npmlog');
 
-log.level = "info";
-log.level = "silent";
 
 describe('phantomizer command line, general testing', function () {
 
@@ -26,15 +24,8 @@ describe('phantomizer command line, general testing', function () {
   });
   it('should clean project working directory after clean task', function(done) {
     open_phantomizer([base_cmd,"--clean","demo"],function(code,stdout,stderr){
-
       var files = {
-        'dev/www/index.html':demo_dir+"export/dev/www/index.html"
-      };
-      for(var n in files ){
-        grunt.file.exists(files[n]).should.eql(true,'File is missing: '+n)
-      }
-
-      var files = {
+        'dev/www/index.html':demo_dir+"export/dev/www/index.html",
         'documentation/':demo_dir+"documentation/",
         'run/':demo_dir+"run/"
       };
@@ -45,7 +36,7 @@ describe('phantomizer command line, general testing', function () {
     });
   });
   it('should provide the files in export_dir after export task', function(done) {
-    this.timeout(20000);
+    this.timeout(40000);
     open_phantomizer([base_cmd,"--export","demo"],function(code,stdout,stderr){
       var files = {
         'dev/www/index.html':demo_dir+"export/dev/www/index.html"

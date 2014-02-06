@@ -47,7 +47,9 @@ describe('phantomizer command line, router configuration, functionning', functio
       phantomizer = open_phantomizer([base_cmd,"--server","router_tests"]);
       phantomizer.stdout.on('data', function (data) {
         if( data.toString().match(/Press enter to leave/) ){
-          done();
+          setTimeout(function(){
+            done();
+          },500);
         }
       });
     }else{

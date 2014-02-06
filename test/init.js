@@ -18,8 +18,8 @@ describe('phantomizer command line, init function', function () {
 
   before(function(){
 
-    log.level = "silent";
     log.level = "info";
+    log.level = "silent";
 
     grunt.file.delete(project_name);
     // reset gitignore
