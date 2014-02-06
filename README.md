@@ -93,7 +93,7 @@ COMMAND LINE OPTIONS
     Document Javascript and Css files of your project.
 
 
-    --code_review [project]
+    --code_review [project] [ --format [junit|checkstyle] ]
     Review Javascript and CSS source code with jshint / csslint
 
     --code_review [project] --format junit
@@ -103,7 +103,7 @@ COMMAND LINE OPTIONS
     Review Javascript and CSS source code with jshint / csslint into a checkstyle formated output file.
 
 
-    --test [project_dir] [ --environment [environment] ]
+    --test [project_dir] [ --environment [environment] ] [ --format [junit|tap] ]
     Test your project with qunit
 
     --test [project_dir] --format junit
