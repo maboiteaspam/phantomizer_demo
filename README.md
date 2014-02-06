@@ -80,14 +80,18 @@ COMMAND LINE OPTIONS
     --help
     Displays command line help
 
+
     --init [project]
     Initialize directory and file required fo a project.
+
 
     --server [project]
     Starts a new web sever for the given project.
 
+
     --document [project]
     Document Javascript and Css files of your project.
+
 
     --code_review [project]
     Review Javascript and CSS source code with jshint / csslint
@@ -98,9 +102,16 @@ COMMAND LINE OPTIONS
     --code_review [project] --format checkstyle
     Review Javascript and CSS source code with jshint / csslint into a checkstyle formated output file.
 
+
     --test [project_dir] [ --environment [environment] ]
+    Test your project with qunit
 
     --test [project_dir] --format junit
+    Test your project with qunit and produces jUnit compatible format
+
+    --test [project_dir] --format tap
+    Test your project with qunit and produces TAP compatible format
+
 
     --export [project] --target [target]
     Builds and exports your project for delivery.
@@ -108,11 +119,13 @@ COMMAND LINE OPTIONS
     --browse_export [project] --target [target]
     Browse and test your project once it is exported.
 
+
     --list_tasks [project]
     List available GruntJS tasks for configuration.
 
     --describe_task [project] --task [task]
     Describe task options after auto config has occurred.
+
 
     --list_envs [project]
     List available environments for configuration adjustments.
