@@ -1,0 +1,13 @@
+/* this file is specifically deigned to trigger css lint errors */
+html,body{
+    margin:0;
+    padding:0;
+}
+.test_purpose{
+    font-size:12px;
+}
+.some_empty{
+}
+.some_empty2{
+    border:0 px;
+}
