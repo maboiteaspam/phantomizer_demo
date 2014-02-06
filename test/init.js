@@ -5,10 +5,11 @@ var grunt = require('grunt');
 var request = require('request');
 var log = require('npmlog');
 
-var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
-var demo_dir = __dirname+"/../demo/";
-
 describe('phantomizer command line, init function', function () {
+
+
+  var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
+  var demo_dir = __dirname+"/../demo/";
 
   var project_name = "test_init_project";
   var gitignoreRegExp = new RegExp("^"+project_name+"([/].*)?$","img");

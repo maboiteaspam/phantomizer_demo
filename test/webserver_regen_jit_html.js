@@ -5,15 +5,17 @@ var grunt = require('grunt');
 var request = require('request');
 var log = require('npmlog');
 
-log.level = "info";
-log.level = "silent";
-
-var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
-var demo_dir = __dirname+"/../demo/";
-
 describe('phantomizer command line, webserver built page regeneration', function () {
 
   this.timeout(50000);
+
+  var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
+  var demo_dir = __dirname+"/../demo/";
+
+  before(function(){
+    log.level = "info";
+    log.level = "silent";
+  })
 
   var phantomizer = null;
   beforeEach(function(done){

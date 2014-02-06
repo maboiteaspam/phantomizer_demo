@@ -8,10 +8,15 @@ var log = require('npmlog');
 log.level = "info";
 log.level = "silent";
 
-var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
-var demo_dir = __dirname+"/../demo/";
-
 describe('phantomizer command line, general testing', function () {
+
+  var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
+  var demo_dir = __dirname+"/../demo/";
+
+  before(function(){
+    log.level = "info";
+    log.level = "silent";
+  })
 
   it('should have a version with the format #.#.#', function(done) {
     open_phantomizer([base_cmd,"--version"],function(code,stdout,stderr){

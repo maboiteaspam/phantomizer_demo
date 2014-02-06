@@ -6,19 +6,20 @@ var express = require('express');
 var http = require('http');
 var log = require('npmlog');
 
-log.level = "info";
-log.level = "silent";
-
-var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
-
 describe('phantomizer command line, router configuration, functionning', function () {
 
   this.timeout(5000);
+
+  var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
 
   var phantomizer = null;
   var app = null;
   var http_clear = null;
   before(function(done){
+
+    log.level = "info";
+    log.level = "silent";
+
     if( !app ){
       app = express();
       app.use("/get_protected_urls_3",express.basicAuth('some_user3', 'some_password3'));
