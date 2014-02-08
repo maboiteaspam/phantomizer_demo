@@ -44,3 +44,9 @@ jquerymobile/export
 jquerymobile/run
 jquerymobile/qunit
 jquerymobile/code_review
+
+router-tests/run
+router-tests/export
+router-tests/documentation
+router-tests/code_review
+router-tests/qunit
