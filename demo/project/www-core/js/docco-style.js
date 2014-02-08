@@ -89,6 +89,9 @@
   //
   // >> this is another paragraph
   /* // >> this is another paragraph */
+  //
+  // this is just another comment
+  //
   /*
   this is a block comment
    */
