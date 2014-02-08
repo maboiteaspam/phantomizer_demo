@@ -84,7 +84,7 @@
   // this is just a comment
   // > this is a paragraph
   //
-  // this is just a comment
+  // this is just another comment
   //
   // >> this is another paragraph
   /*
@@ -92,6 +92,17 @@
    */
   //
   // `quoted block`
+  // with a comment
+  //
+  //
+  // `quoted
+  // block multines ?`
+  // with a comment
+  //
+  /*
+   * // `quoted block`
+   * // with a comment
+   */
   //
   /**
    * this is a function comment
