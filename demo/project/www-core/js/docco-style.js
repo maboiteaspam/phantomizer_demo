@@ -2,7 +2,10 @@
   //# this is header
   // with some description
   function header(){
-    /* // # this is header */
+    /*
+     * // # this is header
+     * // with some description
+     */
   }
   // this is subhead
   //----------------
@@ -68,6 +71,8 @@
   }
   // this is just a comment
   // > this is a paragraph
+  //
+  // this is just a comment
   //
   // >> this is another paragraph
   /*

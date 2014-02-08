@@ -56,7 +56,7 @@ You can test it
 You can document it
 
     phantomizer --document demo
-    see http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/docco-style.html for syntax hints
+see http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/docco-style.html for syntax hints
 
 You can code-review it
 
