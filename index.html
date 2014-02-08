@@ -29,7 +29,8 @@
       </header>
       <section>
         <h1>
-<a name="readme" class="anchor" href="#readme"><span class="octicon octicon-link"></span></a>README</h1>
+<a name="readme-" class="anchor" href="#readme-"><span class="octicon octicon-link"></span></a>README <a href="https://travis-ci.org/maboiteaspam/phantomizer_demo"><img src="https://travis-ci.org/maboiteaspam/phantomizer_demo.png?v=0.1.11" alt="Build Status"></a>
+</h1>
 
 <p>This document will introduce you phantomizer command line tool.</p>
 
@@ -64,7 +65,7 @@ Then install using regular npm command line.</p>
 
 <p>To start phantomizer you must first browse the directory where you have checkout your project.</p>
 
-<pre><code>cd &lt;my project path&gt;
+<pre><code>cd [my project path]
 </code></pre>
 
 <p>You can initialize a project</p>
@@ -82,33 +83,102 @@ Then install using regular npm command line.</p>
 <pre><code>phantomizer --export demo
 </code></pre>
 
+<p>You can browse and test it once it is exported</p>
+
+<pre><code>phantomizer --browse_export demo
+</code></pre>
+
+<p>You can test it</p>
+
+<pre><code>phantomizer --test demo
+</code></pre>
+
+<p>You can document it</p>
+
+<pre><code>phantomizer --document demo
+see http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/docco-style.html for syntax hints
+</code></pre>
+
+<p>You can code-review it</p>
+
+<pre><code>phantomizer --code_review demo
+</code></pre>
+
 <h1>
 <a name="command-line-options" class="anchor" href="#command-line-options"><span class="octicon octicon-link"></span></a>COMMAND LINE OPTIONS</h1>
 
-<pre><code>phantomizer --&lt;switch&gt; &lt;project&gt;
-phantomizer --verbose --&lt;switch&gt; &lt;project&gt; --target &lt;target&gt;
+<pre><code>phantomizer --[switch] [project]
+phantomizer --verbose --[switch] [project] --target [target]
 phantomizer --version
 
 --version
 Provide current version of phantomizer
 
 --verbose
-Gives you more information during execution
+Gives you more information during execution, affects GruntJS
 
---init &lt;project&gt;
+--debug
+Gives even you more information during execution, affects GruntJS
+
+--force
+Particularly for GruntJS
+
+--help
+Displays command line help
+
+
+--init [project]
 Initialize directory and file required fo a project.
 
---server &lt;project&gt;
+
+--server [project]
 Starts a new web sever for the given project.
 
---document &lt;project&gt;
+
+--document [project]
 Document Javascript and Css files of your project.
+see http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/docco-style.html for syntax hints
 
---test &lt;project&gt; --target &lt;target&gt;
-Tests your project using phantomjs an headless browser.
 
---export &lt;project&gt; --target &lt;target&gt;
+--code_review [project] [ --format [junit|checkstyle] ]
+Review Javascript and CSS source code with jshint / csslint
+
+--code_review [project] --format junit
+Review Javascript and CSS source code with jshint / csslint into a junit formated output file.
+
+--code_review [project] --format checkstyle
+Review Javascript and CSS source code with jshint / csslint into a checkstyle formated output file.
+
+
+--test [project_dir] [ --environment [environment] ] [ --format [junit|tap] ]
+Test your project with qunit
+
+--test [project_dir] --format junit
+Test your project with qunit and produces jUnit compatible format
+
+--test [project_dir] --format tap
+Test your project with qunit and produces TAP compatible format
+
+
+--export [project] --target [target]
 Builds and exports your project for delivery.
+
+--browse_export [project] --target [target]
+Browse and test your project once it is exported.
+
+
+--list_tasks [project]
+List available GruntJS tasks for configuration.
+
+--describe_task [project] --task [task]
+Describe task options after auto config has occurred.
+
+
+--list_envs [project]
+List available environments for configuration adjustments.
+
+--describe_env[project] --environment [env]
+Describe env options used for auto-config.
 </code></pre>
 
 <h1>
@@ -125,6 +195,8 @@ Introduce more specifically phantomizer usage on client side.</p>
 <p>Demo project Documentation Index</p>
 
 <p><a href="http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/index.html">http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/index.html</a></p>
+
+<p><a href="http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/docco-style.html">http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/docco-style.html</a></p>
 
 <p><a href="http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/tests/index/index.html">http://maboiteaspam.github.io/phantomizer_demo/demo/documentation/js/tests/index/index.html</a></p>
 
@@ -154,6 +226,26 @@ the scripts.prepend property of the config.json file helped a lot.</p>
 <p>Backbone project Documentation Index</p>
 
 <p><a href="http://maboiteaspam.github.io/phantomizer_demo/backbone/documentation/js/index.html">http://maboiteaspam.github.io/phantomizer_demo/backbone/documentation/js/index.html</a></p>
+
+<h1>
+<a name="zepto-project" class="anchor" href="#zepto-project"><span class="octicon octicon-link"></span></a>ZEPTO PROJECT</h1>
+
+<p>A Zepto integration of TodosMVC backbone example.</p>
+
+<p>Zepto project Documentation Index</p>
+
+<p><a href="http://maboiteaspam.github.io/phantomizer_demo/zepto/documentation/js/index.html">http://maboiteaspam.github.io/phantomizer_demo/zepto/documentation/js/index.html</a></p>
+
+<p><a href="http://maboiteaspam.github.io/phantomizer_demo/zepto/documentation/js/todos/view.html">http://maboiteaspam.github.io/phantomizer_demo/zepto/documentation/js/todos/view.html</a></p>
+
+<h1>
+<a name="ie6-project" class="anchor" href="#ie6-project"><span class="octicon octicon-link"></span></a>IE6 PROJECT</h1>
+
+<p>A working example of IE6 support with its specific integration.</p>
+
+<p>IE6 project Documentation Index</p>
+
+<p><a href="http://maboiteaspam.github.io/phantomizer_demo/ie6/documentation/js/index.html">http://maboiteaspam.github.io/phantomizer_demo/ie6/documentation/js/index.html</a></p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/maboiteaspam">maboiteaspam</a></p>
