@@ -94,13 +94,18 @@
   // `quoted block`
   // with a comment
   //
+  /*
+   * // `quoted block`
+   * // with a comment
+   */
   //
   // `quoted
-  // block multines ?`
+  // block multi-lines ?`
   // with a comment
   //
   /*
-   * // `quoted block`
+   * // `quoted
+   * // block multi-lines ?`
    * // with a comment
    */
   //
