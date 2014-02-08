@@ -13,8 +13,8 @@ describe('phantomizer command line, webserver built assets regeneration', functi
   var demo_dir = __dirname+"/../demo/";
 
   before(function(){
-    log.level = "info";
     log.level = "silent";
+    log.level = "info";
   })
 
   var phantomizer = null;

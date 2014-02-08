@@ -18,7 +18,6 @@ describe('phantomizer command line, code review function', function () {
   before(function(done){
 
     log.level = "silent";
-    log.level = "info";
 
     open_phantomizer([base_cmd,"--clean", project_name],function(code,stdout,stderr){
       done();
