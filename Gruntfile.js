@@ -150,7 +150,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('readme-update', [],function(){
     var readme = grunt.file.read("README.md");
-    console.log( readme.match(/(phantomizer_demo[.]png[^)]*)[)][\]]/))
     readme = readme.replace(/(phantomizer_demo[.]png[^)]*)[)][\]]/, "phantomizer_demo.png?v="+config.pkg.version+")]");
     grunt.file.write("README.md",readme);
   });
