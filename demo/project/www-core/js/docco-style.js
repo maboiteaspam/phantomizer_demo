@@ -83,10 +83,12 @@
   }
   // this is just a comment
   // > this is a paragraph
+  /* // > this is a paragraph */
   //
   // this is just another comment
   //
   // >> this is another paragraph
+  /* // >> this is another paragraph */
   /*
   this is a block comment
    */
