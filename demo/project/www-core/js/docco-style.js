@@ -27,6 +27,8 @@
      * // **this is bold**
      * //
      * // __this is bold__
+     * //
+     * // with some description
      */
   }
   // *this is oblic*
@@ -39,6 +41,8 @@
      * // *this is oblic*
      * //
      * // _this is oblic_
+     * //
+     * // with some description
      */
   }
   // this is list
@@ -46,6 +50,8 @@
   // - item
   // - item
   // - item
+  //
+  // with some description
   function list(){
     /*
      * // this is list
@@ -53,6 +59,8 @@
      * // - item
      * // - item
      * // - item
+     * //
+     * // with some description
      */
   }
   // this is Ordered list
@@ -60,6 +68,8 @@
   // 1. Ordered list item
   // 2. Ordered list item
   // 3. Ordered list item
+  //
+  // with some description
   function ordered_list(){
     /*
      * // this is list
@@ -67,6 +77,8 @@
      * // 1. item
      * // 2. item
      * // 3. item
+     * //
+     * // with some description
      */
   }
   // this is just a comment
