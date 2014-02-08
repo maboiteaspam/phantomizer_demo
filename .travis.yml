@@ -1,0 +1,7 @@
+env:
+  - PH_USER=some_user2 PH_PWD=some_password2
+language: node_js
+node_js:
+  - "0.10"
+before_script:
+  - npm install -g grunt-cli
