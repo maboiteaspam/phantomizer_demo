@@ -13,8 +13,8 @@ describe('phantomizer command line, webserver built assets regeneration', functi
   var demo_dir = __dirname+"/../demo/";
 
   before(function(){
-    log.level = "silent";
     log.level = "info";
+    log.level = "silent";
   })
 
   var phantomizer = null;
@@ -61,7 +61,7 @@ describe('phantomizer command line, webserver built assets regeneration', functi
 
     var css_url = "http://localhost:8080/css/index.css";
     var str_modified = '.i_was_modified_'+(new Date().getTime())+"{\n    font-size:12px;\n}";
-    var css_proof_original = ".test_purpose{\n    font-size:12px;\n}";
+    var css_proof_original = "\n.test_purpose{\n    font-size:12px;\n}";
 
     request(html_url+'?build_profile=stryke-build', function (error, response, body) {
       if( error ) throw error;
@@ -90,8 +90,8 @@ describe('phantomizer command line, webserver built assets regeneration', functi
   it('should update JIT a modified build CSS request, stryke-assets-build', function(done) {
 
     var css_url = "http://localhost:8080/css/index-im-ba.css";
-    var str_modified = '.i_was_modified_'+(new Date().getTime())+"{\n    font-size:12px;\n}";
-    var css_proof_original = ".test_purpose{\n    font-size:12px;\n}";
+    var str_modified = '\n.i_was_modified_'+(new Date().getTime())+"{\nfont-size:12px;\n}";
+    var css_proof_original = "\n.test_purpose{\nfont-size:12px;\n}";
 
     request(html_url+'?build_profile=stryke-assets-build', function (error, response, body) {
       if( error ) throw error;
@@ -120,9 +120,10 @@ describe('phantomizer command line, webserver built assets regeneration', functi
   it('should update JIT a modified build CSS request, stryke-assets-min-build', function(done) {
 
     var css_url = "http://localhost:8080/css/index-im-mba.css";
-    var str_modified = '.i_was_modified_'+(new Date().getTime())+"{\n    font-size:12px;\n}";
-    var str_modified_min = '.i_was_modified_'+(new Date().getTime())+"{font-size:12px;}";
-    var css_proof_original = ".test_purpose{font-size:12px;}";
+    var d = new Date().getTime();
+    var str_modified = '.i_was_modified_'+(d)+"{\n    font-size:12px;\n}";
+    var str_modified_min = '}.i_was_modified_'+(d)+"{font-size:12px;}";
+    var css_proof_original = "}.test_purpose{font-size:12px;}";
 
     request(html_url+'?build_profile=stryke-assets-min-build', function (error, response, body) {
       if( error ) throw error;
