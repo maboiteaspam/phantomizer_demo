@@ -1,4 +1,4 @@
-README
+README [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-imagemin.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-imagemin)
 ====
 
 This document will introduce you phantomizer command line tool.
