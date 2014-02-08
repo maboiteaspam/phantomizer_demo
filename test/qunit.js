@@ -13,7 +13,7 @@ describe('phantomizer command line, init function', function () {
 
   var project_name = "demo";
 
-  this.timeout(5000);
+  this.timeout(15000);
 
   before(function(done){
 
