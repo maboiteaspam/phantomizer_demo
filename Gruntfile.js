@@ -148,6 +148,13 @@ module.exports = function(grunt) {
     });
   });
 
+  grunt.registerTask('readme-update', [],function(){
+    var readme = grunt.file.read("README.md");
+    console.log( readme.match(/(phantomizer_demo[.]png[^)]*)[)][\]]/))
+    readme = readme.replace(/(phantomizer_demo[.]png[^)]*)[)][\]]/, "phantomizer_demo.png?v="+config.pkg.version+")]");
+    grunt.file.write("README.md",readme);
+  });
+
   grunt.registerTask('cleanup-grunt-temp', [],function(){
     var wrench = require('wrench')
     wrench.rmdirSyncRecursive(__dirname + '/.grunt', !true);
@@ -160,7 +167,7 @@ module.exports = function(grunt) {
   // to generate and publish the docco style documentation
   // execute this
   // grunt
-  grunt.registerTask('default', ['demo-doc','backbone-doc','zepto-doc','ie6-doc','gh-pages', 'cleanup-grunt-temp']);
+  grunt.registerTask('default', ['readme-update','demo-doc','backbone-doc','zepto-doc','ie6-doc','gh-pages', 'cleanup-grunt-temp']);
 
   // to release the project in a new version
   // use one of those commands
