@@ -1,5 +1,5 @@
 README [![Build Status](https://travis-ci.org/maboiteaspam/phantomizer_demo.png)](https://travis-ci.org/maboiteaspam/phantomizer_demo)
-====
+=====
 
 This document will introduce you phantomizer command line tool.
 
