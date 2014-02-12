@@ -1,6 +1,6 @@
 {
   "name": "phantomizer-demo",
-  "version": "0.1.12",
+  "version": "0.1.14",
   "private": true,
   "engines": {
     "node": ">=0.10.20"
@@ -12,12 +12,9 @@
     "grunt-contrib-qunit": "maboiteaspam/grunt-contrib-qunit",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-csslint": "~0.2.0",
-
     "jshint-junit-reporter": "git://github.com/xjamundx/jshint-junit-reporter",
     "jshint-path-reporter": "git://github.com/Bartvds/jshint-path-reporter",
-
     "phantomjs": "1.9.x",
-
     "phantomizer": "maboiteaspam/phantomizer",
     "phantomizer-grunt": "maboiteaspam/phantomizer-grunt",
     "phantomizer-styledocco": "maboiteaspam/phantomizer-styledocco",
