@@ -7,11 +7,13 @@
   "export_dir": "demo/export/",
   "documentation_dir": "demo/documentation/",
 
+  "sitemap":false,
   "environment":{
     "staging":{
       "inject_extras":true,
       "htmlcompressor":true,
-      "sitemap":false,
+      "sitemap":true,
+      "deployed_dns":"my.host.com",
       "build_target":"stryke-assets-build"
     }
   },
@@ -60,7 +62,8 @@
       "urls": ["/knockout-1.html","/knockout-2.html"],
       "tests": [
         "tests/knockout/knockout"
-      ]
+      ],
+      "sitemap":false
     }
   ],
   "scripts": {
