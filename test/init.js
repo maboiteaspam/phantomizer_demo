@@ -16,6 +16,7 @@ describe('phantomizer command line, init function', function () {
   var project_name = "test_init_project";
   var gitignoreRegExp = new RegExp("^"+project_name+"([/].*)?$","img");
 
+  this.slow(2500);
   this.timeout(5000);
 
   before(function(){

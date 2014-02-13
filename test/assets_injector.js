@@ -9,6 +9,7 @@ var argv_str = process.argv.join(' ');
 
 describe('phantomizer command line, webserver page assets injetion', function () {
 
+  this.slow(2500);
   this.timeout(5000);
 
   var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";

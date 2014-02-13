@@ -10,6 +10,7 @@ var argv_str = process.argv.join(' ');
 
 describe('phantomizer command line, router configuration, functionning', function () {
 
+  this.slow(2500);
   this.timeout(5000);
 
   var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";

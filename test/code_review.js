@@ -15,6 +15,7 @@ describe('phantomizer command line, code review function', function () {
 
   var project_name = "demo";
 
+  this.slow(2500);
   this.timeout(5000);
 
   before(function(done){

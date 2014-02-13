@@ -16,7 +16,8 @@ describe('phantomizer command line, sitemap generator function', function () {
 
   var project_name = "demo";
 
-  this.timeout(10000);
+  this.slow(10000);
+  this.timeout(20000);
 
   before(function(done){
 
