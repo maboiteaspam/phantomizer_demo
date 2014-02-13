@@ -74,6 +74,12 @@ describe('phantomizer command line, init function', function () {
         grunt.file.exists(files[n]).should.eql(true,'File is missing: '+n)
       }
 
+      grunt.file.read(files['dev/index.xml']).should.match( /tests="2" failures="1"/ );
+      grunt.file.read(files['dev/index.xml']).should.match( /<testcase name="It displays &apos;It works !&apos;" tests="1" failures="0" errors="0" time="[^"]+" timestamp="[^"]+">[^<]+<\/testcase>/ );
+      grunt.file.read(files['dev/index.xml']).should.match( /<testcase name="It fails !!" tests="1" failures="1" errors="0" time="[^"]+" timestamp="[^"]+">/ );
+
+      grunt.file.read(files['dev/knockout.xml']).should.match( /tests="2" failures="0"/ );
+
       setTimeout(function(){
         done();
       },500)
@@ -102,6 +108,15 @@ describe('phantomizer command line, init function', function () {
       for(var n in files ){
         grunt.file.exists(files[n]).should.eql(true,'File is missing: '+n)
       }
+
+      grunt.file.read(files['dev/index.tap']).should.match( /^# module: undefined/ );
+      grunt.file.read(files['dev/index.tap']).should.match( /ok 1 - / );
+      grunt.file.read(files['dev/index.tap']).should.match( /not ok 2 - / );
+
+      grunt.file.read(files['dev/knockout.tap']).should.match( /^# module: undefined/ );
+      grunt.file.read(files['dev/knockout.tap']).should.match( /ok 1 - / );
+      grunt.file.read(files['dev/knockout.tap']).should.match( /ok 2 - / );
+
       setTimeout(function(){
         done();
       },500)
