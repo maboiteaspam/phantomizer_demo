@@ -6,6 +6,9 @@ var request = require('request');
 var log = require('npmlog');
 
 var argv_str = process.argv.join(' ');
+var log_stdout = argv_str.match("--stdout") || process.env["TEST_STDOUT"];
+var log_verbose = argv_str.match("--verbose") || process.env["TEST_VERBOSE"];
+var log_debug = argv_str.match("--debug") || process.env["TEST_DEBUG"];
 
 describe('phantomizer command line, init function', function () {
 
@@ -20,7 +23,7 @@ describe('phantomizer command line, init function', function () {
 
   before(function(done){
 
-    log.level = argv_str.match("--stdout")?"info":"silent";
+    log.level = log_stdout?"info":"silent";
 
     open_phantomizer([base_cmd,"--clean", project_name],function(code,stdout,stderr){
       done();
@@ -155,13 +158,14 @@ describe('phantomizer command line, init function', function () {
 function open_phantomizer(args,cb){
   var stdout = "";
   var stderr = "";
-  if( argv_str.match("--verbose") ){
+  if( log_verbose ){
     args.push("--verbose");
   }
-  if( argv_str.match("--debug") ){
+  if( log_debug ){
     args.push("--debug");
   }
-  if( argv_str.match("--verbose") ){
+  if( log_verbose ){
+    args.push("--verbose");
     log.info('stdout', '', "");
     log.info('stdout', '', "");
     log.info('stdout', '', "node"+args.join(" "));

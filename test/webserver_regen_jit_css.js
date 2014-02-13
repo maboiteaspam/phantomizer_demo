@@ -6,6 +6,9 @@ var request = require('request');
 var log = require('npmlog');
 
 var argv_str = process.argv.join(' ');
+var log_stdout = argv_str.match("--stdout") || process.env["TEST_STDOUT"];
+var log_verbose = argv_str.match("--verbose") || process.env["TEST_VERBOSE"];
+var log_debug = argv_str.match("--debug") || process.env["TEST_DEBUG"];
 
 describe('phantomizer command line, webserver built assets regeneration', function () {
 
@@ -16,8 +19,7 @@ describe('phantomizer command line, webserver built assets regeneration', functi
   var demo_dir = __dirname+"/../demo/";
 
   before(function(){
-    log.level = "info";
-    log.level = "silent";
+    log.level = log_stdout?"info":"silent";
   })
 
   var phantomizer = null;
@@ -158,13 +160,25 @@ describe('phantomizer command line, webserver built assets regeneration', functi
 function open_phantomizer(args,cb){
   var stdout = "";
   var stderr = "";
+  if( log_verbose ){
+    args.push("--verbose");
+  }
+  if( log_debug ){
+    args.push("--debug");
+  }
+  if( log_verbose ){
+    args.push("--verbose");
+    log.info('stdout', '', "");
+    log.info('stdout', '', "");
+    log.info('stdout', '', "node"+args.join(" "));
+  }
   var phantomizer = require('child_process').spawn("node", args);
   phantomizer.stdout.on('data', function (data) {
-    log.info('stdout', '', data.toString());
+    log.info('stdout', '', data.toString().trim());
     stdout+=data.toString();
   });
   phantomizer.stderr.on('data', function (data) {
-    log.info('stderr', '', data.toString());
+    log.info('stderr', '', data.toString().trim());
     stderr+=data.toString();
   });
   phantomizer.on('exit', function (code) {
