@@ -24,6 +24,19 @@ Thus, You should be able to run
     phantomizer --version
 
 
+LIVE TEST ON KODING
+====
+You can try this out at https://koding.com/
+
+```
+git clone https://github.com/maboiteaspam/phantomizer_demo.git
+cd phantomizer_demo
+npm install
+./node_modules/.bin/phantomizer --server demo --default_webdomain 0.0.0.0
+```
+Then go to http://[your account].kd.io:8080/
+
+
 USAGE
 ====
 
