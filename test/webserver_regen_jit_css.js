@@ -5,6 +5,8 @@ var grunt = require('grunt');
 var request = require('request');
 var log = require('npmlog');
 
+var argv_str = process.argv.join(' ');
+
 describe('phantomizer command line, webserver built assets regeneration', function () {
 
   this.timeout(50000);
