@@ -5,4 +5,4 @@ before_script:
   - npm install -g grunt-cli
 env:
   - PH_USER=some_user2 PH_PWD=some_password2 TEST_STDOUT=yes
-version: 8
+version: 9
