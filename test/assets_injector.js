@@ -16,7 +16,6 @@ describe('phantomizer command line, webserver page assets injetion', function ()
   this.timeout(5000);
 
   var base_cmd = __dirname+"/../node_modules/.bin/phantomizer";
-  var demo_dir = __dirname+"/../demo/";
 
   var phantomizer = null;
   before(function(done){
