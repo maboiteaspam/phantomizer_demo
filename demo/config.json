@@ -10,7 +10,7 @@
   "sitemap":false,
   "environment":{
     "staging":{
-      "inject_extras":true,
+      "html_manifest":{},
       "htmlcompressor":true,
       "sitemap":true,
       "deployed_dns":"my.host.com",
