@@ -6,22 +6,32 @@ This document will introduce you phantomizer command line tool.
 
 INSTALL
 ====
-Start by checking ot the project, navigate to the directory.
-Then install using regular npm command line.
+Start by checking out the project,
+Navigate to the directory.
+Install using regular npm command line.
+Start your app
 
-    npm install
+```
+git clone https://github.com/maboiteaspam/phantomizer_demo.git
+cd phantomizer_demo
+npm install
+node_modules/.bin/phantomizer --version
+```
 
-You should then be able to run
-
-    node_modules/.bin/phantomizer --version
-
-To have a global cli access
+To get a global cli access
 
     npm install -g maboiteaspam/phantomizer
 
 Thus, You should be able to run
 
     phantomizer --version
+
+Initialize your project
+
+    phantomizer --init [project name]
+    phantomizer --server [project name]
+
+
 
 
 LIVE TEST ON KODING
